@@ -4,26 +4,27 @@ import { motion } from 'framer-motion';
 
 import { ThemeContext } from '../../contexts/ThemeContext';
 
-import expImgWhite from '../../assets/svg/experience/expImgWhite.svg'
-import expImgBlack from '../../assets/svg/experience/expImgBlack.svg'
+import workImgWhite from '../../assets/svg/experience/expImgWhite.svg'
+import workImgBlack from '../../assets/svg/experience/expImgBlack.svg'
 
 import './Experience.css'
 
-function ExperienceCard({id, company, jobtitle, startYear, endYear}) {
+function WorkCard({id, company, jobtitle, startYear, endYear, type}) {
 
     const { theme } = useContext(ThemeContext);
 
     const useStyles = makeStyles((t) => ({
-        experienceCard: {
+        workCard: {
             backgroundColor: theme.primary30,
             borderRadius: '20px',
-            padding: '2rem',
+            padding: '4rem',
             height: '100%',
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'space-between',
             boxShadow: '0 4px 20px rgba(0,0,0,0.1)',
             border: `1px solid ${theme.primary50}`,
+            marginBottom: '1.5rem',
             "&:hover": {
                 backgroundColor: theme.primary50,
                 transform: 'translateY(-5px)',
@@ -48,17 +49,43 @@ function ExperienceCard({id, company, jobtitle, startYear, endYear}) {
                 transition: { duration: 0.3 }
             }}
         >
-            <div key={id} className={`experience-card ${classes.experienceCard}`}>
-                <div className="experience-content">
-                    <div className="experience-details">
-                        <h2 style={{color: theme.tertiary, marginBottom: '0.5rem', fontSize: '1.5rem'}}>{jobtitle}</h2>
-                        <h3 style={{color: theme.tertiary80, marginBottom: '1rem', fontSize: '1.2rem'}}>{company}</h3>
-                        <div className="experience-period" style={{color: theme.primary, fontWeight: 'bold', fontSize: '1rem'}}>
+            <div key={id} className={`work-card ${classes.workCard}`}>
+                <div className="work-content">
+                    <div className="work-details">
+                        <h2 style={{
+                            color: theme.tertiary, 
+                            marginBottom: '0.5rem', 
+                            fontSize: '1.5rem',
+                            fontWeight: 'bold'
+                        }}>
+                            {jobtitle}
+                        </h2>
+                        <h3 style={{
+                            color: theme.tertiary80, 
+                            marginBottom: '1rem', 
+                            fontSize: '1.2rem',
+                            fontWeight: 'normal'
+                        }}>
+                            {company}
+                        </h3>
+                        <div className="work-period" style={{
+                            color: theme.primary, 
+                            fontWeight: 'bold', 
+                            fontSize: '1rem',
+                            marginBottom: '0.5rem'
+                        }}>
                             {startYear} - {endYear}
+                        </div>
+                        <div className="work-type" style={{
+                            color: theme.tertiary70,
+                            fontSize: '0.9rem',
+                            fontStyle: 'italic'
+                        }}>
+                            {type}
                         </div>
                     </div>
                 </div>
-                <div className="experience-imgcontainer" style={{
+                <div className="work-imgcontainer" style={{
                     display: 'flex', 
                     justifyContent: 'center', 
                     alignItems: 'center',
@@ -68,8 +95,8 @@ function ExperienceCard({id, company, jobtitle, startYear, endYear}) {
                     borderRadius: '15px'
                 }}>
                     <img 
-                        src={theme.type === 'light' ? expImgBlack : expImgWhite} 
-                        alt="Experience" 
+                        src={theme.type === 'light' ? workImgBlack : workImgWhite} 
+                        alt="Work" 
                         style={{
                             width: '80px',
                             height: '80px',
@@ -82,4 +109,4 @@ function ExperienceCard({id, company, jobtitle, startYear, endYear}) {
     )
 }
 
-export default ExperienceCard
+export default WorkCard
