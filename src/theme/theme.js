@@ -51,6 +51,36 @@ export const greenThemeDark = {
     expimg: expGreen,
     contactsimg: contactsGreen
 }
+export const customGreenTheme = {
+    type: 'light',
+    primary: '#84cc16',          
+    primary400: '#a3e635',       
+    primary600: '#65a30d',       
+    primary80: '#84cc1680',
+    primary50: '#84cc1650',
+    primary30: '#f7fee7',
+    
+    secondary: '#ffffff',
+    secondary70: '#f9fafb',
+    secondary50: '#e5e7eb',
+    
+    tertiary: '#365314',
+    tertiary80: '#4d7c0f',
+    tertiary70: '#65a30d',
+    tertiary50: '#84cc16',
+
+    // Images untuk berbagai komponen
+    aboutimg1: greenThemeboy,
+    aboutimg2: greenThemegirl,
+    eduimg: eduGreen,
+    expimg: expGreen,
+    contactsimg: contactsGreen,
+    
+    footerimg: greenThemeboy,  // Atau gambar footer yang sesuai
+    landingimg: greenThemeboy, // Gambar untuk landing page
+    projectimg: greenThemeboy, // Gambar untuk projects jika ada
+    servicesimg: greenThemeboy, // Gambar untuk services jika ada
+}
 export const bwThemeLight = {
     type: 'light',
     primary: '#000000',

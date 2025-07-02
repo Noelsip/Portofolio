@@ -1,11 +1,11 @@
 import React, { useContext, useState } from 'react';
 import { NavHashLink as NavLink } from 'react-router-hash-link';
-import Fade from 'react-reveal/Fade';
+import { motion } from 'framer-motion';
 import { IoMenuSharp, IoHomeSharp } from 'react-icons/io5';
 import { HiDocumentText } from 'react-icons/hi';
 import { BsFillGearFill } from 'react-icons/bs';
 import { MdPhone } from 'react-icons/md';
-import { FaUser, FaFolderOpen } from 'react-icons/fa';
+import { FaUser } from 'react-icons/fa';
 import { makeStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import CloseIcon from '@material-ui/icons/Close';
@@ -130,6 +130,19 @@ function Navbar() {
         }
     };
 
+    const menuItemVariants = {
+        hidden: { opacity: 0, x: -50 },
+        visible: (index) => ({
+            opacity: 1,
+            x: 0,
+            transition: {
+                delay: index * 0.1,
+                duration: 0.6,
+                ease: "easeOut"
+            }
+        })
+    };
+
     return (
         <div className='navbar'>
             <div className='navbar--container'>
@@ -177,7 +190,12 @@ function Navbar() {
 
                 <div onClick={handleDrawerClose}>
                     <div className='navLink--container'>
-                        <Fade left>
+                        <motion.div
+                            variants={menuItemVariants}
+                            initial="hidden"
+                            animate="visible"
+                            custom={0}
+                        >
                             <NavLink
                                 to='/'
                                 smooth={true}
@@ -193,9 +211,14 @@ function Navbar() {
                                     </span>
                                 </div>
                             </NavLink>
-                        </Fade>
+                        </motion.div>
 
-                        <Fade left>
+                        <motion.div
+                            variants={menuItemVariants}
+                            initial="hidden"
+                            animate="visible"
+                            custom={1}
+                        >
                             <NavLink
                                 to='/#about'
                                 smooth={true}
@@ -209,9 +232,14 @@ function Navbar() {
                                     </span>
                                 </div>
                             </NavLink>
-                        </Fade>
+                        </motion.div>
 
-                        <Fade left>
+                        <motion.div
+                            variants={menuItemVariants}
+                            initial="hidden"
+                            animate="visible"
+                            custom={2}
+                        >
                             <NavLink
                                 to='/#resume'
                                 smooth={true}
@@ -227,9 +255,14 @@ function Navbar() {
                                     </span>
                                 </div>
                             </NavLink>
-                        </Fade>
+                        </motion.div>
 
-                        <Fade left>
+                        <motion.div
+                            variants={menuItemVariants}
+                            initial="hidden"
+                            animate="visible"
+                            custom={3}
+                        >
                             <NavLink
                                 to='/#services'
                                 smooth={true}
@@ -245,27 +278,14 @@ function Navbar() {
                                     </span>
                                 </div>
                             </NavLink>
-                        </Fade>
+                        </motion.div>
 
-                        <Fade left>
-                            <NavLink
-                                to='/#blog'
-                                smooth={true}
-                                spy='true'
-                                duration={2000}
-                            >
-                                <div className={classes.drawerItem}>
-                                    <FaFolderOpen
-                                        className={classes.drawerIcon}
-                                    />
-                                    <span className={classes.drawerLinks}>
-                                        Blog
-                                    </span>
-                                </div>
-                            </NavLink>
-                        </Fade>
-
-                        <Fade left>
+                        <motion.div
+                            variants={menuItemVariants}
+                            initial="hidden"
+                            animate="visible"
+                            custom={5}
+                        >
                             <NavLink
                                 to='/#contacts'
                                 smooth={true}
@@ -279,7 +299,7 @@ function Navbar() {
                                     </span>
                                 </div>
                             </NavLink>
-                        </Fade>
+                        </motion.div>
                     </div>
                 </div>
             </Drawer>

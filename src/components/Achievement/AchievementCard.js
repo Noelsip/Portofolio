@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import Fade from 'react-reveal/Fade';
+import { motion } from 'framer-motion';
 
 import { ThemeContext } from '../../contexts/ThemeContext';
 
@@ -23,7 +23,19 @@ function AchievementCard({id, title, details, date, field, image}) {
 
     const classes = useStyles();
     return (
-        <Fade bottom>
+        <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ 
+                duration: 0.6,
+                ease: "easeOut",
+                delay: id * 0.1 // Stagger animation berdasarkan id
+            }}
+            whileHover={{ 
+                scale: 1.02,
+                transition: { duration: 0.3 }
+            }}
+        >
            <div key={id} className={`achievement-card ${classes.achievementCard}`}>
                <div className="achievecard-content">
                     <div className="achievecard-details1">
@@ -42,7 +54,7 @@ function AchievementCard({id, title, details, date, field, image}) {
                     <img src={image} alt="" />
                 </div>
            </div>
-        </Fade>
+        </motion.div>
         
     )
 }

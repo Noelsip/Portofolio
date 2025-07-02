@@ -1,12 +1,12 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { FaPlay, FaCode } from 'react-icons/fa';
-import Fade from 'react-reveal/Fade';
+import { motion } from 'framer-motion';
 
 import placeholder from '../../../assets/png/placeholder.png';
-import './SingleProject.css';
+import './SingleProject.css'; // Ganti dari './Achievement.css'
 
-function SingleProject({ id, name, desc, tags, code, demo, image, theme }) {
+function SingleProject({ id, name, desc, tags, code, demo, image, theme }) { // Ganti nama fungsi dari AchievementCard
     const useStyles = makeStyles((t) => ({
         iconBtn: {
             display: 'flex',
@@ -35,7 +35,18 @@ function SingleProject({ id, name, desc, tags, code, demo, image, theme }) {
     const classes = useStyles();
 
     return (
-        <Fade bottom>
+        <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ 
+                duration: 0.6,
+                delay: id * 0.1 
+            }}
+            whileHover={{ 
+                scale: 1.02,
+                transition: { duration: 0.3 }
+            }}
+        >
             <div
                 key={id}
                 className='singleProject'
@@ -111,7 +122,7 @@ function SingleProject({ id, name, desc, tags, code, demo, image, theme }) {
                     ))}
                 </div>
             </div>
-        </Fade>
+        </motion.div>
     );
 }
 

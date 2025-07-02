@@ -1,6 +1,8 @@
 export const aboutData = {
-    title: "Who I am",
-    description1: "My name's Jane. I'm a web designer and developer based in Southampton, UK.",
-    description2: "During the day I work as a lead developer at a local agency and in the evening I  work on freelance projects and utilize the time to built my own products. I spent my leisure hours writing articles and poetry. Right now I'm also trying a hand at machine learning and AI. I love to learn and explore new arenas.",
-    image: 2
-}
+  title: "Siapa Saya?",
+  description1:
+    "Nama saya Noel Ericson Rapael Sipayung, mahasiswa Informatika di Institut Teknologi Kalimantan (ITK) yang memiliki fokus kuat dalam pengembangan backend, perancangan API, dan arsitektur sistem. Saya terbiasa membangun RESTful API yang skalabel, mengelola database cloud, serta mengintegrasikan layanan pihak ketiga seperti Google Drive, Payment Gateway, dan Marketplace API.",
+  description2:
+    "Dengan latar belakang yang kuat di Node.js, MySQL, dan Java (termasuk JavaFX), saya telah mengerjakan berbagai proyek nyata seperti platform pengumpulan tugas, sistem autentikasi, simulasi smart home, hingga mesin pencari berbasis struktur data Red-Black Tree. Saya juga memiliki ketertarikan pada pengembangan AI/ML serta sering bereksperimen dengan OpenCV dan integrasi IoT. Tujuan saya adalah membangun sistem backend yang andal, efisien, dan terintegrasi dengan baik.",
+  image: 1
+};
