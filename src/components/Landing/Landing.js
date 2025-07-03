@@ -9,8 +9,7 @@ import { headerData } from '../../data/headerData';
 import { socialsData } from '../../data/socialsData';
 import AnimatedImage from './AnimatedImage';
 import RotatingText from './RotatingText';
-import VariableProximity from './VariableProximity'; // Import VariableProximity
-
+import VariableProximity from './VariableProximity';
 import {
     FaTwitter,
     FaLinkedin,

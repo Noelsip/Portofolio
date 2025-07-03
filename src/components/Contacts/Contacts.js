@@ -1,9 +1,10 @@
 import React, { useContext, useState } from 'react';
 import { Snackbar, IconButton, SnackbarContent } from '@material-ui/core';
 import CloseIcon from '@material-ui/icons/Close';
-import axios from 'axios';
+// import axios from 'axios';
 import isEmail from 'validator/lib/isEmail';
 import { makeStyles } from '@material-ui/core/styles';
+import { useForm } from '@formspree/react';
 import {
     FaTwitter,
     FaLinkedinIn,
@@ -38,6 +39,7 @@ function Contacts() {
     const [errMsg, setErrMsg] = useState('');
 
     const { theme } = useContext(ThemeContext);
+    const [state, handleFormspreeSubmit] = useForm("xldnvoww");
 
     const handleClose = (event, reason) => {
         if (reason === 'clickaway') {
@@ -129,27 +131,19 @@ function Contacts() {
 
     const classes = useStyles();
 
-    const handleContactForm = (e) => {
+    const handleContactForm = async (e) => {
         e.preventDefault();
 
         if (name && email && message) {
             if (isEmail(email)) {
-                const responseData = {
-                    name: name,
-                    email: email,
-                    message: message,
-                };
+                // Create form data for Formspree
+                const formData = new FormData();
+                formData.append('name', name);
+                formData.append('email', email);
+                formData.append('message', message);
 
-                axios.post(contactsData.sheetAPI, responseData).then((res) => {
-                    console.log('success');
-                    setSuccess(true);
-                    setErrMsg('');
-
-                    setName('');
-                    setEmail('');
-                    setMessage('');
-                    setOpen(false);
-                });
+                // Submit to Formspree
+                await handleFormspreeSubmit(formData);
             } else {
                 setErrMsg('Invalid email');
                 setOpen(true);
@@ -159,6 +153,27 @@ function Contacts() {
             setOpen(true);
         }
     };
+
+    // Handle Formspree success/error states
+    React.useEffect(() => {
+        if (state.succeeded) {
+            setSuccess(true);
+            setErrMsg('Message sent successfully! Thank you for contacting me.');
+            setName('');
+            setEmail('');
+            setMessage('');
+            setOpen(true);
+            
+            // Reset success state after 4 seconds
+            setTimeout(() => {
+                setSuccess(false);
+                setOpen(false);
+            }, 4000);
+        } else if (state.errors && state.errors.length > 0) {
+            setErrMsg('Failed to send message. Please try again.');
+            setOpen(true);
+        }
+    }, [state.succeeded, state.errors]);
 
     return (
         <div
@@ -180,7 +195,7 @@ function Contacts() {
                                     value={name}
                                     onChange={(e) => setName(e.target.value)}
                                     type='text'
-                                    name='Name'
+                                    name='name'
                                     className={`form-input ${classes.input}`}
                                 />
                             </div>
@@ -196,7 +211,7 @@ function Contacts() {
                                     value={email}
                                     onChange={(e) => setEmail(e.target.value)}
                                     type='email'
-                                    name='Email'
+                                    name='email'
                                     className={`form-input ${classes.input}`}
                                 />
                             </div>
@@ -212,7 +227,7 @@ function Contacts() {
                                     value={message}
                                     onChange={(e) => setMessage(e.target.value)}
                                     type='text'
-                                    name='Message'
+                                    name='message'
                                     className={`form-message ${classes.message}`}
                                 />
                             </div>
@@ -221,16 +236,20 @@ function Contacts() {
                                 <button
                                     type='submit'
                                     className={classes.submitBtn}
+                                    disabled={state.submitting}
                                 >
-                                    <p>{!success ? 'Send' : 'Sent'}</p>
+                                    <p>
+                                        {state.submitting ? 'Sending...' : 
+                                         success || state.succeeded ? 'Sent' : 'Send'}
+                                    </p>
                                     <div className='submit-icon'>
                                         <AiOutlineSend
                                             className='send-icon'
                                             style={{
-                                                animation: !success
+                                                animation: !success && !state.succeeded
                                                     ? 'initial'
                                                     : 'fly 0.8s linear both',
-                                                position: success
+                                                position: success || state.succeeded
                                                     ? 'absolute'
                                                     : 'initial',
                                             }}
@@ -238,10 +257,10 @@ function Contacts() {
                                         <AiOutlineCheckCircle
                                             className='success-icon'
                                             style={{
-                                                display: !success
+                                                display: !success && !state.succeeded
                                                     ? 'none'
                                                     : 'inline-flex',
-                                                opacity: !success ? '0' : '1',
+                                                opacity: !success && !state.succeeded ? '0' : '1',
                                             }}
                                         />
                                     </div>
@@ -271,7 +290,7 @@ function Contacts() {
                                     </React.Fragment>
                                 }
                                 style={{
-                                    backgroundColor: theme.primary,
+                                    backgroundColor: success ? '#4caf50' : theme.primary,
                                     color: theme.secondary,
                                     fontFamily: 'var(--primaryFont)',
                                 }}

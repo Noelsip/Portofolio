@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { IoIosArrowDropupCircle } from 'react-icons/io';
 import { makeStyles } from '@material-ui/core/styles';
 
@@ -7,7 +7,6 @@ import './BackToTop.css';
 
 function BackToTop() {
     const [visible, setVisible] = useState(false);
-
     const { theme } = useContext(ThemeContext);
 
     const toggleVisible = () => {
@@ -26,7 +25,15 @@ function BackToTop() {
         });
     };
 
-    window.addEventListener('scroll', toggleVisible);
+    // Perbaikan: Gunakan useEffect untuk mengelola event listener
+    useEffect(() => {
+        window.addEventListener('scroll', toggleVisible);
+        
+        // Cleanup function untuk menghapus event listener saat unmount
+        return () => {
+            window.removeEventListener('scroll', toggleVisible);
+        };
+    }, []); // Empty dependency array karena toggleVisible tidak berubah
 
     const useStyles = makeStyles(() => ({
         icon: {

@@ -9,9 +9,9 @@ export const experienceData = {
             type: 'Organisasi',
             certificate: null,
             description: [
-                'Mengorganisir workshop pengembangan skill teknis untuk mahasiswa',
-                'Mengelola program mentoring untuk mahasiswa baru',
-                'Koordinasi kegiatan pelatihan soft skill dan leadership'
+                'Membantu Staff Ahli Pengembangan Sumber Daya Mahasiswa dalam program kerja',
+                'Membantu mengelola program mentoring untuk mahasiswa baru',
+                'Membantu koordinasi kegiatan pelatihan soft skill dan leadership'
             ]
         },
         {
@@ -26,7 +26,9 @@ export const experienceData = {
                 'Memimpin tim HRD dalam rekrutmen anggota baru',
                 'Mengembangkan sistem evaluasi kinerja anggota',
                 'Mengelola program pengembangan SDM organisasi',
-                'Koordinasi dengan departemen lain untuk kegiatan internal'
+                'Koordinasi dengan departemen lain untuk kegiatan internal',
+                'Melakukan Kegiatan Bonding dengan seluruh anggota IEEE ITK SB',
+                'Memimpin dan mengorganisir kegiatan workshop untuk internal anggota'
             ]
         },
         {
@@ -41,7 +43,9 @@ export const experienceData = {
                 'Memimpin seluruh rangkaian acara kompetisi kreatif informatika',
                 'Koordinasi dengan sponsor dan stakeholder eksternal',
                 'Manajemen tim panitia dan pembagian tugas',
-                'Oversight anggaran dan timeline pelaksanaan event'
+                'Oversight anggaran dan timeline pelaksanaan event',
+                'Melakukan evaluasi pasca acara untuk peningkatan di masa depan',
+                'Mengorganisir acara penutupan dan pengumuman pemenang'
             ]
         },
         {
@@ -51,11 +55,26 @@ export const experienceData = {
             startYear: 'Juli 2024',
             endYear: 'September 2024',
             type: 'Kepanitiaan',
-            certificate: null,
+            certificate: 'https://drive.google.com/file/d/1ctLIa-IeC5Sc_rDBfhFRxAMLSbMO9N2D/view?usp=sharing',
             description: [
                 'Mengorganisir pemilihan umum ketua HMIF yang transparan',
                 'Menyusun regulasi dan tata tertib pemilihan',
                 'Mengelola proses kampanye dan debat kandidat'
+            ]
+        },
+        {
+            id: 5,
+            organization: 'Himpunan Mahasiswa Informatika (HMIF) ITK',
+            position: 'Staff Magang Pengambangan Sumber Daya Mahasiswa',
+            startYear: 'Juli 2024',
+            endYear: 'September 2024',
+            type: 'Organisasi',
+            certificate: 'https://images2.imgbox.com/bb/4c/SbosRAPL_o.png',
+            description: [
+                'Membantu pengembangan program pelatihan untuk mahasiswa',
+                'Belajar mengorganisir kegiatan mentoring antar mahasiswa',
+                'Berpartisipasi dalam evaluasi program pengembangan SDM',
+                'Belajar mengelola dan mengembangkan sumber daya mahasiswa'
             ]
         }
     ],
@@ -71,7 +90,8 @@ export const experienceData = {
             description: [
                 'Membantu mahasiswa dalam memahami konsep algoritma dan struktur data',
                 'Menilai dan memberikan feedback pada tugas praktikum',
-                'Membuat modul pembelajaran tambahan untuk mahasiswa'
+                'Membuat latihan untuk membantu mahasiswa berlatih coding',
+                'Mengorganisir sesi tanya jawab untuk mahasiswa yang kesulitan'
             ]
         },
         {
@@ -84,9 +104,10 @@ export const experienceData = {
             certificate: 'https://drive.google.com/file/d/1Y6yx8NAxaQSTMvK8QOdCvyrL3U2CeaYp/view?usp=sharing',
             description: [
                 'Mengajar konsep fundamental algoritma dan pemrograman',
-                'Membimbing mahasiswa dalam praktikum coding menggunakan Python dan C++',
+                'Membimbing mahasiswa dalam praktikum coding menggunakan Python',
                 'Mengelola sistem grading dan evaluasi tugas praktikum',
-                'Memberikan konsultasi individual untuk mahasiswa yang kesulitan'
+                'Memberikan konsultasi individual untuk mahasiswa yang kesulitan',
+                'Membantu dalam pengembangan materi praktikum dan latihan soal'
             ]
         }
     ]
