@@ -61,3 +61,11 @@ img{
       overflow-x: hidden;
     }
 }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  max-width: 100vw;
+  overflow-x: hidden;
+}

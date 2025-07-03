@@ -1,8 +1,13 @@
 .landing {
   height: 100vh;
+  max-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
+  width: 100%;
+  max-width: 100vw;
+  position: relative;
 }
 
 .landing--container {
@@ -11,6 +16,9 @@
   justify-content: center;
   height: 100%;
   position: relative;
+  width: 100%;
+  max-width: 100vw;
+  overflow: hidden;
 }
 
 .landing--img {
@@ -63,6 +71,11 @@
   flex-direction: column;
   align-items: flex-end;
   justify-content: center;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 2rem 0;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .lcr--content {
@@ -70,14 +83,19 @@
   margin-right: 7rem;
   font-family: var(--primaryFont);
   font-style: normal;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  max-width: 100%;
 }
 
 .lcr--content h6 {
   font-weight: 500;
   font-size: 1.25rem;
   margin-top: 18rem;
-  margin-bottom: -0.90rem;
+  margin-bottom: -0.85rem;
   opacity: 0.8;
+  flex-shrink: 0;
 }
 
 .lcr--content h1 {
@@ -85,6 +103,7 @@
   font-size: 3.25rem;
   line-height: 110%;
   margin: 1rem 0;
+  flex-shrink: 0;
 }
 
 .lcr--content p {
@@ -92,6 +111,10 @@
   font-weight: 500;
   font-size: 1.15rem;
   opacity: 0.7;
+  max-height: 150px;
+  overflow-y: auto;
+  padding-right: 20px;
+  flex-grow: 1;
 }
 
 .lcr-buttonContainer {
@@ -191,6 +214,11 @@
   .landing--container {
     flex-direction: column;
     justify-content: space-between;
+    height: 100vh;
+    width: 100vh;
+    max-width: 100vw;
+    max-height: 100vh;
+    overflow: hidden;
   }
   .landing--img {
     --img-size: 200px;
@@ -203,6 +231,7 @@
     flex: initial;
     width: 100%;
     height: 30%;
+    overflow: hidden;
   }
   .landing--social {
     display: none;
@@ -215,27 +244,36 @@
     width: 100%;
     background-color: #eaeaea;
     align-items: center;
-    justify-content: center;
-    padding: 0 2rem;
+    justify-content: flex-start;
+    padding: 1rem 2rem;
+    overflow-y: hidden;
   }
   .lcr--content {
     margin-top: 20%;
     margin-right: initial;
     width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
   }
   .lcr--content h6 {
     font-size: 1rem;
     text-align: center;
+    margin-top: 0;
+    flex-shrink: 0;
   }
   .lcr--content h1 {
     font-size: 2.5rem;
     text-align: center;
+    flex-shrink: 0;
   }
   .lcr--content p {
     font-size: 0.95rem;
     text-align: center;
     margin: 0 auto;
     width: 90%;
+    max-height: 120px;
+    overflow-y: auto;
   }
   .lcr-buttonContainer {
     margin: 0 auto;
@@ -250,12 +288,20 @@
 
 @media (max-width: 500px) {
   .lcr--content {
-    margin-top: 35%;
+    margin-top: 25%;
+  }
+
+  .lcr--content p {
+    max-height: 100px;
   }
 }
 @media (max-width: 370px) {
   .lcr--content {
-    margin-top: 60%;
+    margin-top: 35%;
+  }
+
+  .lcr--content p {
+    max-height: 118px;
   }
 }
 
@@ -275,4 +321,29 @@
   white-space: nowrap;
   min-width: max-content;
   position: relative;
+}
+
+/* Styling scrollbar khusus untuk paragraph */
+.lcr--content p::-webkit-scrollbar {
+  width: 4px;
+}
+
+.lcr--content p::-webkit-scrollbar-track {
+  background: rgba(0,0,0,0.1);
+  border-radius: 2px;
+}
+
+.lcr--content p::-webkit-scrollbar-thumb {
+  background: rgba(0,0,0,0.3);
+  border-radius: 2px;
+}
+
+.lcr--content p::-webkit-scrollbar-thumb:hover {
+  background: rgba(0,0,0,0.5);
+}
+
+/* Untuk Firefox */
+.lcr--content p {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0,0,0,0.3) rgba(0,0,0,0.1);
 }
