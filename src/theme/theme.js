@@ -52,34 +52,43 @@ export const greenThemeDark = {
     contactsimg: contactsGreen
 }
 export const customGreenTheme = {
+        // ===============================
+    //  Forest‑Green (Light Theme)
+    // ===============================
     type: 'light',
-    primary: '#84cc16',          
-    primary400: '#a3e635',       
-    primary600: '#65a30d',       
-    primary80: '#84cc1680',
-    primary50: '#84cc1650',
-    primary30: '#f7fee7',
-    
-    secondary: '#ffffff',
-    secondary70: '#f9fafb',
-    secondary50: '#e5e7eb',
-    
-    tertiary: '#365314',
-    tertiary80: '#4d7c0f',
-    tertiary70: '#65a30d',
-    tertiary50: '#84cc16',
 
-    // Images untuk berbagai komponen
-    aboutimg1: greenThemeboy,
-    aboutimg2: greenThemegirl,
-    eduimg: eduGreen,
-    expimg: expGreen,
+    // --- brand / primary ---
+    primary:    '#18370b',   // forest‑green gelap (≈ warna gambar)
+    primary400: '#516948',   // +25 % lebih terang → hover/active
+    primary600: '#132c08',   // –20 % lebih gelap  → outline/shadows
+
+    // transparansi (8‑digit HEX: RRGGBBAA)
+    primary80:  '#18370bcc', // 80 % opacity
+    primary50:  '#18370b80', // 50 % opacity
+    primary30:  '#18370b4d', // 30 % opacity
+
+    // --- neutral / secondary ---
+    secondary:    '#ffffff', // teks‑terang / latar
+    secondary70:  '#f9fafb', // card / surface
+    secondary50:  '#e5e7eb', // border / divider
+
+    // --- accent / tertiary (masih senada hijau, tapi lebih vivid) ---
+    tertiary:    '#38811a',  // dasar aksen
+    tertiary80:  '#51b825',  // sedikit lebih terang
+    tertiary70:  '#72da46',  // sedang (badge, icon)
+    tertiary50:  '#aae990',  // highlight sangat terang
+
+    // --- aset gambar (tetap) ---
+    aboutimg1:   greenThemeboy,
+    aboutimg2:   greenThemegirl,
+    eduimg:      eduGreen,
+    expimg:      expGreen,
     contactsimg: contactsGreen,
-    
-    footerimg: greenThemeboy,  // Atau gambar footer yang sesuai
-    landingimg: greenThemeboy, // Gambar untuk landing page
-    projectimg: greenThemeboy, // Gambar untuk projects jika ada
-    servicesimg: greenThemeboy, // Gambar untuk services jika ada
+
+    footerimg:   greenThemeboy,
+    landingimg:  greenThemeboy,
+    projectimg:  greenThemeboy,
+    servicesimg: greenThemeboy,
 }
 export const bwThemeLight = {
     type: 'light',

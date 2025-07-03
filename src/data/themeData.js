@@ -8,6 +8,3 @@ import {
 export const themeData = {
     theme: greenThemeDark
 }
-
-
-// Choose theme from above

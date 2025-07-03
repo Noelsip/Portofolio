@@ -9,12 +9,12 @@
     justify-content: center;
     padding: 1.4rem 1.4rem;
     /* overflow: hidden; */
-    transition: transform 300ms ease-in-out;
+    /* transition: transform 300ms ease-in-out; */
 }
 
-.single-service:hover {
+/* .single-service:hover {
     transform: scale(1.15) ;
-}
+} */
 
 .service-content {
     position: relative;
@@ -54,21 +54,6 @@
         transform: translate(0,-10px);
     }
 
-    /* slide-up-fade
-
-    0%, 100%{
-        transform: translate(0,0);
-        opacity: 1;
-    }
-    33%{
-        transform: translate(0,-50px);
-        opacity: 0;
-    }
-    67%{
-        transform: translate(0,50px);
-        opacity: 0;
-    } */
-    
 }
 
 .service-content > h4 {
