@@ -1,5 +1,7 @@
 .education {
     min-height: 100vh;
+    /* padding: 2rem 0;
+    margin-bottom: 0; */
 }
 
 .education-body {
@@ -8,7 +10,7 @@
     align-items: center;
     justify-content: center;
     width: 100%;
-    color: hsla(117, 56%, 49%, 0.702);
+    color: hsla(117, 60%, 40%, 0.702);
 }
 
 .education-description {

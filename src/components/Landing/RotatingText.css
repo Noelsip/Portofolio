@@ -1,9 +1,8 @@
 .text-rotate {
-  display: inline-block;
-  overflow: visible;
+  display: flex;
+  flex-wrap: wrap;
+  white-space: pre-wrap;
   position: relative;
-  min-height: 1.2em;
-  vertical-align: baseline;
 }
 
 .text-rotate-sr-only {
@@ -18,31 +17,20 @@
   border: 0;
 }
 
+.text-rotate-word {
+  display: inline-flex;
+}
+
 .text-rotate-lines {
   display: flex;
   flex-direction: column;
-}
-
-.text-rotate-word {
-  display: inline-block;
-  white-space: nowrap;
+  width: 100%;
 }
 
 .text-rotate-element {
   display: inline-block;
-  transform-origin: bottom center;
 }
 
 .text-rotate-space {
-  display: inline-block;
-  width: 0.25em;
-}
-
-/* Styling khusus untuk rotating text di landing */
-.landing-rotating-text {
-  font-weight: 600;
-  display: inline-block;
-  position: relative;
-  min-width: 150px;
-  text-align: left;
+  white-space: pre;
 }

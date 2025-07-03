@@ -4,6 +4,11 @@
   
   perspective: 1000px;
   transition: transform 0.1s ease-out;
+  /* Pastikan wrapper mempertahankan bentuk bulat */
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  overflow: hidden;
 }
 
 .animated-image {
@@ -15,6 +20,9 @@
   cursor: pointer;
   border-radius: 50%;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  /* Pastikan aspect ratio tetap 1:1 */
+  aspect-ratio: 1 / 1;
+  object-position: center;
 }
 
 .animated-image-wrapper.active .animated-image {
@@ -27,7 +35,22 @@
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
+  .animated-image-wrapper {
+    /* Tetap bulat di mobile */
+    border-radius: 50%;
+  }
+  
   .animated-image {
-    border-radius: 6px;
+    border-radius: 50%;
+  }
+}
+
+@media (max-width: 480px) {
+  .animated-image {
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+  }
+  
+  .animated-image:hover {
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.35);
   }
 }
