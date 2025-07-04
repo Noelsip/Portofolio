@@ -40,6 +40,10 @@
     animation: magic 0.7s ease-in-out both;
 }
 
+.single-service:active svg{
+    animation: magic 0.7s ease-in-out both;
+}
+
 @keyframes magic {
     0%, 100%{
         transform: translate(0,0);
@@ -87,6 +91,10 @@
     .service-content > h4 {
         font-size: 15px;
     }
+
+    .service-content:hover svg{
+        animation: magic 0.7s ease-in-out both;
+    }
 }
 
 @media screen and (max-width: 600px) {
@@ -94,13 +102,59 @@
         width: 150px;
         height: 150px;
         padding: 1.2rem 1.2rem;
+        margin: 0.5rem;
+    }
+    .service-content {
+        height: 120px;
+        padding: 0.5rem;
+    }
+
+    .service-icon {
+        top: 40%;
     }
     .service-icon > svg {
-        font-size: 2.2rem;
+        font-size: 2rem;
     }
     
     .service-content > h4 {
         font-size: 13px;
         top: 50%;
+        height: 50px;
+        line-height: 100%;
+        padding: 0 0.25rem;
+    }
+
+    /* Touch untuk mobile */
+    .single-service:active svg,
+    .single-service:focus svg{
+        animation: magic 0.7s ease-in-out both;
     }
 }
+
+@media screen and (max-width: 400px) {
+    .single-service {
+        width: 120px;
+        height: 12  0px;
+        padding: 0.8;
+    }
+    .service-content {
+        height: 100px;
+        padding: 0.25rem;
+    }
+
+    .service-icon {
+        top: 25%;
+    }
+    .service-icon > svg {
+        font-size: 1.8rem;
+    }
+    
+    .service-content > h4 {
+        font-size: 11px;
+        top: 60%;
+        height: 40px;
+        line-height: 95%;
+        /* padding: 0 0.25rem; */
+    }
+}
+
