@@ -170,6 +170,17 @@ function Navbar() {
                 classes={{ paper: classes.MuiDrawer }}
                 className='drawer'
                 disableScrollLock={true}
+
+                ModalProps={{
+                    keepMounted: false,
+                    hideBackdrop: false,
+                    disableAutoFocus: true,
+                    disableEnforceFocus: true,
+                    disableRestoreFocus: true,
+                }}
+
+                aria-labelledby='drawer-title'
+                role='navigation'
             >
                 <div className='div-closebtn'>
                     <CloseIcon
@@ -183,13 +194,13 @@ function Navbar() {
                         className={classes.closebtnIcon}
                         role='button'
                         tabIndex='0'
-                        aria-label='Close'
+                        aria-label='Close Navigation Menu'
                     />
                 </div>
                 <br />
 
                 <div onClick={handleDrawerClose}>
-                    <div className='navLink--container'>
+                    <div className='navLink--container' id='drawer-title'>
                         <motion.div
                             variants={menuItemVariants}
                             initial="hidden"

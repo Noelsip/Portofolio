@@ -1,0 +1,96 @@
+.fullScreenButton {
+    position: fixed;
+    right: 10px;
+    bottom: 120px; /* Posisi di atas BackToTop button */
+    height: 30px;
+    font-size: 2.5rem;
+    z-index: 999;
+}
+
+.fullScreenButton button {
+    outline: none;
+    border: none;
+    cursor: pointer;
+    background: none;
+    padding: 20px;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.fullScreenButton button:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+    transform: scale(1.05);
+}
+
+.fullScreenButton button:active {
+    transform: scale(0.95);
+}
+
+/* Mobile fullscreen styles */
+.mobile-fullscreen {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    overflow: hidden !important;
+    z-index: 9999 !important;
+}
+
+.mobile-fullscreen * {
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Hide scrollbars in mobile fullscreen */
+.mobile-fullscreen::-webkit-scrollbar {
+    display: none;
+}
+
+.mobile-fullscreen {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+/* Responsive styles */
+@media screen and (max-width: 800px) {
+    .fullScreenButton { 
+        right: -10px;
+        bottom: 110px;
+        font-size: 2.25rem;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .fullScreenButton {
+        right: -15px;
+        bottom: 100px;
+        font-size: 2rem;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .fullScreenButton {
+        right: -20px;
+        bottom: 95px;
+        font-size: 1.8rem;
+    }
+}
+
+/* Tetap tampilkan pada mobile kecil karena sekarang ada fallback */
+@media screen and (max-width: 320px) {
+    .fullScreenButton {
+        right: -25px;
+        bottom: 90px;
+        font-size: 1.6rem;
+    }
+}
+
+/* iOS Safari specific fixes */
+@supports (-webkit-touch-callout: none) {
+    .mobile-fullscreen {
+        height: -webkit-fill-available !important;
+    }
+}
