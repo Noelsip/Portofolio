@@ -1,18 +1,11 @@
 import one from '../assets/svg/projects/one.svg'
 import two from '../assets/svg/projects/two.svg'
-// import three from '../assets/svg/projects/three.svg'
-// import four from '../assets/svg/projects/four.svg'
-// import five from '../assets/svg/projects/five.svg'
-// import six from '../assets/svg/projects/six.svg'
-// import seven from '../assets/svg/projects/seven.svg'
-// import eight from '../assets/svg/projects/eight.svg'
-
 
 export const projectsData = [
     {
         id: 1,
         projectName: 'Telegram Bot Finance',
-        projectDesc: 'Telegram Bot Finance adalah bot Telegram yang membantu pengguna untuk mengelola keuangan mereka, termasuk mencatat pengeluaran dan pemasukan.',
+        projectDesc: 'Bot Telegram untuk pencatatan keuangan dengan fitur tracking pengeluaran dan pemasukan otomatis.',
         tags: ['Python', 'NLP', 'MySQL'],
         code: 'https://github.com/Noelsip/Telegram-Bot-Finance.git',
         demo: 'https://t.me/slipku_bot',
@@ -21,7 +14,7 @@ export const projectsData = [
     {
         id: 2,
         projectName: 'Aplikasi Apotek',
-        projectDesc: 'Aplikasi Apotek adalah aplikasi yang membantu pegawai untuk mencari obat-obatan dan melakukan pengecekan dokter dan stok obat.',
+        projectDesc: 'Sistem manajemen apotek untuk pencarian obat, pengecekan stok, dan informasi dokter.',
         tags: ['Maven', 'Java', 'JavaFX'],
         code: 'https://github.com/Noelsip/Apotek-App.git',
         demo: 'https://github.com/Noelsip/Apotek-App.git',
@@ -30,7 +23,7 @@ export const projectsData = [
     {
         id: 3,
         projectName: 'Balikpapan Profile',
-        projectDesc: 'Balikpapan Profile adalah aplikasi yang membantu pengguna untuk menemukan informasi tentang Balikpapan, termasuk tempat wisata, kuliner, dan budaya.',
+        projectDesc: 'Website informatif tentang wisata, kuliner, dan budaya Kota Balikpapan.',
         tags: ['HTML', 'CSS', 'JavaScript'],
         code: 'https://github.com/Noelsip/Balikpapan-Profile.git',
         demo: 'https://balikpapan-profile.vercel.app',
@@ -39,7 +32,7 @@ export const projectsData = [
     {
         id: 4,
         projectName: 'Aplikasi Dana dan Usaha',
-        projectDesc: 'Aplikasi Dana dan Usaha adalah aplikasi yang membantu penjualan dan pembelian dana dan usaha di Institut Teknologi Kalimantan',
+        projectDesc: 'Aplikasi point of sale untuk penjualan dan pembelian produk usaha kampus.',
         tags: ['Tkinter', 'Python', 'Figma'],
         code: 'https://github.com/Noelsip/App-Danus.git',
         demo: 'https://github.com/Noelsip/App-Danus.git',
@@ -47,8 +40,8 @@ export const projectsData = [
     },
     {
         id: 5,
-        projectName: 'Map Djikstra',
-        projectDesc: 'Map Djikstra adalah aplikasi yang membantu pengguna untuk menemukan rute terpendek di peta menggunakan Algoritma Djikstra.',
+        projectName: 'Map Dijkstra',
+        projectDesc: 'Visualisasi algoritma Dijkstra untuk pencarian rute terpendek pada peta.',
         tags: ['Python'],
         code: 'https://github.com/Noelsip/DjikstraMap.git',
         demo: 'https://github.com/Noelsip/DjikstraMap.git',
@@ -56,31 +49,19 @@ export const projectsData = [
     },
     {
         id: 6,
-        projectName: 'Web Pengumpulan Tugas Integrasi Google Drive',
-        projectDesc: 'Web Pengumpulan Tugas Integrasi Google Drive adalah aplikasi web yang memungkinkan pengguna untuk mengumpulkan tugas mereka melalui Google Drive.',
+        projectName: 'Web Pengumpulan Tugas',
+        projectDesc: 'Platform pengumpulan tugas terintegrasi dengan Google Drive untuk penyimpanan file.',
         tags: ['React', 'JavaScript', 'Firebase'],
         code: 'https://github.com/Noelsip/Upload-File-Web.git',
         demo: 'https://upload-file-azure.vercel.app',
         image: 'https://thumbs2.imgbox.com/02/43/RarqZQaA_t.png'
-    }, 
-    
-    // {
-    //     id: 4,
-    //     projectName: 'Web Pengumpulan Tugas Integrasi Google Drive',
-    //     projectDesc: 'Web Pengumpulan Tugas Integrasi Google Drive adalah aplikasi web yang memungkinkan pengguna untuk mengumpulkan tugas mereka melalui Google Drive.',
-    //     tags: ['React', 'JavaScript', 'Firebase'],
-    //     code: 'https://github.com/Noelsip/Upload-File-Web.git',
-    //     demo: 'https://upload-file-azure.vercel.app',
-    //     image: 'https://thumbs2.imgbox.com/02/43/RarqZQaA_t.png'
-    // },
-    // {
-    //     id: 4,
-    //     projectName: 'Web Pengumpulan Tugas Integrasi Google Drive',
-    //     projectDesc: 'Web Pengumpulan Tugas Integrasi Google Drive adalah aplikasi web yang memungkinkan pengguna untuk mengumpulkan tugas mereka melalui Google Drive.',
-    //     tags: ['React', 'JavaScript', 'Firebase'],
-    //     code: 'https://github.com/Noelsip/Upload-File-Web.git',
-    //     demo: 'https://upload-file-azure.vercel.app',
-    //     image: 'https://thumbs2.imgbox.com/02/43/RarqZQaA_t.png'
-    // }
-
+    },
+    {
+        id: 7,
+        projectName: 'Twenti Studio',
+        projectDesc: 'Website studio pengembangan software untuk layanan pembuatan aplikasi.',
+        tags: ['React', 'JavaScript', 'Firebase'],
+        demo: 'https://twenti.studio',
+        image: '../assets/png/twenti.png'
+    }
 ]

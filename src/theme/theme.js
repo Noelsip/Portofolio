@@ -1,12 +1,74 @@
 /* eslint-disable */
-import { 
-    blueThemegirl, blueThemeboy, bwThemeboy, bwThemegirl, greenThemeboy, greenThemegirl, orangeThemeboy, 
+import {
+    blueThemeboy,
+    blueThemegirl,
+    bwThemeboy, bwThemegirl,
+    contactsBlack, contactsBlue, contactsGreen, contactsOrange, contactsPink, contactsPurple,
+    contactsRed, contactsYellow,
+    eduBlack, eduBlue, eduGreen, eduOrange, eduPink, eduPurple, eduRed, eduYellow, expBlack, expBlue, expGreen, expOrange,
+    expPink, expPurple, expRed, expYellow,
+    greenThemeboy, greenThemegirl, orangeThemeboy,
     orangeThemegirl, pinkThemeboy, pinkThemegirl, purpleThemeboy, purpleThemegirl, redThemeboy, redThemegirl, yellowThemeboy,
-    yellowThemegirl,eduBlack,eduBlue,eduGreen,eduOrange,eduPink,eduPurple,eduRed,eduYellow,expBlack,expBlue,expGreen,expOrange,
-    expPink,expPurple,expRed,expYellow,contactsBlack,contactsBlue,contactsGreen,contactsOrange,contactsPink,contactsPurple,
-    contactsRed,contactsYellow
+    yellowThemegirl
 } from './images'
 
+
+// ===============================
+// Custom Orange-Blue Theme (Dark)
+// Professional Portfolio Theme
+// Warna sesuai permintaan user
+// ===============================
+export const orangeBlueThemeDark = {
+    type: 'dark',
+    // Orange #f08a3c sebagai primary
+    primary: '#f08a3c',
+    primary400: '#f59d5c',
+    primary600: '#e07a2c',
+    primary80: '#f08a3ccc',
+    primary50: '#f08a3c80',
+    primary30: '#f08a3c4d',
+    // Biru gelap #1d5280 sebagai background (sedikit lebih terang dari #194466)
+    secondary: '#1d5280',
+    secondary70: '#1d5280b3',
+    secondary50: '#1d528080',
+    // Light text
+    tertiary: '#F1F5F9',
+    tertiary80: '#F1F5F9cc',
+    tertiary70: '#F1F5F9b3',
+    tertiary50: '#F1F5F980',
+    // Assets
+    aboutimg1: orangeThemeboy,
+    aboutimg2: orangeThemegirl,
+    eduimg: eduOrange,
+    expimg: expOrange,
+    contactsimg: contactsOrange
+}
+
+export const orangeBlueThemeLight = {
+    type: 'light',
+    // Orange #f08a3c sebagai primary
+    primary: '#f08a3c',
+    primary400: '#f59d5c',
+    primary600: '#e07a2c',
+    primary80: '#f08a3ccc',
+    primary50: '#f08a3c80',
+    primary30: '#f08a3c4d',
+    // Light background
+    secondary: '#F8FAFC',
+    secondary70: '#F8FAFCb3',
+    secondary50: '#F8FAFC80',
+    // Biru gelap sebagai text
+    tertiary: '#194466',
+    tertiary80: '#194466cc',
+    tertiary70: '#194466b3',
+    tertiary50: '#19446680',
+    // Assets
+    aboutimg1: orangeThemeboy,
+    aboutimg2: orangeThemegirl,
+    eduimg: eduOrange,
+    expimg: expOrange,
+    contactsimg: contactsOrange
+}
 
 export const greenThemeLight = {
     type: 'light',
@@ -51,45 +113,33 @@ export const greenThemeDark = {
     expimg: expGreen,
     contactsimg: contactsGreen
 }
+
 export const customGreenTheme = {
-        // ===============================
-    //  Forest‑Green (Light Theme)
-    // ===============================
     type: 'light',
-
-    // --- brand / primary ---
-    primary:    '#18370b',   // forest‑green gelap (≈ warna gambar)
-    primary400: '#516948',   // +25 % lebih terang → hover/active
-    primary600: '#132c08',   // –20 % lebih gelap  → outline/shadows
-
-    // transparansi (8‑digit HEX: RRGGBBAA)
-    primary80:  '#18370bcc', // 80 % opacity
-    primary50:  '#18370b80', // 50 % opacity
-    primary30:  '#18370b4d', // 30 % opacity
-
-    // --- neutral / secondary ---
-    secondary:    '#ffffff', // teks‑terang / latar
-    secondary70:  '#f9fafb', // card / surface
-    secondary50:  '#e5e7eb', // border / divider
-
-    // --- accent / tertiary (masih senada hijau, tapi lebih vivid) ---
-    tertiary:    '#38811a',  // dasar aksen
-    tertiary80:  '#51b825',  // sedikit lebih terang
-    tertiary70:  '#72da46',  // sedang (badge, icon)
-    tertiary50:  '#aae990',  // highlight sangat terang
-
-    // --- aset gambar (tetap) ---
-    aboutimg1:   greenThemeboy,
-    aboutimg2:   greenThemegirl,
-    eduimg:      eduGreen,
-    expimg:      expGreen,
+    primary: '#18370b',
+    primary400: '#516948',
+    primary600: '#132c08',
+    primary80: '#18370bcc',
+    primary50: '#18370b80',
+    primary30: '#18370b4d',
+    secondary: '#ffffff',
+    secondary70: '#f9fafb',
+    secondary50: '#e5e7eb',
+    tertiary: '#38811a',
+    tertiary80: '#51b825',
+    tertiary70: '#72da46',
+    tertiary50: '#aae990',
+    aboutimg1: greenThemeboy,
+    aboutimg2: greenThemegirl,
+    eduimg: eduGreen,
+    expimg: expGreen,
     contactsimg: contactsGreen,
-
-    footerimg:   greenThemeboy,
-    landingimg:  greenThemeboy,
-    projectimg:  greenThemeboy,
+    footerimg: greenThemeboy,
+    landingimg: greenThemeboy,
+    projectimg: greenThemeboy,
     servicesimg: greenThemeboy,
 }
+
 export const bwThemeLight = {
     type: 'light',
     primary: '#000000',
@@ -111,6 +161,7 @@ export const bwThemeLight = {
     expimg: expBlack,
     contactsimg: contactsBlack
 }
+
 export const bwThemeDark = {
     type: 'dark',
     primary: '#B6B6B6',
@@ -154,6 +205,7 @@ export const blueThemeLight = {
     expimg: expBlue,
     contactsimg: contactsBlue
 }
+
 export const blueThemeDark = {
     type: 'dark',
     primary: '#545fc4',
@@ -197,6 +249,7 @@ export const redThemeLight = {
     expimg: expRed,
     contactsimg: contactsRed
 }
+
 export const redThemeDark = {
     type: 'dark',
     primary: '#f03939',
@@ -240,6 +293,7 @@ export const orangeThemeLight = {
     expimg: expOrange,
     contactsimg: contactsOrange
 }
+
 export const orangeThemeDark = {
     type: 'dark',
     primary: '#f56539',
@@ -283,6 +337,7 @@ export const purpleThemeLight = {
     expimg: expPurple,
     contactsimg: contactsPurple
 }
+
 export const purpleThemeDark = {
     type: 'dark',
     primary: '#823ae0',
@@ -326,6 +381,7 @@ export const pinkThemeLight = {
     expimg: expPink,
     contactsimg: contactsPink
 }
+
 export const pinkThemeDark = {
     type: 'dark',
     primary: '#ff4f93',
@@ -391,4 +447,3 @@ export const yellowThemeDark = {
     expimg: expYellow,
     contactsimg: contactsYellow
 }
-

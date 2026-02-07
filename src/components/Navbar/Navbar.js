@@ -1,18 +1,16 @@
-import React, { useContext, useState } from 'react';
-import { NavHashLink as NavLink } from 'react-router-hash-link';
-import { motion } from 'framer-motion';
-import { IoMenuSharp, IoHomeSharp } from 'react-icons/io5';
-import { HiDocumentText } from 'react-icons/hi';
-import { BsFillGearFill } from 'react-icons/bs';
-import { MdPhone } from 'react-icons/md';
-import { FaUser } from 'react-icons/fa';
-import { makeStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
+import { makeStyles } from '@material-ui/core/styles';
 import CloseIcon from '@material-ui/icons/Close';
+import { useContext, useState } from 'react';
+import { FaUser } from 'react-icons/fa';
+import { HiDocumentText } from 'react-icons/hi';
+import { IoHomeSharp, IoMenuSharp } from 'react-icons/io5';
+import { MdPhone, MdWork } from 'react-icons/md';
+import { NavHashLink as NavLink } from 'react-router-hash-link';
 
-import './Navbar.css';
-import { headerData } from '../../data/headerData';
 import { ThemeContext } from '../../contexts/ThemeContext';
+import { headerData } from '../../data/headerData';
+import './Navbar.css';
 
 function Navbar() {
     const { theme, setHandleDrawer } = useContext(ThemeContext);
@@ -130,19 +128,6 @@ function Navbar() {
         }
     };
 
-    const menuItemVariants = {
-        hidden: { opacity: 0, x: -50 },
-        visible: (index) => ({
-            opacity: 1,
-            x: 0,
-            transition: {
-                delay: index * 0.1,
-                duration: 0.6,
-                ease: "easeOut"
-            }
-        })
-    };
-
     return (
         <div className='navbar'>
             <div className='navbar--container'>
@@ -201,116 +186,79 @@ function Navbar() {
 
                 <div onClick={handleDrawerClose}>
                     <div className='navLink--container' id='drawer-title'>
-                        <motion.div
-                            variants={menuItemVariants}
-                            initial="hidden"
-                            animate="visible"
-                            custom={0}
+                        <NavLink
+                            to='/'
+                            smooth={true}
+                            spy='true'
+                            duration={2000}
                         >
-                            <NavLink
-                                to='/'
-                                smooth={true}
-                                spy='true'
-                                duration={2000}
-                            >
-                                <div className={classes.drawerItem}>
-                                    <IoHomeSharp
-                                        className={classes.drawerIcon}
-                                    />
-                                    <span className={classes.drawerLinks}>
-                                        Home
-                                    </span>
-                                </div>
-                            </NavLink>
-                        </motion.div>
+                            <div className={classes.drawerItem}>
+                                <IoHomeSharp
+                                    className={classes.drawerIcon}
+                                />
+                                <span className={classes.drawerLinks}>
+                                    Home
+                                </span>
+                            </div>
+                        </NavLink>
 
-                        <motion.div
-                            variants={menuItemVariants}
-                            initial="hidden"
-                            animate="visible"
-                            custom={1}
+                        <NavLink
+                            to='/#about'
+                            smooth={true}
+                            spy='true'
+                            duration={2000}
                         >
-                            <NavLink
-                                to='/#about'
-                                smooth={true}
-                                spy='true'
-                                duration={2000}
-                            >
-                                <div className={classes.drawerItem}>
-                                    <FaUser className={classes.drawerIcon} />
-                                    <span className={classes.drawerLinks}>
-                                        About
-                                    </span>
-                                </div>
-                            </NavLink>
-                        </motion.div>
+                            <div className={classes.drawerItem}>
+                                <FaUser className={classes.drawerIcon} />
+                                <span className={classes.drawerLinks}>
+                                    About
+                                </span>
+                            </div>
+                        </NavLink>
 
-                        <motion.div
-                            variants={menuItemVariants}
-                            initial="hidden"
-                            animate="visible"
-                            custom={2}
+                        <NavLink
+                            to='/#experience'
+                            smooth={true}
+                            spy='true'
+                            duration={2000}
                         >
-                            <NavLink
-                                to='/#resume'
-                                smooth={true}
-                                spy='true'
-                                duration={2000}
-                            >
-                                <div className={classes.drawerItem}>
-                                    <HiDocumentText
-                                        className={classes.drawerIcon}
-                                    />
-                                    <span className={classes.drawerLinks}>
-                                        Resume
-                                    </span>
-                                </div>
-                            </NavLink>
-                        </motion.div>
+                            <div className={classes.drawerItem}>
+                                <MdWork className={classes.drawerIcon} />
+                                <span className={classes.drawerLinks}>
+                                    Experience
+                                </span>
+                            </div>
+                        </NavLink>
 
-                        <motion.div
-                            variants={menuItemVariants}
-                            initial="hidden"
-                            animate="visible"
-                            custom={3}
+                        <NavLink
+                            to='/#projects'
+                            smooth={true}
+                            spy='true'
+                            duration={2000}
                         >
-                            <NavLink
-                                to='/#services'
-                                smooth={true}
-                                spy='true'
-                                duration={2000}
-                            >
-                                <div className={classes.drawerItem}>
-                                    <BsFillGearFill
-                                        className={classes.drawerIcon}
-                                    />
-                                    <span className={classes.drawerLinks}>
-                                        Services
-                                    </span>
-                                </div>
-                            </NavLink>
-                        </motion.div>
+                            <div className={classes.drawerItem}>
+                                <HiDocumentText
+                                    className={classes.drawerIcon}
+                                />
+                                <span className={classes.drawerLinks}>
+                                    Projects
+                                </span>
+                            </div>
+                        </NavLink>
 
-                        <motion.div
-                            variants={menuItemVariants}
-                            initial="hidden"
-                            animate="visible"
-                            custom={5}
+                        <NavLink
+                            to='/#contacts'
+                            smooth={true}
+                            spy='true'
+                            duration={2000}
                         >
-                            <NavLink
-                                to='/#contacts'
-                                smooth={true}
-                                spy='true'
-                                duration={2000}
-                            >
-                                <div className={classes.drawerItem}>
-                                    <MdPhone className={classes.drawerIcon} />
-                                    <span className={classes.drawerLinks}>
-                                        Contact
-                                    </span>
-                                </div>
-                            </NavLink>
-                        </motion.div>
+                            <div className={classes.drawerItem}>
+                                <MdPhone className={classes.drawerIcon} />
+                                <span className={classes.drawerLinks}>
+                                    Contact
+                                </span>
+                            </div>
+                        </NavLink>
                     </div>
                 </div>
             </Drawer>
