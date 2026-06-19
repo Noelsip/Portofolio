@@ -7,7 +7,7 @@ export const projectsData = [
         projectDesc: 'Mengelola kebutuhan produk dan prioritas fitur untuk website layanan pembuatan aplikasi, dengan fokus pada pengalaman pengguna dan kejelasan alur layanan.',
         tags: ['Product Planning', 'Web Product', 'Stakeholder Needs'],
         demo: 'https://twenti.studio',
-        image: '../assets/png/twenti.png'
+        image: 'src/assets/png/twenti.png'
     },
     {
         id: 2,
