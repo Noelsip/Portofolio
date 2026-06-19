@@ -15,11 +15,11 @@ function Services() {
             {servicesData.length > 0 && (
                 <div className="services" id="services" style={{backgroundColor:theme.secondary}}>
                     <div className="services-header">
-                        <h1 style={{color: theme.primary}}>Layanan</h1>
+                        <h1 style={{color: theme.primary}}>Fokus Belajar</h1>
                     </div>
                     <div className="services-body">
                         <p style={{color:theme.tertiary80}}>
-                            Berikut adalah layanan yang saya tawarkan. Saya memiliki keahlian dalam berbagai bidang, termasuk pengembangan web, dan pengembangan aplikasi. Jika Anda tertarik untuk bekerja sama atau memiliki pertanyaan lebih lanjut, jangan ragu untuk menghubungi saya.
+                            Berikut adalah area yang sedang saya pelajari dan kembangkan, terutama yang berkaitan dengan product management, analisis kebutuhan, dokumentasi, quality assurance dasar, dan koordinasi dalam pengembangan produk digital.
                         </p>
                         <div className="services-bodycontainer">
                             {servicesData.map(services => (

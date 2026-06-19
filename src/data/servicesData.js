@@ -12,23 +12,23 @@ import { TbDeviceDesktopAnalytics, TbSmartHome, TbTopologyFullHierarchy } from "
 export const servicesData = [
     {
         id: 1,
-        title: 'Web Development',
-        icon: <BsCodeSlash />
+        title: 'Requirement Analysis Learning',
+        icon: <HiOutlineDocumentSearch />
     },
     {
         id: 2,
-        title: 'Mobile App Development',
-        icon: <FaMobileAlt />
+        title: 'QA Fundamentals & Test Cases',
+        icon: <BsClipboardData />
     },
     {
         id: 3,
-        title: 'Backend/API Development',
-        icon: <AiOutlineApi />
+        title: 'User Flow Mapping',
+        icon: <TbTopologyFullHierarchy />
     },
     {
         id: 4,
-        title: 'Database & Cloud Setup',
-        icon: <TbTopologyFullHierarchy />
+        title: 'Product Documentation Practice',
+        icon: <FaRegNewspaper />
     },
     // {
     //     id: 5,
@@ -42,13 +42,13 @@ export const servicesData = [
     // },
     {
         id: 5,
-        title: 'IoT',
-        icon: <TbSmartHome />
+        title: 'Team & Stakeholder Coordination',
+        icon: <BiUserVoice />
     },
     {
         id: 6,
-        title: 'Information System Analysis',
-        icon: <HiOutlineDocumentSearch />
+        title: 'Information System Analysis Basics',
+        icon: <TbDeviceDesktopAnalytics />
     },
     // {
     //     id: 9,
@@ -57,8 +57,8 @@ export const servicesData = [
     // },
     {
         id: 7,
-        title: 'Proposal & Documentation Writing',
-        icon: <FaRegNewspaper />
+        title: 'Product Ideation Practice',
+        icon: <RiLightbulbLine />
     },
     // {
     //     id: 11,
@@ -77,12 +77,12 @@ export const servicesData = [
     // },
     {
         id: 8,
-        title: 'Integration: Payment, Marketplace, Drive',
-        icon: <FaInternetExplorer />
+        title: 'Integration Testing Learning',
+        icon: <FaTools />
     },
     {
         id: 9,
-        title: 'Educational Tech & Apps',
+        title: 'Educational Product Exploration',
         icon: <FaProjectDiagram />
     },
 ]

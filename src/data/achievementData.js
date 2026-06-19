@@ -1,10 +1,10 @@
 export const achievementData = {
-    bio: "Mahasiswa Informatika ITK yang aktif mengembangkan keterampilan teknis melalui sertifikasi profesional dan pembelajaran mandiri. Berkomitmen pada pengembangan berkelanjutan di bidang teknologi informasi.",
+    bio: "Mahasiswa Informatika ITK yang sedang memperdalam product management, quality assurance, analisis sistem, dan literasi teknis melalui sertifikasi, proyek, serta pembelajaran mandiri.",
     achievements: [
         {
             id: 1,
             title: 'Memulai Pemrograman Dengan Java',
-            details: 'Sertifikasi dasar pemrograman Java untuk membangun fondasi yang kuat dalam pengembangan aplikasi.',
+            details: 'Sertifikasi dasar Java yang membantu saya memahami sisi teknis produk dan berkomunikasi lebih baik dengan tim engineering.',
             date: '05 Juni 2024',
             field: 'Dicoding',
             image: 'https://thumbs2.imgbox.com/43/e8/UA6H6A4X_t.png'
@@ -12,7 +12,7 @@ export const achievementData = {
         {
             id: 2,
             title: 'Belajar Dasar Pemrograman Web',
-            details: 'Sertifikasi pengembangan web dengan HTML, CSS, dan JavaScript mengacu pada standar industri.',
+            details: 'Sertifikasi dasar web yang membantu saya memahami tampilan, alur penggunaan, dan validasi sederhana pada produk digital.',
             date: '05 Juni 2024',
             field: 'Dicoding',
             image: 'https://thumbs2.imgbox.com/2e/3d/4dI8k6Ko_t.png'

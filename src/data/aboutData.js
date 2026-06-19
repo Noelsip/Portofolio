@@ -1,8 +1,8 @@
 export const aboutData = {
   title: "Tentang Saya",
   description1:
-    "Saya Noel Ericson Rapael Sipayung, mahasiswa Informatika di Institut Teknologi Kalimantan. Fokus saya adalah mengembangkan produk digital yang memberikan solusi nyata, mulai dari aplikasi web hingga sistem terintegrasi.",
+    "Saya Noel Sipayung, mahasiswa Informatika di Institut Teknologi Kalimantan. Saat ini saya sedang mengarahkan fokus belajar saya ke product management, quality assurance, analisis kebutuhan, dan dokumentasi produk digital.",
   description2:
-    "Selain keterampilan teknis dalam backend development dan integrasi API, saya juga aktif memimpin organisasi sebagai Ketua HMIF ITK dan Kepala HRD di IEEE ITK SB.",
+    "Melalui proyek kuliah, organisasi, dan pembelajaran mandiri, saya mulai membiasakan diri menyusun requirement, memahami user flow, membuat prioritas fitur sederhana, serta mempelajari pengujian fungsional. Pengalaman sebagai ketua di beberapa organisasi dan kepanitiaan juga membantu saya mengembangkan komunikasi, koordinasi tim, dan stakeholder management.",
   image: null
 };
