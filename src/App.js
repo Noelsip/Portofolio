@@ -2,20 +2,24 @@ import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-d
 
 import { Main } from './pages'
 import { BackToTop, Cursor } from './components'
-import ScrollToTop from './utils/ScrollToTop'
+import RouteScroll, { SECTION_BY_PATH } from './utils/RouteScroll'
 import FullScreen from './components/FullScreen/FullScreen';
 
 import './App.css'
+
+const SECTION_PATHS = Object.keys(SECTION_BY_PATH)
 
 function App() {
   return (
     <div className="app">
       <Cursor />
       <Router>
-        <ScrollToTop />
+        <RouteScroll />
         <FullScreen />
         <Switch>
-          <Route path="/" exact component={Main} />
+          {/* Semua path merender halaman yang sama; RouteScroll yang
+              memindahkan posisi ke section yang sesuai. */}
+          <Route path={SECTION_PATHS} exact component={Main} />
           <Redirect to="/" />
         </Switch>
       </Router>

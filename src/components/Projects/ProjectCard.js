@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 import { motion, useMotionValue, useSpring, useTransform } from 'motion/react';
-import { FiArrowUpRight, FiGithub } from 'react-icons/fi';
+import { FiArrowUpRight } from 'react-icons/fi';
 
 const SPRING = { stiffness: 260, damping: 22, mass: 0.6 };
 
@@ -15,7 +15,6 @@ function ProjectCard({ project }) {
         image,
         imageFit,
         demo,
-        code,
         status,
     } = project;
 
@@ -89,30 +88,17 @@ function ProjectCard({ project }) {
                     ))}
                 </ul>
 
-                {(demo || code) && (
+                {demo && (
                     <div className='project__links'>
-                        {demo && (
-                            <a
-                                href={demo}
-                                target='_blank'
-                                rel='noreferrer'
-                                className='project__link link-wipe'
-                            >
-                                Lihat
-                                <FiArrowUpRight aria-hidden='true' />
-                            </a>
-                        )}
-                        {code && (
-                            <a
-                                href={code}
-                                target='_blank'
-                                rel='noreferrer'
-                                className='project__link link-wipe'
-                            >
-                                <FiGithub aria-hidden='true' />
-                                Kode
-                            </a>
-                        )}
+                        <a
+                            href={demo}
+                            target='_blank'
+                            rel='noreferrer'
+                            className='project__link link-wipe'
+                        >
+                            Lihat
+                            <FiArrowUpRight aria-hidden='true' />
+                        </a>
                     </div>
                 )}
             </div>

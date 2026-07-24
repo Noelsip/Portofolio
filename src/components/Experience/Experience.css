@@ -65,7 +65,7 @@
     display: grid;
     grid-template-columns: 150px minmax(0, 1fr);
     gap: 2.5rem;
-    padding: 2.5rem 0;
+    padding: 1.9rem 0;
     border-bottom: 1px solid var(--rule);
 }
 
@@ -163,7 +163,7 @@
 
 .exp__orgs {
     list-style: none;
-    margin: 2.5rem 0 0;
+    margin: 1.75rem 0 0;
     padding: 0;
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -209,7 +209,7 @@
 /* ---- Education strip ---------------------------------------------------- */
 
 .exp__edu {
-    margin-top: 3rem;
+    margin-top: 2.25rem;
     padding-top: 1.4rem;
     border-top: 2px solid var(--ink);
 }

@@ -19,34 +19,11 @@
     height: 72px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-end;
     gap: 2rem;
 }
 
 /* ---- Brand ------------------------------------------------------------ */
-
-.nav__brand {
-    display: flex;
-    align-items: baseline;
-    gap: 0.6rem;
-    white-space: nowrap;
-}
-
-/* Bestermind is kept for the name, the way the original navbar used it. */
-.nav__brandName {
-    font-family: var(--brand);
-    font-size: 1.7rem;
-    line-height: 1;
-    letter-spacing: 0;
-}
-
-.nav__brandRole {
-    font-family: var(--sans);
-    font-size: 0.68rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--ink-35);
-}
 
 /* ---- Desktop + tablet links ------------------------------------------ */
 
@@ -172,12 +149,6 @@
     transform: none;
 }
 
-.nav__panelIndex {
-    font-family: var(--sans);
-    font-size: 0.7rem;
-    color: var(--accent);
-}
-
 .nav__panelCv {
     display: inline-block;
     margin-top: 1.75rem;
@@ -201,9 +172,6 @@
     .nav__scrim,
     .nav__panel {
         display: block;
-    }
-    .nav__brandRole {
-        display: none;
     }
 }
 

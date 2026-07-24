@@ -6,8 +6,14 @@ import Wipe from '../Motion/Wipe';
 import ProjectCard from './ProjectCard';
 import './Projects.css';
 
+// Yang punya gambar tampil dulu. Array.sort stabil, jadi urutan asli di
+// dalam masing-masing kelompok tetap terjaga.
+const ordered = [...projectsData].sort(
+    (a, b) => Number(Boolean(b.image)) - Number(Boolean(a.image))
+);
+
 function Projects() {
-    if (!projectsData.length) return null;
+    if (!ordered.length) return null;
 
     return (
         <section className='section projects' id='projects'>
@@ -19,7 +25,7 @@ function Projects() {
                         className='section-head__title'
                     />
                     <Wipe as='span' className='section-head__note' delay={0.15}>
-                        {projectsData.length} proyek
+                        {ordered.length} proyek
                     </Wipe>
                 </div>
 
@@ -33,7 +39,7 @@ function Projects() {
                 {/* Cells rise instead of wiping: a clip-path here would crop
                     the corners of the card as it tilts in 3D. */}
                 <div className='projects__grid'>
-                    {projectsData.map((project, i) => (
+                    {ordered.map((project, i) => (
                         <motion.div
                             key={project.id}
                             className='projects__cell'

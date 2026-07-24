@@ -1,6 +1,6 @@
 .projects__lede {
     max-width: 56ch;
-    margin: -2rem 0 4rem;
+    margin: -0.75rem 0 2.5rem;
     font-size: 1.0625rem;
     line-height: 1.7;
     color: var(--ink-60);
@@ -9,7 +9,7 @@
 .projects__grid {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 5rem 3rem;
+    gap: 3rem 2.5rem;
 }
 
 .projects__cell {
@@ -112,6 +112,20 @@
     transform: translateZ(55px);
 }
 
+@media (max-width: 900px), (pointer: coarse) {
+    .project__body,
+    .project__role,
+    .project__status {
+        transform: none;
+    }
+    .project {
+        transform: none !important;
+    }
+    .project__media img {
+        scale: 1;
+    }
+}
+
 .project__name {
     font-family: var(--display);
     font-weight: 700;
@@ -185,10 +199,10 @@
 @media (max-width: 900px) {
     .projects__grid {
         grid-template-columns: 1fr;
-        gap: 3.5rem;
+        gap: 2.5rem;
     }
     .projects__lede {
-        margin: -1rem 0 2.5rem;
+        margin: -0.5rem 0 2rem;
     }
     .project__media--contain img {
         padding: 2.25rem;

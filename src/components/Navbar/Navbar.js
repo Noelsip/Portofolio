@@ -1,21 +1,15 @@
 import { useEffect, useState } from 'react';
-import { NavHashLink as NavLink } from 'react-router-hash-link';
+import { Link } from 'react-router-dom';
 
 import { headerData } from '../../data/headerData';
 import './Navbar.css';
 
 const navItems = [
-    { label: 'Tentang', to: '/#about' },
-    { label: 'Pengalaman', to: '/#experience' },
-    { label: 'Proyek', to: '/#projects' },
-    { label: 'Kontak', to: '/#contacts' },
+    { label: 'Tentang', to: '/tentang' },
+    { label: 'Pengalaman', to: '/pengalaman' },
+    { label: 'Proyek', to: '/proyek' },
+    { label: 'Kontak', to: '/kontak' },
 ];
-
-// The bar is sticky, so an anchor jump has to stop short of the heading.
-const scrollWithOffset = (el) => {
-    const y = el.getBoundingClientRect().top + window.pageYOffset - 84;
-    window.scrollTo({ top: y, behavior: 'smooth' });
-};
 
 function Navbar() {
     const [scrolled, setScrolled] = useState(false);
@@ -28,7 +22,7 @@ function Navbar() {
         return () => window.removeEventListener('scroll', onScroll);
     }, []);
 
-    // Lock the page behind the mobile panel, and let Escape close it.
+    // Kunci halaman di belakang panel mobile, dan tutup dengan Escape.
     useEffect(() => {
         if (!menuOpen) return undefined;
 
@@ -49,26 +43,15 @@ function Navbar() {
     return (
         <header className={`nav ${scrolled ? 'nav--scrolled' : ''}`}>
             <div className='nav__inner shell'>
-                <NavLink
-                    to='/#top'
-                    scroll={scrollWithOffset}
-                    className='nav__brand'
-                    onClick={() => setMenuOpen(false)}
-                >
-                    <span className='nav__brandName'>{headerData.shortName}</span>
-                    <span className='nav__brandRole'>Product · QA</span>
-                </NavLink>
-
                 <nav className='nav__links' aria-label='Navigasi utama'>
                     {navItems.map((item) => (
-                        <NavLink
+                        <Link
                             key={item.to}
                             to={item.to}
-                            scroll={scrollWithOffset}
                             className='nav__link link-wipe'
                         >
                             {item.label}
-                        </NavLink>
+                        </Link>
                     ))}
                     <a
                         className='nav__cv'
@@ -106,10 +89,9 @@ function Navbar() {
             >
                 <nav className='nav__panelLinks' aria-label='Navigasi mobile'>
                     {navItems.map((item, i) => (
-                        <NavLink
+                        <Link
                             key={item.to}
                             to={item.to}
-                            scroll={scrollWithOffset}
                             className='nav__panelLink'
                             style={{
                                 transitionDelay: `${menuOpen ? 80 + i * 45 : 0}ms`,
@@ -117,9 +99,8 @@ function Navbar() {
                             onClick={() => setMenuOpen(false)}
                             tabIndex={menuOpen ? 0 : -1}
                         >
-                            <span className='nav__panelIndex'>0{i + 1}</span>
                             {item.label}
-                        </NavLink>
+                        </Link>
                     ))}
                 </nav>
 

@@ -98,7 +98,7 @@ img {
 
 .section {
   width: 100%;
-  padding: 8rem 0;
+  padding: 4.5rem 0;
   background-color: var(--paper);
 }
 
@@ -117,7 +117,7 @@ img {
 /* Section titles carry the weight instead of a rule doing it. Heavy
    Poppins, very tight tracking, no numbering. */
 .section-head {
-  margin-bottom: 4rem;
+  margin-bottom: 2.25rem;
 }
 
 .section-head__title {
@@ -213,10 +213,10 @@ img {
     --gutter: 1.75rem;
   }
   .section {
-    padding: 5rem 0;
+    padding: 3.25rem 0;
   }
   .section-head {
-    margin-bottom: 2.5rem;
+    margin-bottom: 1.75rem;
   }
 }
 

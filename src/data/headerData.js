@@ -15,7 +15,7 @@ export const headerData = {
     roles: ['Product Manager', 'Quality Assurance', 'Software Engineer'],
 
     description:
-        'Mahasiswa Informatika di Institut Teknologi Kalimantan yang menggarap product management, quality assurance, analisis sistem, dan pengelolaan produk digital di Twenti Studio, studio yang saya dirikan. Saya memahami kebutuhan pengguna, menyusun alur produk, membuat dokumentasi, dan menjalankan pengujian agar produk lebih rapi dan mudah digunakan.',
+        'Mahasiswa Informatika di Institut Teknologi Kalimantan yang menggarap product management, quality assurance, analisis sistem, dan pengelolaan produk digital di Twenti Studio. Saya memahami kebutuhan pengguna, menyusun alur produk, membuat dokumentasi, dan menjalankan pengujian agar produk lebih rapi dan mudah digunakan.',
 
     location: 'Balikpapan, Indonesia',
     resumePdf: resume,

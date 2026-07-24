@@ -3,8 +3,9 @@
 export const workData = [
     {
         id: 1,
-        // Jabatan dan tanggal mengikuti CV.
-        role: 'Founder & Product Development',
+        // Tanggal mengikuti CV. Jabatan sengaja tanpa "Founder" sesuai
+        // permintaan, meski di CV masih tertulis begitu.
+        role: 'Product Development & Quality Assurance',
         company: 'Twenti Studio',
         companyUrl: 'https://twenti.studio',
         location: 'Balikpapan',
