@@ -1,26 +1,26 @@
-@import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,300;1,6..72,400&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap');
+
+@font-face {
+  font-family: 'BestermindRegular';
+  src: url('./assets/fonts/Bestermind/BestermindRegular.ttf') format('truetype');
+  font-display: swap;
+}
 
 :root {
-  /* Warm paper palette. Deliberately near-monochrome: the work is the
-     content, colour only marks something interactive. */
   --paper: #ffffff;
-  --paper-2: #f7f5f2;
-  --ink: #14110f;
-  --ink-70: #55504a;
-  --ink-45: #8b8378;
-  --rule: #e3ded6;
-  --accent: #b3441a;
+  --paper-2: #f4f2ef;
+  --ink: #0d0d0d;
+  --ink-60: #5c5c5c;
+  --ink-35: #9a9a9a;
+  --rule: #ddd9d3;
+  --accent: #e2572a;
 
-  --display: 'Newsreader', Georgia, serif;
-  --sans: 'IBM Plex Sans', system-ui, sans-serif;
-  --mono: 'IBM Plex Mono', ui-monospace, monospace;
-
-  /* Legacy alias: a few Material-UI rules still reference it. */
+  --sans: 'Poppins', sans-serif;
+  --display: 'Poppins', sans-serif;
+  --brand: 'BestermindRegular', 'Poppins', sans-serif;
   --primaryFont: var(--sans);
 
-  --page: 1180px;
+  --page: 1240px;
   --gutter: 2.5rem;
   --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
 }
@@ -33,7 +33,6 @@
 }
 
 html {
-  scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
 }
 
@@ -49,7 +48,7 @@ body {
   font-family: var(--sans);
   font-weight: 400;
   font-size: 1rem;
-  line-height: 1.65;
+  line-height: 1.6;
   color: var(--ink);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -72,27 +71,22 @@ img {
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
 }
 
 ::selection {
-  background: var(--ink);
+  background: var(--accent);
   color: var(--paper);
 }
 
 ::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
+  width: 9px;
 }
 ::-webkit-scrollbar-track {
   background: var(--paper-2);
 }
 ::-webkit-scrollbar-thumb {
-  background: var(--rule);
-}
-::-webkit-scrollbar-thumb:hover {
-  background: var(--ink-45);
+  background: var(--ink);
 }
 
 :focus-visible {
@@ -100,16 +94,17 @@ img {
   outline-offset: 3px;
 }
 
-/* ---- Shared section scaffolding -------------------------------------- */
+/* ---- Layout ----------------------------------------------------------- */
 
 .section {
   width: 100%;
-  padding: 7rem 0;
+  padding: 8rem 0;
   background-color: var(--paper);
 }
 
-.section--tint {
-  background-color: var(--paper-2);
+.section--dark {
+  background: var(--ink);
+  color: var(--paper);
 }
 
 .shell {
@@ -119,54 +114,80 @@ img {
   padding: 0 var(--gutter);
 }
 
-/* Section headers are a mono index + label over a hairline. The index is
-   what keeps the page from reading as a stack of generic cards. */
+/* Section titles carry the weight instead of a rule doing it. Heavy
+   Poppins, very tight tracking, no numbering. */
 .section-head {
-  display: flex;
-  align-items: baseline;
-  gap: 1rem;
-  padding-bottom: 1rem;
-  border-bottom: 1px solid var(--rule);
-  margin-bottom: 3.5rem;
-}
-
-.section-head__index {
-  font-family: var(--mono);
-  font-size: 0.75rem;
-  letter-spacing: 0.08em;
-  color: var(--accent);
+  margin-bottom: 4rem;
 }
 
 .section-head__title {
   font-family: var(--display);
-  font-weight: 400;
-  font-size: clamp(1.75rem, 3.4vw, 2.6rem);
-  line-height: 1.1;
-  letter-spacing: -0.015em;
+  font-weight: 700;
+  font-size: clamp(2.4rem, 7vw, 5rem);
+  line-height: 0.95;
+  letter-spacing: -0.045em;
+  text-transform: lowercase;
 }
 
 .section-head__note {
-  margin-left: auto;
-  font-family: var(--mono);
-  font-size: 0.72rem;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--ink-45);
+  display: inline-block;
+  margin-top: 1rem;
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: var(--ink-35);
 }
 
 .eyebrow {
-  font-family: var(--mono);
   font-size: 0.72rem;
-  letter-spacing: 0.14em;
+  font-weight: 600;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--ink-45);
+  color: var(--accent);
 }
 
-/* Underline that wipes in from the left on hover. */
+/* ---- Buttons ---------------------------------------------------------- */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 52px;
+  padding: 0 2rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  border: 2px solid var(--ink);
+  cursor: pointer;
+  transition: background-color 0.3s var(--ease), color 0.3s var(--ease),
+    border-color 0.3s var(--ease);
+}
+
+.btn--solid {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.btn--solid:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+.btn--ghost {
+  background: transparent;
+  color: var(--ink);
+}
+
+.btn--ghost:hover {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+/* Underline that wipes in from the left. */
 .link-wipe {
   position: relative;
   display: inline-block;
-  padding-bottom: 1px;
+  padding-bottom: 2px;
 }
 
 .link-wipe::after {
@@ -175,30 +196,16 @@ img {
   left: 0;
   bottom: 0;
   width: 100%;
-  height: 1px;
+  height: 2px;
   background: currentColor;
   transform: scaleX(0);
   transform-origin: left;
-  transition: transform 0.35s var(--ease);
+  transition: transform 0.4s var(--ease);
 }
 
 .link-wipe:hover::after,
 .link-wipe:focus-visible::after {
   transform: scaleX(1);
-}
-
-/* ---- Reveal-on-scroll ------------------------------------------------- */
-
-.reveal {
-  opacity: 0;
-  transform: translateY(14px);
-  transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
-  transition-delay: var(--reveal-delay, 0ms);
-}
-
-.reveal.is-visible {
-  opacity: 1;
-  transform: none;
 }
 
 @media (max-width: 900px) {
@@ -217,24 +224,16 @@ img {
   :root {
     --gutter: 1.25rem;
   }
-  .section-head__note {
-    display: none;
-  }
 }
 
+/* The custom cursor replaces the native one, so it has to come back for
+   anyone who cannot use a pointer comfortably. */
 @media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
   *,
   *::before,
   *::after {
     animation-duration: 0.001ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.001ms !important;
-  }
-  .reveal {
-    opacity: 1;
-    transform: none;
   }
 }

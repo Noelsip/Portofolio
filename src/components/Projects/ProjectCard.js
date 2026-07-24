@@ -1,4 +1,8 @@
+import { useRef } from 'react';
+import { motion, useMotionValue, useSpring, useTransform } from 'motion/react';
 import { FiArrowUpRight, FiGithub } from 'react-icons/fi';
+
+const SPRING = { stiffness: 260, damping: 22, mass: 0.6 };
 
 function ProjectCard({ project }) {
     const {
@@ -7,7 +11,6 @@ function ProjectCard({ project }) {
         context,
         role,
         desc,
-        contribution,
         tags,
         image,
         imageFit,
@@ -16,15 +19,51 @@ function ProjectCard({ project }) {
         status,
     } = project;
 
+    const ref = useRef(null);
+
+    // Pointer position within the card, normalised to -0.5..0.5.
+    const px = useMotionValue(0);
+    const py = useMotionValue(0);
+
+    const rotateX = useSpring(useTransform(py, [-0.5, 0.5], [7, -7]), SPRING);
+    const rotateY = useSpring(useTransform(px, [-0.5, 0.5], [-9, 9]), SPRING);
+
+    // The image drifts opposite the tilt, which reads as depth rather than
+    // the whole card being one flat plane that happens to rotate.
+    const imageX = useSpring(useTransform(px, [-0.5, 0.5], [14, -14]), SPRING);
+    const imageY = useSpring(useTransform(py, [-0.5, 0.5], [10, -10]), SPRING);
+
+    const handleMove = (e) => {
+        const rect = ref.current.getBoundingClientRect();
+        px.set((e.clientX - rect.left) / rect.width - 0.5);
+        py.set((e.clientY - rect.top) / rect.height - 0.5);
+    };
+
+    const handleLeave = () => {
+        px.set(0);
+        py.set(0);
+    };
+
     return (
-        <article className='project'>
+        <motion.article
+            ref={ref}
+            className='project'
+            onMouseMove={handleMove}
+            onMouseLeave={handleLeave}
+            style={{ rotateX, rotateY, transformPerspective: 1100 }}
+        >
             <div
                 className={`project__media ${
                     image ? '' : 'project__media--empty'
                 } ${imageFit === 'contain' ? 'project__media--contain' : ''}`}
             >
                 {image ? (
-                    <img src={image} alt={`Tampilan ${name}`} loading='lazy' />
+                    <motion.img
+                        src={image}
+                        alt={`Tampilan ${name}`}
+                        loading='lazy'
+                        style={{ x: imageX, y: imageY }}
+                    />
                 ) : (
                     <span className='project__mediaMark' aria-hidden='true'>
                         {name}
@@ -36,17 +75,13 @@ function ProjectCard({ project }) {
             </div>
 
             <div className='project__body'>
-                <p className='project__context'>{context}</p>
-
                 <h3 className='project__name'>{name}</h3>
-                <p className='project__kind'>{kind}</p>
+                <p className='project__kind'>
+                    {kind}
+                    <span className='project__context'>{context}</span>
+                </p>
 
                 <p className='project__desc'>{desc}</p>
-
-                <p className='project__contribution'>
-                    <span>Peran saya</span>
-                    {contribution}
-                </p>
 
                 <ul className='project__tags'>
                     {tags.map((tag) => (
@@ -81,7 +116,7 @@ function ProjectCard({ project }) {
                     </div>
                 )}
             </div>
-        </article>
+        </motion.article>
     );
 }
 

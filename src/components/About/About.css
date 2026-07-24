@@ -1,44 +1,49 @@
 .about__grid {
     display: grid;
-    grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr);
-    gap: 4rem;
+    grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
+    gap: 4.5rem;
     align-items: start;
 }
 
 .about__prose p {
-    max-width: 60ch;
+    max-width: 58ch;
     font-size: 1.0625rem;
-    line-height: 1.75;
-    color: var(--ink-70);
+    line-height: 1.8;
+    color: var(--ink-60);
 }
 
 .about__prose p + p {
-    margin-top: 1.5rem;
+    margin-top: 1.6rem;
 }
 
-/* First paragraph carries the weight, so it gets the darker ink. */
+/* The opening paragraph is the one that has to land, so it runs bigger and
+   darker than the two that follow. */
 .about__prose p:first-child {
+    font-size: clamp(1.15rem, 1.9vw, 1.45rem);
+    line-height: 1.55;
+    font-weight: 500;
+    letter-spacing: -0.015em;
     color: var(--ink);
 }
 
 .about__facts {
-    border-top: 1px solid var(--rule);
+    border-top: 2px solid var(--ink);
 }
 
 .about__fact {
     display: flex;
     flex-direction: column;
-    gap: 0.35rem;
-    padding: 1.1rem 0;
+    gap: 0.3rem;
+    padding: 1.15rem 0;
     border-bottom: 1px solid var(--rule);
 }
 
 .about__fact dt {
-    font-family: var(--mono);
     font-size: 0.7rem;
-    letter-spacing: 0.12em;
+    font-weight: 600;
+    letter-spacing: 0.16em;
     text-transform: uppercase;
-    color: var(--ink-45);
+    color: var(--accent);
 }
 
 .about__fact dd {

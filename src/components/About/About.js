@@ -1,33 +1,37 @@
 import { aboutData } from '../../data/aboutData';
-import Reveal from '../Reveal/Reveal';
+import ScrambleText from '../Motion/ScrambleText';
+import Wipe from '../Motion/Wipe';
 import './About.css';
 
 function About() {
     return (
-        <section className='section section--tint about' id='about'>
+        <section className='section about' id='about'>
             <div className='shell'>
-                <Reveal as='div' className='section-head'>
-                    <span className='section-head__index'>01</span>
-                    <h2 className='section-head__title'>{aboutData.title}</h2>
-                </Reveal>
+                <div className='section-head'>
+                    <ScrambleText
+                        as='h2'
+                        text='tentang saya'
+                        className='section-head__title'
+                    />
+                </div>
 
                 <div className='about__grid'>
                     <div className='about__prose'>
                         {aboutData.paragraphs.map((text, i) => (
-                            <Reveal as='p' key={i} delay={i * 80}>
+                            <Wipe as='p' key={i} delay={i * 0.09}>
                                 {text}
-                            </Reveal>
+                            </Wipe>
                         ))}
                     </div>
 
-                    <Reveal as='dl' className='about__facts' delay={120}>
+                    <Wipe as='dl' className='about__facts' delay={0.14}>
                         {aboutData.facts.map((fact) => (
                             <div className='about__fact' key={fact.label}>
                                 <dt>{fact.label}</dt>
                                 <dd>{fact.value}</dd>
                             </div>
                         ))}
-                    </Reveal>
+                    </Wipe>
                 </div>
             </div>
         </section>

@@ -1,52 +1,55 @@
 import { organizationData } from '../../data/organizationData';
 import { educationData } from '../../data/educationData';
-import Reveal from '../Reveal/Reveal';
+import ScrambleText from '../Motion/ScrambleText';
+import Wipe from '../Motion/Wipe';
 import './Organizations.css';
 
 function Organizations() {
     return (
-        <section
-            className='section section--tint organizations'
-            id='organizations'
-        >
+        <section className='section organizations' id='organizations'>
             <div className='shell'>
-                <Reveal as='div' className='section-head'>
-                    <span className='section-head__index'>03</span>
-                    <h2 className='section-head__title'>
-                        Organisasi &amp; Pendidikan
-                    </h2>
-                    <span className='section-head__note'>Peran kepemimpinan</span>
-                </Reveal>
+                <div className='section-head'>
+                    <ScrambleText
+                        as='h2'
+                        text='organisasi'
+                        className='section-head__title'
+                    />
+                    <Wipe as='span' className='section-head__note' delay={0.15}>
+                        Peran kepemimpinan dan pendidikan
+                    </Wipe>
+                </div>
 
                 <div className='organizations__grid'>
                     <ol className='organizations__list'>
                         {organizationData.map((org, i) => (
-                            <Reveal
+                            <Wipe
                                 as='li'
                                 key={org.id}
                                 className='organizations__item'
-                                delay={i * 80}
+                                delay={i * 0.07}
                             >
                                 <span className='organizations__period'>
-                                    {org.startYear} — {org.endYear}
+                                    {org.startYear} - {org.endYear}
                                 </span>
-                                <h3 className='organizations__role'>{org.role}</h3>
+                                <h3 className='organizations__role'>
+                                    {org.role}
+                                </h3>
                                 <p className='organizations__org'>
                                     {org.organization}
                                 </p>
                                 <p className='organizations__desc'>
                                     {org.description}
                                 </p>
-                            </Reveal>
+                            </Wipe>
                         ))}
                     </ol>
 
-                    <Reveal as='aside' className='organizations__edu' delay={120}>
+                    <Wipe as='aside' className='organizations__edu' delay={0.16}>
                         <h3 className='eyebrow'>Pendidikan</h3>
                         {educationData.map((edu) => (
                             <div className='organizations__eduItem' key={edu.id}>
                                 <p className='organizations__eduPeriod'>
-                                    {edu.startYear} — {edu.endYear}
+                                    {edu.startYear} - {edu.endYear}
                                 </p>
                                 <h4 className='organizations__eduCourse'>
                                     {edu.course}
@@ -61,7 +64,7 @@ function Organizations() {
                                 )}
                             </div>
                         ))}
-                    </Reveal>
+                    </Wipe>
                 </div>
             </div>
         </section>

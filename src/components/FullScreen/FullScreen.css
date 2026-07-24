@@ -12,7 +12,7 @@
     height: 44px;
     padding: 0;
     background: var(--paper);
-    color: var(--ink-45);
+    color: var(--ink-35);
     border: 1px solid var(--rule);
     font-size: 1.35rem;
     cursor: pointer;

@@ -6,21 +6,34 @@ import mita from '../assets/png/products/mita-test.png'
 import simaggot from '../assets/png/products/simaggot.png'
 import klirlogistik from '../assets/png/products/klirlogistik.png'
 import bemfsti from '../assets/png/products/bemfsti.png'
+import twentiLogo from '../assets/png/products/twenti-logo.png'
 
-// One list, ordered by weight. `role` is what Noel actually did on each one,
-// because "built it" and "tested it" are different claims and a recruiter
-// should never have to guess which is which.
+// Deskripsi proyek lama tetap memakai tulisan asli dari versi sebelumnya.
+// Yang baru hanya produk Twenti Studio yang belum pernah dimasukkan.
+// `role` menandai apa yang benar-benar dikerjakan di tiap proyek.
 
 export const projectsData = [
+    {
+        id: 'twenti-studio',
+        name: 'Twenti Studio',
+        kind: 'App Studio',
+        context: 'Twenti Studio',
+        role: 'Product Management',
+        desc: 'Mengelola kebutuhan produk dan prioritas fitur untuk website layanan pembuatan aplikasi, dengan fokus pada pengalaman pengguna dan kejelasan alur layanan.',
+        tags: ['Product Planning', 'Web Product', 'Stakeholder Needs'],
+        image: twentiLogo,
+        imageFit: 'contain',
+        demo: 'https://twenti.studio',
+        code: null,
+        status: null,
+    },
     {
         id: 'healthify',
         name: 'Healthify',
         kind: 'AI Health Hoax Detector',
         context: 'Twenti Studio',
         role: 'Dibangun sendiri',
-        desc: 'Asisten yang memverifikasi klaim kesehatan terhadap ribuan publikasi ilmiah, supaya pengguna bisa memisahkan informasi yang berdasar dari yang sekadar beredar di grup keluarga. Produk ini berangkat dari masalah yang nyata: hoaks kesehatan menyebar lebih cepat daripada koreksinya.',
-        contribution:
-            'Menentukan cakupan produk, menyusun alur verifikasi klaim dari input sampai hasil, dan menguji keluaran sistem terhadap klaim uji sebelum rilis.',
+        desc: 'Asisten yang memverifikasi klaim kesehatan terhadap ribuan publikasi ilmiah, supaya pengguna bisa memisahkan informasi yang berdasar dari yang sekadar beredar. Saya menentukan cakupan produk, menyusun alur verifikasi klaim, dan menguji keluarannya sebelum rilis.',
         tags: ['Product Discovery', 'User Flow', 'QA'],
         image: healthify,
         demo: 'https://twenti.studio/produk',
@@ -33,9 +46,7 @@ export const projectsData = [
         kind: 'AI Personal Finance Assistant',
         context: 'Twenti Studio',
         role: 'Dibangun sendiri',
-        desc: 'Pencatat pemasukan dan pengeluaran yang dirancang supaya mencatat cukup dengan mengetik satu kalimat, bukan mengisi formulir panjang. Hambatan terbesar aplikasi keuangan bukan fiturnya, tapi rasa malas mencatat, jadi alurnya sengaja dipangkas sependek mungkin.',
-        contribution:
-            'Merancang alur pencatatan singkat, menetapkan prioritas fitur tiap versi, dan menguji akurasi pencatatan terhadap masukan bahasa bebas.',
+        desc: 'Pencatat pemasukan dan pengeluaran yang cukup dijalankan dengan mengetik satu kalimat, bukan mengisi formulir panjang. Saya merancang alur pencatatannya, menetapkan prioritas fitur tiap versi, dan menguji akurasi pencatatan terhadap masukan bahasa bebas.',
         tags: ['Product Requirement', 'UX Flow', 'Functional Testing'],
         image: finot,
         demo: 'https://twenti.studio/produk',
@@ -48,9 +59,7 @@ export const projectsData = [
         kind: 'AI Personal Health Assistant',
         context: 'Twenti Studio',
         role: 'Dibangun sendiri',
-        desc: 'Pendamping kesehatan harian yang menerima keluhan dalam bahasa sehari-hari, dengan premis bahwa mencatat kondisi tubuh harusnya semudah bercerita. Pengguna tidak perlu tahu istilah medis untuk mulai memakainya.',
-        contribution:
-            'Menyusun konsep produk dan skenario percakapan, lalu menguji respons sistem terhadap keluhan yang ditulis dengan berbagai gaya bahasa.',
+        desc: 'Pendamping kesehatan harian yang menerima keluhan dalam bahasa sehari-hari, dengan premis bahwa mencatat kondisi tubuh harusnya semudah bercerita. Saya menyusun konsep produk dan skenario percakapannya, lalu menguji respons sistem terhadap berbagai gaya bahasa pengguna.',
         tags: ['Product Concept', 'Scenario Design', 'QA'],
         image: welltrack,
         demo: 'https://twenti.studio/produk',
@@ -63,9 +72,7 @@ export const projectsData = [
         kind: 'Digital Store',
         context: 'Twenti Studio',
         role: 'Dikelola',
-        desc: 'Digital store resmi Twenti untuk top-up game, voucher, e-book, dan layanan media sosial. Tantangan produknya adalah menjaga alur transaksi tetap pendek dan jelas justru ketika katalognya terus bertambah.',
-        contribution:
-            'Mengelola prioritas fitur, menjaga alur transaksi tetap sederhana seiring katalog bertambah, dan menerjemahkan kebutuhan produk ke tim pengembang.',
+        desc: 'Digital store resmi Twenti untuk top-up game, voucher, e-book, dan layanan media sosial. Saya mengelola prioritas fiturnya dan menjaga alur transaksi tetap pendek justru ketika katalognya terus bertambah.',
         tags: ['Roadmap', 'Transaction Flow', 'Backlog'],
         image: gamesTwenti,
         demo: 'https://twenti.studio/produk',
@@ -78,9 +85,7 @@ export const projectsData = [
         kind: 'Micro Task Platform',
         context: 'Twenti Studio',
         role: 'Dikelola',
-        desc: 'Platform mikro tasking yang membagikan tugas-tugas ringkas ke pengguna dengan imbalan tertentu. Dua sisi harus dijaga sekaligus: pemberi tugas butuh hasil yang layak, pengerja butuh tugas yang sepadan dengan waktunya.',
-        contribution:
-            'Menyusun kebutuhan platform, merumuskan aturan main antara pemberi tugas dan pengerja, serta mengawal pengembangannya dari sisi produk.',
+        desc: 'Platform mikro tasking yang membagikan tugas ringkas ke pengguna dengan imbalan tertentu. Saya menyusun kebutuhan platform dan aturan main antara pemberi tugas dan pengerja, serta mengawal pengembangannya dari sisi produk.',
         tags: ['Requirement', 'Product Ops'],
         image: mita,
         demo: 'https://twenti.studio/produk',
@@ -93,9 +98,7 @@ export const projectsData = [
         kind: 'Waste Management System',
         context: 'Kecamatan Balikpapan Kota',
         role: 'Diuji',
-        desc: 'Sistem digitalisasi operasional budidaya maggot yang menyatukan pendataan lapangan, koordinasi petugas, pencatatan aset, dan tabungan sampah warga dalam satu alur. Setoran warga dihitung otomatis, jadi angka yang salah akan langsung terbawa ke saldo orang sungguhan.',
-        contribution:
-            'Menguji alur pendataan dan perhitungan setoran warga, memastikan angka yang dihitung sistem cocok dengan data lapangan, dan memverifikasi perbaikan sebelum serah terima.',
+        desc: 'Sistem digitalisasi operasional budidaya maggot yang menyatukan pendataan lapangan, koordinasi petugas, pencatatan aset, dan tabungan sampah warga. Saya menguji alur pendataan dan perhitungan setoran warga, memastikan angka yang dihitung sistem cocok dengan data lapangan.',
         tags: ['Functional Testing', 'Data Validation'],
         image: simaggot,
         demo: 'https://twenti.studio/portofolio',
@@ -108,9 +111,7 @@ export const projectsData = [
         kind: 'B2B Logistics',
         context: 'Proyek klien',
         role: 'Diuji',
-        desc: 'Layanan logistik dan ekspedisi B2B berbasis langganan, dirancang untuk bisnis yang mengirim rutin dan butuh alur pengiriman yang tertata, bukan sekali jalan. Karena modelnya langganan, kesalahan pada satu siklus akan berulang tiap bulan.',
-        contribution:
-            'Menguji alur langganan dan pemesanan pengiriman, menelusuri kasus tepi pada perpanjangan siklus, dan melaporkan temuan sebelum sistem dipakai klien.',
+        desc: 'Layanan logistik dan ekspedisi B2B berbasis langganan untuk bisnis yang mengirim rutin. Karena modelnya langganan, kesalahan pada satu siklus akan berulang tiap bulan, jadi saya menelusuri kasus tepi pada perpanjangan siklus sebelum sistem dipakai klien.',
         tags: ['Regression Testing', 'Bug Reporting'],
         image: klirlogistik,
         imageFit: 'contain',
@@ -124,9 +125,7 @@ export const projectsData = [
         kind: 'Organization Platform',
         context: 'BEM FSTI ITK',
         role: 'Diuji',
-        desc: 'Platform resmi BEM FSTI ITK yang menyatukan agenda kegiatan, program kerja, dokumentasi, dan kanal aspirasi mahasiswa dalam satu situs, sehingga mahasiswa punya satu tempat untuk mengikuti gerakan BEM.',
-        contribution:
-            'Menguji kanal aspirasi dan modul manajemen program kerja, memastikan konten yang dipublikasikan pengurus tampil persis seperti yang dimasukkan.',
+        desc: 'Platform resmi BEM FSTI ITK yang menyatukan agenda kegiatan, program kerja, dokumentasi, dan kanal aspirasi mahasiswa dalam satu situs. Saya menguji kanal aspirasi dan modul manajemen program kerjanya sebelum diserahkan.',
         tags: ['UAT', 'Content QA'],
         image: bemfsti,
         imageFit: 'contain',
@@ -136,17 +135,28 @@ export const projectsData = [
     },
     {
         id: 'asah',
-        name: 'Predictive Copilot',
+        name: 'Predictive Copilot ASAH',
         kind: 'Predictive Maintenance',
-        context: 'Capstone ASAH Dicoding × Accenture 2025',
+        context: 'Dicoding x Accenture 2025',
         role: 'Product & Validasi',
-        desc: 'Sistem prediksi kondisi sensor pada mesin manufaktur, dibangun sebagai capstone program ASAH Dicoding bersama Accenture. Nilai produknya ada pada peringatan dini: mendeteksi anomali sebelum mesin berhenti, bukan sesudahnya.',
-        contribution:
-            'Menangani perencanaan produk, penyusunan kebutuhan sistem, dan validasi hasil model terhadap data uji bersama tim.',
-        tags: ['Product Requirement', 'Data Validation', 'Python'],
+        desc: 'Berperan dalam perencanaan produk, penyusunan kebutuhan, dan validasi hasil sistem prediksi kondisi sensor manufaktur pada program ASAH Dicoding x Accenture 2025.',
+        tags: ['Product Requirements', 'Quality Review', 'Data Product'],
         image: null,
         demo: null,
         code: 'https://github.com/Noelsip/Capstone-ASAH',
+        status: null,
+    },
+    {
+        id: 'pjli',
+        name: 'Penjaga Laut Pantai Indonesia',
+        kind: 'Website Organisasi',
+        context: 'PJLI Foundation',
+        role: 'Information Architecture',
+        desc: 'Mendukung perancangan informasi, struktur konten, dan kebutuhan operasional website untuk memperkenalkan program penjagaan laut dan aktivitas organisasi.',
+        tags: ['Information Architecture', 'Content Planning', 'Web QA'],
+        image: null,
+        demo: 'https://pjlifoundation.org',
+        code: null,
         status: null,
     },
     {
@@ -155,10 +165,8 @@ export const projectsData = [
         kind: 'Sistem Manajemen Apotek',
         context: 'Proyek kuliah',
         role: 'Dibangun & diuji',
-        desc: 'Sistem manajemen apotek yang menangani pencarian obat, pengecekan stok, dan informasi dokter dalam satu aplikasi desktop. Dibangun dengan Java sebagai penerapan konsep berorientasi objek pada kasus nyata.',
-        contribution:
-            'Menyusun use case, membangun sistemnya, dan menulis skenario pengujian fungsional untuk tiap alur utama.',
-        tags: ['Java', 'Use Case', 'Functional Testing'],
+        desc: 'Menyusun alur penggunaan dan skenario pengujian untuk sistem manajemen apotek, mencakup pencarian obat, pengecekan stok, dan informasi dokter.',
+        tags: ['Use Case Design', 'Functional Testing', 'System Analysis'],
         image: null,
         demo: null,
         code: 'https://github.com/Noelsip/Apotek-App',
@@ -170,10 +178,8 @@ export const projectsData = [
         kind: 'Sistem Pengumpulan Dokumen',
         context: 'Proyek kuliah',
         role: 'Dibangun & diuji',
-        desc: 'Alur unggah, akses, dan pelacakan dokumen tugas dengan penyimpanan yang ditangani lewat integrasi Google Drive, sehingga file tidak menumpuk di server aplikasi.',
-        contribution:
-            'Merancang alur pengumpulan dan menguji integrasi penyimpanan, termasuk kasus unggah gagal dan berkas berukuran besar.',
-        tags: ['Integration Testing', 'Google Drive API'],
+        desc: 'Menyusun alur pengumpulan tugas dan validasi integrasi penyimpanan file agar proses unggah, akses, dan pelacakan dokumen berjalan lebih rapi.',
+        tags: ['Workflow Design', 'Integration Testing', 'Google Drive'],
         image: null,
         demo: 'https://upload-file-azure.vercel.app',
         code: 'https://github.com/Noelsip/Upload-File-Web',
@@ -185,10 +191,8 @@ export const projectsData = [
         kind: 'E-commerce',
         context: 'Proyek mandiri',
         role: 'Dibangun sendiri',
-        desc: 'Toko online kopi yang mencakup katalog produk, halaman detail, dan alur transaksi dari keranjang sampai pembayaran. Dirancang lebih dulu di Figma sebelum dibangun.',
-        contribution:
-            'Menyusun kebutuhan toko, merancang alur pembelian, dan membangun antarmukanya.',
-        tags: ['E-commerce Flow', 'Figma', 'Web'],
+        desc: 'Menyusun kebutuhan toko online dan alur pembelian produk kopi, mulai dari katalog, informasi produk, hingga proses transaksi.',
+        tags: ['E-commerce Flow', 'Requirement Analysis', 'Figma'],
         image: null,
         demo: null,
         code: 'https://github.com/Noelsip/e-commerce-meracikopi',
@@ -200,10 +204,8 @@ export const projectsData = [
         kind: 'Situs Profil Kota',
         context: 'Proyek mandiri',
         role: 'Dibangun sendiri',
-        desc: 'Situs profil kota yang menyajikan informasi wisata, kuliner, dan budaya Balikpapan dengan struktur konten yang bisa ditelusuri pengunjung tanpa harus tahu dulu apa yang dicari.',
-        contribution:
-            'Menyusun struktur informasi dan membangun keseluruhan situsnya.',
-        tags: ['Information Architecture', 'Web'],
+        desc: 'Merancang penyajian informasi website profil kota agar konten wisata, kuliner, dan budaya lebih mudah dipahami oleh pengunjung.',
+        tags: ['Content Strategy', 'User Experience', 'Web QA'],
         image: null,
         demo: 'https://balikpapan-profile.vercel.app',
         code: 'https://github.com/Noelsip/Balikpapan-Profile',
@@ -215,10 +217,8 @@ export const projectsData = [
         kind: 'Visualisasi Algoritma',
         context: 'Proyek kuliah',
         role: 'Dibangun sendiri',
-        desc: 'Visualisasi pencarian rute terpendek dengan algoritma Dijkstra, dibuat supaya proses perhitungannya bisa diikuti langkah demi langkah, bukan hanya menampilkan hasil akhirnya.',
-        contribution:
-            'Membangun visualisasinya dan memvalidasi hasil perhitungan terhadap penelusuran manual.',
-        tags: ['Python', 'Algoritma', 'Logic Validation'],
+        desc: 'Membuat dan memvalidasi alur visualisasi pencarian rute terpendek agar proses perhitungan dapat dipahami secara jelas oleh pengguna.',
+        tags: ['Logic Validation', 'User Flow', 'Product Demo'],
         image: null,
         demo: null,
         code: 'https://github.com/Noelsip/DjikstraMap',

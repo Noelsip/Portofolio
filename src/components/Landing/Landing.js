@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { AnimatePresence, motion } from 'motion/react';
 import { FaGithub, FaInstagram, FaLinkedinIn, FaYoutube } from 'react-icons/fa';
 import { NavHashLink as NavLink } from 'react-router-hash-link';
 
@@ -14,11 +15,7 @@ const socials = [
     { key: 'youtube', href: socialsData.youtube, Icon: FaYoutube, label: 'YouTube' },
 ];
 
-// Counted from the project list so the headline numbers can never drift out
-// of sync with what the page actually shows. Coursework carries the same
-// "Dibangun sendiri" label, so the product counts also filter on the studio.
 const count = (predicate) => projectsData.filter(predicate).length;
-
 const pad = (n) => String(n).padStart(2, '0');
 
 const scrollWithOffset = (el) => {
@@ -26,15 +23,18 @@ const scrollWithOffset = (el) => {
     window.scrollTo({ top: y, behavior: 'smooth' });
 };
 
+const EASE = [0.22, 0.61, 0.36, 1];
+
 function Landing() {
     const [roleIndex, setRoleIndex] = useState(0);
     const roles = headerData.roles;
+    const words = headerData.name.split(' ');
 
     useEffect(() => {
         if (roles.length < 2) return undefined;
         const id = setInterval(
             () => setRoleIndex((i) => (i + 1) % roles.length),
-            2800
+            2600
         );
         return () => clearInterval(id);
     }, [roles.length]);
@@ -63,34 +63,77 @@ function Landing() {
     return (
         <section className='landing' id='top'>
             <div className='shell landing__inner'>
-                <p className='eyebrow landing__eyebrow'>
+                <motion.p
+                    className='eyebrow landing__eyebrow'
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.6, delay: 0.15 }}
+                >
                     {headerData.location}
-                </p>
+                </motion.p>
 
+                {/* Each word sits in its own overflow-hidden line so it can
+                    rise from behind a hard edge instead of just fading. */}
                 <h1 className='landing__name'>
-                    {headerData.name}
+                    {words.map((word, i) => (
+                        <span className='landing__wordMask' key={word + i}>
+                            <motion.span
+                                className='landing__word'
+                                initial={{ y: '110%' }}
+                                animate={{ y: '0%' }}
+                                transition={{
+                                    duration: 0.9,
+                                    delay: 0.2 + i * 0.08,
+                                    ease: EASE,
+                                }}
+                            >
+                                {word}
+                            </motion.span>
+                        </span>
+                    ))}
                 </h1>
 
-                <div className='landing__roles' aria-label={headerData.role}>
+                <motion.div
+                    className='landing__roles'
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.5, delay: 0.6 }}
+                >
                     <span className='landing__rolesRule' aria-hidden='true' />
-                    <span className='landing__rolesTrack'>
-                        {roles.map((role, i) => (
-                            <span
-                                key={role}
-                                className={`landing__role ${
-                                    i === roleIndex ? 'is-active' : ''
-                                }`}
-                                aria-hidden={i !== roleIndex}
+                    <span
+                        className='landing__rolesTrack'
+                        aria-label={headerData.title}
+                    >
+                        <AnimatePresence mode='wait'>
+                            <motion.span
+                                key={roles[roleIndex]}
+                                className='landing__role'
+                                initial={{ y: '100%', opacity: 0 }}
+                                animate={{ y: '0%', opacity: 1 }}
+                                exit={{ y: '-100%', opacity: 0 }}
+                                transition={{ duration: 0.45, ease: EASE }}
                             >
-                                {role}
-                            </span>
-                        ))}
+                                {roles[roleIndex]}
+                            </motion.span>
+                        </AnimatePresence>
                     </span>
-                </div>
+                </motion.div>
 
-                <p className='landing__desc'>{headerData.description}</p>
+                <motion.p
+                    className='landing__desc'
+                    initial={{ opacity: 0, y: 16 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.7, delay: 0.68, ease: EASE }}
+                >
+                    {headerData.description}
+                </motion.p>
 
-                <div className='landing__actions'>
+                <motion.div
+                    className='landing__actions'
+                    initial={{ opacity: 0, y: 16 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.7, delay: 0.78, ease: EASE }}
+                >
                     <NavLink
                         to='/#projects'
                         scroll={scrollWithOffset}
@@ -123,16 +166,21 @@ function Landing() {
                                 </a>
                             ))}
                     </div>
-                </div>
+                </motion.div>
 
-                <dl className='landing__stats'>
+                <motion.dl
+                    className='landing__stats'
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.7, delay: 0.9 }}
+                >
                     {stats.map((stat) => (
                         <div className='landing__stat' key={stat.label}>
                             <dt className='landing__statValue'>{stat.value}</dt>
                             <dd className='landing__statLabel'>{stat.label}</dd>
                         </div>
                     ))}
-                </dl>
+                </motion.dl>
             </div>
         </section>
     );

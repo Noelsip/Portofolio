@@ -1,36 +1,34 @@
 import { skillsData } from '../../data/skillsData';
-import Reveal from '../Reveal/Reveal';
+import ScrambleText from '../Motion/ScrambleText';
+import Wipe from '../Motion/Wipe';
 import './Skills.css';
 
 function Skills() {
     return (
-        <section className='section section--tint skills' id='skills'>
+        <section className='section skills' id='skills'>
             <div className='shell'>
-                <Reveal as='div' className='section-head'>
-                    <span className='section-head__index'>05</span>
-                    <h2 className='section-head__title'>Kemampuan</h2>
-                    <span className='section-head__note'>Praktik &amp; alat</span>
-                </Reveal>
+                <div className='section-head'>
+                    <ScrambleText
+                        as='h2'
+                        text='kemampuan'
+                        className='section-head__title'
+                    />
+                </div>
 
                 <div className='skills__grid'>
                     {skillsData.map((group, i) => (
-                        <Reveal
+                        <Wipe
                             key={group.id}
                             className='skills__group'
-                            delay={i * 80}
+                            delay={i * 0.08}
                         >
-                            <h3 className='skills__groupName'>
-                                <span className='skills__groupIndex'>
-                                    0{i + 1}
-                                </span>
-                                {group.group}
-                            </h3>
+                            <h3 className='skills__groupName'>{group.group}</h3>
                             <ul className='skills__items'>
                                 {group.items.map((item) => (
                                     <li key={item}>{item}</li>
                                 ))}
                             </ul>
-                        </Reveal>
+                        </Wipe>
                     ))}
                 </div>
             </div>

@@ -1,28 +1,32 @@
 import { FiArrowUpRight } from 'react-icons/fi';
 
 import { workData } from '../../data/workData';
-import Reveal from '../Reveal/Reveal';
+import ScrambleText from '../Motion/ScrambleText';
+import Wipe from '../Motion/Wipe';
 import './Work.css';
 
 function Work() {
     return (
         <section className='section work' id='work'>
             <div className='shell'>
-                <Reveal as='div' className='section-head'>
-                    <span className='section-head__index'>02</span>
-                    <h2 className='section-head__title'>Pengalaman Kerja</h2>
-                    <span className='section-head__note'>
-                        {workData.length} peran
-                    </span>
-                </Reveal>
+                <div className='section-head'>
+                    <ScrambleText
+                        as='h2'
+                        text='pengalaman kerja'
+                        className='section-head__title'
+                    />
+                </div>
 
                 <ol className='work__list'>
                     {workData.map((job, i) => (
-                        <Reveal as='li' key={job.id} className='work__item' delay={i * 90}>
+                        <Wipe
+                            as='li'
+                            key={job.id}
+                            className='work__item'
+                            delay={i * 0.08}
+                        >
                             <div className='work__period'>
-                                <span>{job.startYear}</span>
-                                <span className='work__periodDash' aria-hidden='true' />
-                                <span>{job.endYear}</span>
+                                {job.startYear} - {job.endYear}
                             </div>
 
                             <div className='work__body'>
@@ -67,7 +71,7 @@ function Work() {
                                     </a>
                                 )}
                             </div>
-                        </Reveal>
+                        </Wipe>
                     ))}
                 </ol>
             </div>

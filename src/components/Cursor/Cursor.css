@@ -1,0 +1,39 @@
+.cursor {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    pointer-events: none;
+    /* The spring drives x/y from the element's own origin, so pull the ring
+       back by half its size to keep it centred on the pointer. */
+    margin: -24px 0 0 -24px;
+}
+
+.cursor__ring {
+    display: block;
+    width: 48px;
+    height: 48px;
+    border: 1.5px solid var(--accent);
+    border-radius: 50%;
+    background: transparent;
+}
+
+/* Hide the native cursor only once ours is actually mounted. Text fields
+   keep their I-beam, since losing it makes typing genuinely harder. */
+body.has-custom-cursor,
+body.has-custom-cursor a,
+body.has-custom-cursor button,
+body.has-custom-cursor [data-cursor] {
+    cursor: none;
+}
+
+body.has-custom-cursor input,
+body.has-custom-cursor textarea {
+    cursor: text;
+}
+
+@media (pointer: coarse) {
+    .cursor {
+        display: none;
+    }
+}

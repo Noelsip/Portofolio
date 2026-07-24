@@ -27,11 +27,11 @@
 }
 
 .contacts__detail dt {
-    font-family: var(--mono);
+    font-family: var(--sans);
     font-size: 0.7rem;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: var(--ink-45);
+    color: var(--ink-35);
     padding-top: 0.2rem;
 }
 
@@ -54,10 +54,10 @@
     gap: 0.45rem;
     padding: 0.5rem 0.85rem;
     border: 1px solid var(--rule);
-    font-family: var(--mono);
+    font-family: var(--sans);
     font-size: 0.72rem;
     letter-spacing: 0.06em;
-    color: var(--ink-70);
+    color: var(--ink-60);
     transition: border-color 0.25s var(--ease), color 0.25s var(--ease);
 }
 
@@ -68,7 +68,7 @@
 
 .contacts__social svg:last-child {
     font-size: 0.85em;
-    color: var(--ink-45);
+    color: var(--ink-35);
 }
 
 /* ---- Form -------------------------------------------------------------- */
@@ -86,11 +86,11 @@
 }
 
 .field label {
-    font-family: var(--mono);
+    font-family: var(--sans);
     font-size: 0.7rem;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: var(--ink-45);
+    color: var(--ink-35);
 }
 
 .field input,
@@ -108,7 +108,7 @@
 
 .field input::placeholder,
 .field textarea::placeholder {
-    color: var(--ink-45);
+    color: var(--ink-35);
 }
 
 .field input:focus,

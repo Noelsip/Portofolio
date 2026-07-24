@@ -1,15 +1,17 @@
 export const aboutData = {
-  title: 'Tentang',
+  title: 'Tentang Saya',
 
+  // Dua paragraf pertama adalah tulisan asli, disesuaikan dari "sedang
+  // belajar" ke peran yang sekarang. Paragraf ketiga menambahkan bagian
+  // Twenti Studio yang belum pernah masuk ke portofolio.
   paragraphs: [
-    'Saya Noel, mahasiswa Informatika Institut Teknologi Kalimantan angkatan 2023. Di Twenti Studio saya bekerja sebagai Product Manager sekaligus Quality Assurance. Dua peran itu saling mengunci: saya yang memutuskan apa yang dibangun dan bagaimana alurnya, lalu saya juga yang menguji apakah hasilnya benar-benar sesuai.',
+    'Saya Noel Sipayung, mahasiswa Informatika di Institut Teknologi Kalimantan. Saat ini saya memegang product management, quality assurance, analisis kebutuhan, dan dokumentasi produk digital di Twenti Studio.',
 
-    'Healthify, FiNot, dan Well Track saya bangun dari nol. Games Twenti dan MiTa saya kelola pengembangannya. Untuk proyek klien saya berdiri di sisi pengujian, memastikan Simaggot Balkot, KlirLogistik, dan situs BEM FSTI ITK berjalan sesuai yang dijanjikan sebelum diserahkan.',
+    'Lewat proyek kuliah, organisasi, dan pekerjaan di studio, saya terbiasa menyusun requirement, memetakan user flow, menentukan prioritas fitur, serta menjalankan pengujian fungsional. Pengalaman sebagai ketua di beberapa organisasi dan kepanitiaan juga membentuk cara saya berkomunikasi, mengoordinasi tim, dan menangani stakeholder.',
 
-    'Di kampus saya mengajar. Dua tahun sebagai asisten praktikum dan asisten dosen membuat saya terbiasa memecah hal rumit jadi langkah yang bisa diikuti orang lain, dan menilai hasil kerja dengan kriteria yang jelas. Kebiasaan itu yang saya pakai waktu menulis requirement dan test case.',
+    'Healthify, FiNot, dan Well Track saya bangun dari nol. Games Twenti dan MiTa saya kelola pengembangannya. Simaggot Balkot, KlirLogistik, dan situs BEM FSTI ITK lewat pengujian saya sebelum diserahkan ke klien.',
   ],
 
-  // Short facts rendered as a mono list beside the prose.
   facts: [
     { label: 'Peran', value: 'Product Manager & QA' },
     { label: 'Studio', value: 'Twenti Studio' },

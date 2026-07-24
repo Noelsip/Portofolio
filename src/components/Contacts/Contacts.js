@@ -6,7 +6,8 @@ import { FiArrowUpRight } from 'react-icons/fi';
 
 import { contactsData } from '../../data/contactsData';
 import { socialsData } from '../../data/socialsData';
-import Reveal from '../Reveal/Reveal';
+import ScrambleText from '../Motion/ScrambleText';
+import Wipe from '../Motion/Wipe';
 import './Contacts.css';
 
 const socials = [
@@ -61,13 +62,16 @@ function Contacts() {
     return (
         <section className='section contacts' id='contacts'>
             <div className='shell'>
-                <Reveal as='div' className='section-head'>
-                    <span className='section-head__index'>06</span>
-                    <h2 className='section-head__title'>Kontak</h2>
-                </Reveal>
+                <div className='section-head'>
+                    <ScrambleText
+                        as='h2'
+                        text='kontak'
+                        className='section-head__title'
+                    />
+                </div>
 
                 <div className='contacts__grid'>
-                    <Reveal className='contacts__intro'>
+                    <Wipe className='contacts__intro'>
                         <p className='contacts__lede'>
                             Terbuka untuk peran product management, quality
                             assurance, dan software engineering, baik magang,
@@ -120,13 +124,13 @@ function Contacts() {
                                     </a>
                                 ))}
                         </div>
-                    </Reveal>
+                    </Wipe>
 
-                    <Reveal
+                    <Wipe
                         as='form'
                         className='contacts__form'
                         onSubmit={handleSubmit}
-                        delay={100}
+                        delay={0.12}
                     >
                         <div className='field'>
                             <label htmlFor='contact-name'>Nama</label>
@@ -180,7 +184,7 @@ function Contacts() {
                                 {status.text}
                             </p>
                         )}
-                    </Reveal>
+                    </Wipe>
                 </div>
             </div>
         </section>

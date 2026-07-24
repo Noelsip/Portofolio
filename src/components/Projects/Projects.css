@@ -1,19 +1,17 @@
 .projects__lede {
-    max-width: 62ch;
-    margin: -1.75rem 0 3rem;
+    max-width: 56ch;
+    margin: -2rem 0 4rem;
     font-size: 1.0625rem;
-    line-height: 1.75;
-    color: var(--ink-70);
+    line-height: 1.7;
+    color: var(--ink-60);
 }
 
 .projects__grid {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 3.5rem 2.5rem;
+    gap: 5rem 3rem;
 }
 
-/* The reveal wrapper sits between the grid and the card, so it has to pass
-   the row height through or cards in a row stop lining up. */
 .projects__cell {
     display: flex;
 }
@@ -23,74 +21,74 @@
 .project {
     display: flex;
     flex-direction: column;
-    height: 100%;
+    width: 100%;
+    transform-style: preserve-3d;
+    will-change: transform;
 }
 
 .project__media {
     position: relative;
-    aspect-ratio: 4 / 3;
+    aspect-ratio: 5 / 4;
     overflow: hidden;
     background: var(--paper-2);
-    border: 1px solid var(--rule);
 }
 
 .project__media img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    /* Screenshots are mostly tall app captures — anchoring to the top keeps
-       the header and first screenful visible instead of the middle. */
+    /* Most captures are tall app screenshots; anchoring high keeps the
+       header visible instead of a slice of the middle. */
     object-position: top center;
     display: block;
-    transition: transform 0.7s var(--ease);
+    /* Oversized so the parallax drift never exposes an edge. */
+    scale: 1.09;
 }
 
-.project:hover .project__media img {
-    transform: scale(1.03);
+.project__media--contain {
+    background: var(--ink);
 }
 
-/* Client marks come in as small logos; contain them instead of upscaling. */
 .project__media--contain img {
     object-fit: contain;
     object-position: center;
-    padding: 3rem;
-    transform: none;
-}
-
-.project:hover .project__media--contain img {
-    transform: none;
+    padding: 3.5rem;
+    scale: 1;
 }
 
 .project__media--empty {
     display: grid;
     place-items: center;
-    padding: 1.5rem;
+    padding: 2rem;
+    background: var(--ink);
 }
 
 .project__mediaMark {
     font-family: var(--display);
-    font-size: clamp(1.6rem, 3.2vw, 2.4rem);
-    line-height: 1.15;
+    font-weight: 700;
+    font-size: clamp(1.5rem, 3vw, 2.3rem);
+    line-height: 1.05;
+    letter-spacing: -0.04em;
     text-align: center;
-    color: var(--ink-45);
-    letter-spacing: -0.02em;
+    text-transform: lowercase;
+    color: var(--paper);
 }
 
 .project__role,
 .project__status {
     position: absolute;
     top: 0;
-    font-family: var(--mono);
-    font-size: 0.66rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    padding: 0.4rem 0.7rem;
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    padding: 0.5rem 0.85rem;
+    transform: translateZ(40px);
 }
 
 .project__role {
     left: 0;
-    background: var(--ink);
-    color: var(--paper);
+    background: var(--paper);
+    color: var(--ink);
 }
 
 .project__status {
@@ -101,106 +99,101 @@
 
 /* ---- Body -------------------------------------------------------------- */
 
+/* The title block steps out over the image edge so the card reads as two
+   overlapping planes instead of a stack of even rows. */
 .project__body {
     display: flex;
     flex-direction: column;
     flex: 1;
-    padding-top: 1.4rem;
-}
-
-.project__context {
-    font-family: var(--mono);
-    font-size: 0.7rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--ink-45);
+    margin: -2.25rem 0 0 -1.5rem;
+    padding: 1.75rem 1.75rem 0 0;
+    background: var(--paper);
+    transform: translateZ(55px);
 }
 
 .project__name {
-    margin-top: 0.5rem;
     font-family: var(--display);
-    font-weight: 400;
-    font-size: clamp(1.5rem, 2.6vw, 1.95rem);
-    line-height: 1.15;
-    letter-spacing: -0.015em;
+    font-weight: 700;
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    line-height: 1.02;
+    letter-spacing: -0.04em;
+    text-transform: lowercase;
 }
 
 .project__kind {
-    margin-top: 0.2rem;
-    font-size: 0.88rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.6rem;
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    font-weight: 500;
     color: var(--accent);
+}
+
+.project__context {
+    font-size: 0.78rem;
+    font-weight: 400;
+    color: var(--ink-35);
+}
+
+.project__context::before {
+    content: '/ ';
 }
 
 .project__desc {
     margin-top: 1rem;
-    font-size: 0.95rem;
+    font-size: 0.94rem;
     line-height: 1.7;
-    color: var(--ink-70);
-}
-
-.project__contribution {
-    margin-top: 1rem;
-    padding-left: 1rem;
-    border-left: 1px solid var(--rule);
-    font-size: 0.9rem;
-    line-height: 1.65;
-    color: var(--ink-70);
-}
-
-.project__contribution span {
-    display: block;
-    font-family: var(--mono);
-    font-size: 0.66rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--ink-45);
-    margin-bottom: 0.3rem;
+    color: var(--ink-60);
 }
 
 .project__tags {
     list-style: none;
     padding: 0;
-    margin: 1.25rem 0 0;
+    margin: 1.5rem 0 0;
     display: flex;
     flex-wrap: wrap;
     gap: 0.4rem;
 }
 
 .project__tags li {
-    font-family: var(--mono);
-    font-size: 0.66rem;
-    letter-spacing: 0.06em;
-    padding: 0.3rem 0.55rem;
-    border: 1px solid var(--rule);
-    color: var(--ink-70);
+    font-size: 0.68rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    padding: 0.35rem 0.7rem;
+    background: var(--paper-2);
+    color: var(--ink-60);
 }
 
 .project__links {
     display: flex;
-    gap: 1.5rem;
+    gap: 1.75rem;
     margin-top: auto;
-    padding-top: 1.4rem;
+    padding-top: 1.75rem;
 }
 
 .project__link {
     display: inline-flex;
     align-items: center;
     gap: 0.35rem;
-    font-family: var(--mono);
-    font-size: 0.72rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
+    font-size: 0.8rem;
+    font-weight: 600;
 }
 
-@media (max-width: 860px) {
+@media (max-width: 900px) {
     .projects__grid {
         grid-template-columns: 1fr;
-        gap: 3rem;
+        gap: 3.5rem;
     }
     .projects__lede {
-        margin-bottom: 2.5rem;
+        margin: -1rem 0 2.5rem;
     }
     .project__media--contain img {
-        padding: 2rem;
+        padding: 2.25rem;
+    }
+    .project__body {
+        margin-left: -1rem;
+        padding-right: 1rem;
     }
 }
