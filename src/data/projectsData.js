@@ -8,6 +8,7 @@ import klirlogistik from '../assets/png/products/klirlogistik.png'
 import bemfsti from '../assets/png/products/bemfsti.png'
 import twentiLogo from '../assets/png/products/twenti-logo.png'
 import pjli from '../assets/png/products/pjli.png'
+import meracikopi from '../assets/png/products/meracikopi.png'
 
 // Deskripsi proyek lama tetap memakai tulisan asli dari versi sebelumnya.
 // Yang baru hanya produk Twenti Studio yang belum pernah dimasukkan.
@@ -175,6 +176,23 @@ export const projectsData = [
         status: null,
     },
     {
+        id: 'meracikopi',
+        name: 'Webstore Meracikopi',
+        kind: 'E-commerce',
+        context: 'Meracikopi',
+        role: 'Developer',
+        scope: null,
+        desc: 'Menyusun kebutuhan toko online dan alur pembelian produk kopi, mulai dari katalog, informasi produk, hingga proses transaksi.',
+        tags: ['E-commerce Flow', 'Requirement Analysis', 'Figma'],
+        // Simpan screenshot ke src/assets/png/products/meracikopi.png, lalu
+        // tambahkan importnya di atas dan ganti null di bawah dengan
+        // `meracikopi`. Kartu ini sudah siap menerimanya.
+        image: meracikopi,
+        demo: 'https://www.figma.com/proto/msW4sM7Wy8ClgUjETBzxmb/Meracikopi?node-id=1-2',
+        code: 'https://github.com/Noelsip/e-commerce-meracikopi',
+        status: null,
+    },
+    {
         id: 'apotek',
         name: 'Aplikasi Apotek',
         kind: 'Sistem Manajemen Apotek',
@@ -188,21 +206,5 @@ export const projectsData = [
         code: 'https://github.com/Noelsip/Apotek-App',
         status: null,
     },
-    {
-        id: 'meracikopi',
-        name: 'Webstore Meracikopi',
-        kind: 'E-commerce',
-        context: 'Meracikopi',
-        role: 'Developer',
-        scope: null,
-        desc: 'Menyusun kebutuhan toko online dan alur pembelian produk kopi, mulai dari katalog, informasi produk, hingga proses transaksi.',
-        tags: ['E-commerce Flow', 'Requirement Analysis', 'Figma'],
-        // Simpan screenshot ke src/assets/png/products/meracikopi.png, lalu
-        // tambahkan importnya di atas dan ganti null di bawah dengan
-        // `meracikopi`. Kartu ini sudah siap menerimanya.
-        image: null,
-        demo: 'https://www.figma.com/proto/msW4sM7Wy8ClgUjETBzxmb/Meracikopi?node-id=1-2',
-        code: 'https://github.com/Noelsip/e-commerce-meracikopi',
-        status: null,
-    },
+    
 ]
