@@ -3,18 +3,21 @@
 export const workData = [
     {
         id: 1,
-        role: 'Product Manager & Quality Assurance',
+        // Jabatan dan tanggal mengikuti CV.
+        role: 'Founder & Product Development',
         company: 'Twenti Studio',
         companyUrl: 'https://twenti.studio',
         location: 'Balikpapan',
-        startYear: '2025',
+        startYear: 'Januari 2026',
         endYear: 'Sekarang',
         summary:
-            'Memegang lini produk internal studio sekaligus pengujian proyek klien.',
+            'Memimpin kegiatan pengembangan dan validasi produk internal studio, sekaligus pengujian proyek klien.',
         points: [
-            'Membangun Healthify, FiNot, dan Well Track dari perencanaan sampai rilis: menentukan masalah yang dipecahkan, menyusun alur pengguna, dan menetapkan cakupan tiap versi.',
-            'Mengelola pengembangan Games Twenti dan MiTa, termasuk prioritas fitur dan penerjemahan kebutuhan produk ke tim pengembang.',
-            'Menguji proyek klien Simaggot Balkot, KlirLogistik, dan BEM FSTI ITK: menyusun skenario uji, melaporkan temuan, dan memverifikasi perbaikan sebelum serah terima.',
+            'Memimpin pengembangan dan validasi di seluruh produk studio: Healthify, FiNot, Well Track, Games Twenti, dan MiTa.',
+            'Mengoordinasi perencanaan produk, implementasi, dan proses pengembangan.',
+            'Memverifikasi alur pengguna dan kebutuhan bisnis sebelum tiap fitur dirilis.',
+            'Mengidentifikasi masalah usability dan peluang perbaikan produk.',
+            'Menguji proyek klien Simaggot Balkot, KlirLogistik, dan BEM FSTI ITK sebelum serah terima.',
         ],
         certificate: null,
     },

@@ -46,7 +46,7 @@
 }
 
 .project__media--contain {
-    background: var(--ink);
+    background: var(--paper-2);
 }
 
 .project__media--contain img {
@@ -60,7 +60,8 @@
     display: grid;
     place-items: center;
     padding: 2rem;
-    background: var(--ink);
+    background: var(--paper-2);
+    border: 1px solid var(--rule);
 }
 
 .project__mediaMark {
@@ -71,7 +72,7 @@
     letter-spacing: -0.04em;
     text-align: center;
     text-transform: lowercase;
-    color: var(--paper);
+    color: var(--ink-35);
 }
 
 .project__role,
@@ -87,8 +88,8 @@
 
 .project__role {
     left: 0;
-    background: var(--paper);
-    color: var(--ink);
+    background: var(--ink);
+    color: var(--paper);
 }
 
 .project__status {

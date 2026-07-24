@@ -1,11 +1,10 @@
 import { useEffect, useState } from 'react';
-import { AnimatePresence, motion } from 'motion/react';
+import { motion } from 'motion/react';
 import { FaGithub, FaInstagram, FaLinkedinIn, FaYoutube } from 'react-icons/fa';
 import { NavHashLink as NavLink } from 'react-router-hash-link';
 
 import { headerData } from '../../data/headerData';
 import { socialsData } from '../../data/socialsData';
-import { projectsData } from '../../data/projectsData';
 import './Landing.css';
 
 const socials = [
@@ -14,9 +13,6 @@ const socials = [
     { key: 'instagram', href: socialsData.instagram, Icon: FaInstagram, label: 'Instagram' },
     { key: 'youtube', href: socialsData.youtube, Icon: FaYoutube, label: 'YouTube' },
 ];
-
-const count = (predicate) => projectsData.filter(predicate).length;
-const pad = (n) => String(n).padStart(2, '0');
 
 const scrollWithOffset = (el) => {
     const y = el.getBoundingClientRect().top + window.pageYOffset - 84;
@@ -28,7 +24,6 @@ const EASE = [0.22, 0.61, 0.36, 1];
 function Landing() {
     const [roleIndex, setRoleIndex] = useState(0);
     const roles = headerData.roles;
-    const words = headerData.name.split(' ');
 
     useEffect(() => {
         if (roles.length < 2) return undefined;
@@ -39,148 +34,105 @@ function Landing() {
         return () => clearInterval(id);
     }, [roles.length]);
 
-    const stats = [
-        {
-            value: pad(
-                count(
-                    (p) =>
-                        p.role === 'Dibangun sendiri' &&
-                        p.context === 'Twenti Studio'
-                )
-            ),
-            label: 'Produk dibangun',
-        },
-        {
-            value: pad(count((p) => p.role === 'Dikelola')),
-            label: 'Produk dikelola',
-        },
-        {
-            value: pad(count((p) => p.role === 'Diuji')),
-            label: 'Sistem klien diuji',
-        },
-    ];
-
     return (
         <section className='landing' id='top'>
             <div className='shell landing__inner'>
-                <motion.p
-                    className='eyebrow landing__eyebrow'
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ duration: 0.6, delay: 0.15 }}
-                >
-                    {headerData.location}
-                </motion.p>
-
-                {/* Each word sits in its own overflow-hidden line so it can
-                    rise from behind a hard edge instead of just fading. */}
+                {/* The name spans the full measure so it lands in two lines
+                    instead of stacking into a narrow column. */}
                 <h1 className='landing__name'>
-                    {words.map((word, i) => (
-                        <span className='landing__wordMask' key={word + i}>
+                    {headerData.nameLines.map((line, i) => (
+                        <span className='landing__lineMask' key={line}>
                             <motion.span
-                                className='landing__word'
+                                className='landing__line'
                                 initial={{ y: '110%' }}
                                 animate={{ y: '0%' }}
                                 transition={{
-                                    duration: 0.9,
-                                    delay: 0.2 + i * 0.08,
+                                    duration: 0.95,
+                                    delay: 0.12 + i * 0.1,
                                     ease: EASE,
                                 }}
                             >
-                                {word}
+                                {line}
                             </motion.span>
                         </span>
                     ))}
                 </h1>
 
-                <motion.div
-                    className='landing__roles'
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ duration: 0.5, delay: 0.6 }}
-                >
-                    <span className='landing__rolesRule' aria-hidden='true' />
-                    <span
-                        className='landing__rolesTrack'
-                        aria-label={headerData.title}
+                <div className='landing__meta'>
+                    <motion.div
+                        className='landing__metaLeft'
+                        initial={{ opacity: 0, y: 18 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.7, delay: 0.5, ease: EASE }}
                     >
-                        <AnimatePresence mode='wait'>
-                            <motion.span
-                                key={roles[roleIndex]}
-                                className='landing__role'
-                                initial={{ y: '100%', opacity: 0 }}
-                                animate={{ y: '0%', opacity: 1 }}
-                                exit={{ y: '-100%', opacity: 0 }}
-                                transition={{ duration: 0.45, ease: EASE }}
+                        <p className='landing__desc'>{headerData.description}</p>
+
+                        <div className='landing__actions'>
+                            <NavLink
+                                to='/#projects'
+                                scroll={scrollWithOffset}
+                                className='btn btn--solid'
                             >
-                                {roles[roleIndex]}
-                            </motion.span>
-                        </AnimatePresence>
-                    </span>
-                </motion.div>
+                                Lihat proyek
+                            </NavLink>
+                            <a
+                                className='btn btn--ghost'
+                                href={headerData.resumePdf}
+                                target='_blank'
+                                rel='noreferrer'
+                            >
+                                Unduh CV
+                            </a>
 
-                <motion.p
-                    className='landing__desc'
-                    initial={{ opacity: 0, y: 16 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.7, delay: 0.68, ease: EASE }}
-                >
-                    {headerData.description}
-                </motion.p>
-
-                <motion.div
-                    className='landing__actions'
-                    initial={{ opacity: 0, y: 16 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.7, delay: 0.78, ease: EASE }}
-                >
-                    <NavLink
-                        to='/#projects'
-                        scroll={scrollWithOffset}
-                        className='btn btn--solid'
-                    >
-                        Lihat proyek
-                    </NavLink>
-                    <a
-                        className='btn btn--ghost'
-                        href={headerData.resumePdf}
-                        target='_blank'
-                        rel='noreferrer'
-                    >
-                        Unduh CV
-                    </a>
-
-                    <div className='landing__socials'>
-                        {socials
-                            .filter((s) => s.href)
-                            .map(({ key, href, Icon, label }) => (
-                                <a
-                                    key={key}
-                                    href={href}
-                                    target='_blank'
-                                    rel='noreferrer'
-                                    aria-label={label}
-                                    className='landing__social'
-                                >
-                                    <Icon />
-                                </a>
-                            ))}
-                    </div>
-                </motion.div>
-
-                <motion.dl
-                    className='landing__stats'
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ duration: 0.7, delay: 0.9 }}
-                >
-                    {stats.map((stat) => (
-                        <div className='landing__stat' key={stat.label}>
-                            <dt className='landing__statValue'>{stat.value}</dt>
-                            <dd className='landing__statLabel'>{stat.label}</dd>
+                            <div className='landing__socials'>
+                                {socials
+                                    .filter((s) => s.href)
+                                    .map(({ key, href, Icon, label }) => (
+                                        <a
+                                            key={key}
+                                            href={href}
+                                            target='_blank'
+                                            rel='noreferrer'
+                                            aria-label={label}
+                                            className='landing__social'
+                                        >
+                                            <Icon />
+                                        </a>
+                                    ))}
+                            </div>
                         </div>
-                    ))}
-                </motion.dl>
+                    </motion.div>
+
+                    <motion.div
+                        className='landing__metaRight'
+                        initial={{ opacity: 0, y: 18 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.7, delay: 0.62, ease: EASE }}
+                    >
+                        {/* All three roles stay listed; the cycle only moves
+                            the highlight, so the column never sits empty. */}
+                        <ul className='landing__roles'>
+                            {roles.map((role, i) => (
+                                <li
+                                    key={role}
+                                    className={`landing__role ${
+                                        i === roleIndex ? 'is-active' : ''
+                                    }`}
+                                >
+                                    <span
+                                        className='landing__roleBar'
+                                        aria-hidden='true'
+                                    />
+                                    {role}
+                                </li>
+                            ))}
+                        </ul>
+
+                        <p className='landing__location'>
+                            {headerData.location}
+                        </p>
+                    </motion.div>
+                </div>
             </div>
         </section>
     );

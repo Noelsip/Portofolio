@@ -1,49 +1,41 @@
-// Grouped by what the work actually is, not by logo availability. A PM/QA
-// reads better as a set of practices than as a wall of framework icons.
+// Disamakan dengan Skills dan Tools yang tertulis di CV, supaya situs dan CV
+// tidak saling bertentangan waktu dibaca berdampingan oleh perekrut.
 export const skillsData = [
     {
         id: 1,
         group: 'Product',
         items: [
-            'Product discovery',
-            'Requirement & PRD',
-            'User flow & wireframe',
-            'Prioritas fitur & roadmap',
-            'Backlog grooming',
+            'Product Management',
+            'User flow design',
+            'Requirements Validation',
         ],
     },
     {
         id: 2,
         group: 'Quality Assurance',
         items: [
-            'Test case & skenario uji',
-            'Functional testing',
-            'Regression testing',
-            'Bug reporting & triage',
-            'User acceptance testing',
+            'Software Testing',
+            'Functional Testing',
+            'API Testing',
         ],
     },
     {
         id: 3,
-        group: 'Engineering',
+        group: 'Teknis',
         items: [
+            'REST API',
             'Python',
             'Java',
-            'JavaScript',
-            'MySQL & PostgreSQL',
-            'Firebase',
-            'Git',
         ],
     },
     {
         id: 4,
-        group: 'Kolaborasi',
+        group: 'Tools',
         items: [
-            'Figma',
+            'Postman',
+            'GitHub',
             'Notion',
-            'Google Workspace',
-            'Markdown',
-            'Stakeholder communication',
+            'Trello',
         ],
     },
 ]

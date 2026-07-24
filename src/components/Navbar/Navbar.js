@@ -6,7 +6,7 @@ import './Navbar.css';
 
 const navItems = [
     { label: 'Tentang', to: '/#about' },
-    { label: 'Pengalaman', to: '/#work' },
+    { label: 'Pengalaman', to: '/#experience' },
     { label: 'Proyek', to: '/#projects' },
     { label: 'Kontak', to: '/#contacts' },
 ];
