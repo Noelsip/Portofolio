@@ -1,95 +1,49 @@
- export const skillsData = [
-    'Microsoft Office',
-    'Figma',
-    'Markdown',
-    // 'Selenium',
-    'Git',
-    'MySQL',
-    'PostgreSQL',
-    'Firebase',
-    'Canva',
-    'HTML',
-    'CSS',
-    'Javascript'
+// Grouped by what the work actually is, not by logo availability. A PM/QA
+// reads better as a set of practices than as a wall of framework icons.
+export const skillsData = [
+    {
+        id: 1,
+        group: 'Product',
+        items: [
+            'Product discovery',
+            'Requirement & PRD',
+            'User flow & wireframe',
+            'Prioritas fitur & roadmap',
+            'Backlog grooming',
+        ],
+    },
+    {
+        id: 2,
+        group: 'Quality Assurance',
+        items: [
+            'Test case & skenario uji',
+            'Functional testing',
+            'Regression testing',
+            'Bug reporting & triage',
+            'User acceptance testing',
+        ],
+    },
+    {
+        id: 3,
+        group: 'Engineering',
+        items: [
+            'Python',
+            'Java',
+            'JavaScript',
+            'MySQL & PostgreSQL',
+            'Firebase',
+            'Git',
+        ],
+    },
+    {
+        id: 4,
+        group: 'Kolaborasi',
+        items: [
+            'Figma',
+            'Notion',
+            'Google Workspace',
+            'Markdown',
+            'Stakeholder communication',
+        ],
+    },
 ]
-
-/* 
-    HTML
-    CSS
-    JS 
-    React
-    Next JS
-    Nuxt JS
-    Node JS
-    Vue
-    Angular
-    Docker
-    Photoshop
-    Illustrator
-    Svelte
-    GCP
-    Azure
-    Fastify
-    Haxe
-    Ionic
-    Markdown
-    Microsoft Office
-    Picsart
-    Sketch
-    Unity
-    WolframAlpha
-    Adobe XD
-    After Effects
-    Bootstrap
-    Bulma
-    CapacitorJs
-    Coffeescript
-    MemSQL
-    C
-    C++
-    C#
-    Python
-    Java
-    Julia
-    Matlab
-    Swift
-    Ruby
-    Kotlin
-    Go
-    PHP
-    Flutter
-    Dart
-    Typescript
-    Swift
-    Git
-    Figma
-    Canva
-    Ubuntu
-    Bootstrap
-    MongoDB
-    Tailwind
-    ViteJS
-    VuetifyJS
-    MySQL
-    PostgreSQL
-    AWS
-    Firebase
-    Blender
-    Premiere Pro
-    Adobe Audition
-    Deno
-    Django
-    Gimp
-    Graphql
-    Lightroom
-    MaterialUI
-    Nginx
-    Numpy
-    OpenCV
-    Pytorch
-    Selenium
-    Strapi
-    Tensorflow
-    Webex
-    Wordpress
-*/

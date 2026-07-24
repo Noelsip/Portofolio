@@ -1,88 +1,43 @@
-import React,{ useContext} from 'react';
-import { Link } from 'react-router-dom'
-import { makeStyles } from '@material-ui/core/styles';
-
-import { ThemeContext } from '../../contexts/ThemeContext';
-import { projectsData } from '../../data/projectsData'
-import { HiArrowRight } from "react-icons/hi";
-
-import './Projects.css'
-import SingleProject from './SingleProject/SingleProject';
+import { projectsData } from '../../data/projectsData';
+import Reveal from '../Reveal/Reveal';
+import ProjectCard from './ProjectCard';
+import './Projects.css';
 
 function Projects() {
-
-    const { theme } = useContext(ThemeContext);
-
-    
-    const useStyles = makeStyles(() => ({
-        viewAllBtn : {
-            color: theme.tertiary, 
-            backgroundColor: theme.primary,
-            transition: 'color 0.2s',
-            "&:hover": {
-                color: theme.secondary, 
-                backgroundColor: theme.primary,
-            }
-        },
-        viewArr : {
-            color: theme.tertiary, 
-            backgroundColor: theme.secondary70,
-            width: '40px',
-            height: '40px',
-            padding: '0.5rem',
-            fontSize: '1.05rem',
-            borderRadius: '50%',
-            cursor: 'pointer',
-            transition: 'background-color 0.2s',
-            "&:hover": {
-                color: theme.tertiary, 
-                backgroundColor: theme.secondary,
-            }
-        },
-    }));
-
-    const classes = useStyles();
+    if (!projectsData.length) return null;
 
     return (
-        <>
-            {projectsData.length > 0 && (
-                <div className="projects" id="projects" style={{backgroundColor: theme.secondary}}>
-                    <div className="projects--header">
-                        <h1 style={{color: theme.primary}}>Projects</h1>
-                    </div>
-                    <div className="projects--body">
-                        <div className="projects--bodyContainer">
-                            {projectsData.slice(0, 3).map(project => (
-                                <SingleProject
-                                    theme={theme}
-                                    key={project.id}
-                                    id={project.id}
-                                    name={project.projectName}
-                                    desc={project.projectDesc}
-                                    tags={project.tags}
-                                    code={project.code}
-                                    demo={project.demo}
-                                    image={project.image}
-                                />
-                            ))}
-                        </div> 
+        <section className='section projects' id='projects'>
+            <div className='shell'>
+                <Reveal as='div' className='section-head'>
+                    <span className='section-head__index'>04</span>
+                    <h2 className='section-head__title'>Proyek</h2>
+                    <span className='section-head__note'>
+                        {projectsData.length} proyek
+                    </span>
+                </Reveal>
 
-                        {projectsData.length > 3 && (
-                            <div className="projects--viewAll">
-                                <Link to="/projects">
-                                    <button className={classes.viewAllBtn}>
-                                        View All
-                                        <HiArrowRight className={classes.viewArr} />
-                                    </button>
-                                </Link>
-                            </div>
-                        )}
-                    </div>
+                <Reveal as='p' className='projects__lede'>
+                    Produk yang saya bangun dan kelola di Twenti Studio, sistem
+                    klien yang saya uji sebelum serah terima, serta proyek kuliah
+                    dan mandiri yang jadi dasarnya. Label di tiap kartu menandai
+                    apa yang benar-benar saya kerjakan di sana.
+                </Reveal>
+
+                <div className='projects__grid'>
+                    {projectsData.map((project, i) => (
+                        <Reveal
+                            key={project.id}
+                            className='projects__cell'
+                            delay={(i % 2) * 90}
+                        >
+                            <ProjectCard project={project} />
+                        </Reveal>
+                    ))}
                 </div>
-            )}
-
-        </>
-    )
+            </div>
+        </section>
+    );
 }
 
-export default Projects
+export default Projects;

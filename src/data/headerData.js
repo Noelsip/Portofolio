@@ -2,9 +2,15 @@ import resume from '../assets/pdf/Resume_noel.pdf'
 
 export const headerData = {
     name: 'Noel Ericson Rapael Sipayung',
-    title: "Informatics Student | Product Management & QA Learner",
-    desciption: "Mahasiswa Informatika di Institut Teknologi Kalimantan yang sedang mendalami product management, quality assurance, analisis sistem, dan pengelolaan produk digital. Saya tertarik memahami kebutuhan pengguna, menyusun alur produk, membuat dokumentasi, dan mempelajari proses pengujian agar produk lebih rapi dan mudah digunakan.",
-    image: null,
+    shortName: 'Noel Sipayung',
+    role: 'Product Manager, QA & Software Engineer',
+
+    // Rotates under the name in the hero.
+    roles: ['Product Manager', 'Quality Assurance', 'Software Engineer'],
+
+    description:
+        'Saya memegang produk di Twenti Studio, dari menentukan apa yang dibangun sampai menguji hasilnya sebelum sampai ke pengguna. Tiga produk saya bangun sendiri, dua saya kelola, dan tiga sistem klien lewat pengujian saya sebelum rilis.',
+
+    location: 'Balikpapan, Indonesia',
     resumePdf: resume,
-    resumeVersion: Date.now()
 }

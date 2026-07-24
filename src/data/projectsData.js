@@ -1,76 +1,227 @@
-import two from '../assets/svg/projects/two.svg'
+import healthify from '../assets/png/products/healti.png'
+import finot from '../assets/png/products/FiNot.png'
+import welltrack from '../assets/png/products/welltrack.png'
+import gamesTwenti from '../assets/png/products/games.png'
+import mita from '../assets/png/products/mita-test.png'
+import simaggot from '../assets/png/products/simaggot.png'
+import klirlogistik from '../assets/png/products/klirlogistik.png'
+import bemfsti from '../assets/png/products/bemfsti.png'
+
+// One list, ordered by weight. `role` is what Noel actually did on each one,
+// because "built it" and "tested it" are different claims and a recruiter
+// should never have to guess which is which.
 
 export const projectsData = [
     {
-        id: 1,
-        projectName: 'Twenti Studio',
-        projectDesc: 'Mengelola kebutuhan produk dan prioritas fitur untuk website layanan pembuatan aplikasi, dengan fokus pada pengalaman pengguna dan kejelasan alur layanan.',
-        tags: ['Product Planning', 'Web Product', 'Stakeholder Needs'],
-        demo: 'https://twenti.studio',
-        image: 'src/assets/png/twenti.png'
+        id: 'healthify',
+        name: 'Healthify',
+        kind: 'AI Health Hoax Detector',
+        context: 'Twenti Studio',
+        role: 'Dibangun sendiri',
+        desc: 'Asisten yang memverifikasi klaim kesehatan terhadap ribuan publikasi ilmiah, supaya pengguna bisa memisahkan informasi yang berdasar dari yang sekadar beredar di grup keluarga. Produk ini berangkat dari masalah yang nyata: hoaks kesehatan menyebar lebih cepat daripada koreksinya.',
+        contribution:
+            'Menentukan cakupan produk, menyusun alur verifikasi klaim dari input sampai hasil, dan menguji keluaran sistem terhadap klaim uji sebelum rilis.',
+        tags: ['Product Discovery', 'User Flow', 'QA'],
+        image: healthify,
+        demo: 'https://twenti.studio/produk',
+        code: null,
+        status: null,
     },
     {
-        id: 2,
-        projectName: 'Accenture Predictive Copilot ASAH Program',
-        projectDesc: 'Berperan dalam perencanaan produk, penyusunan kebutuhan, dan validasi hasil sistem prediksi kondisi sensor manufaktur pada program ASAH Dicoding x Accenture 2025.',
-        tags: ['Product Requirements', 'Quality Review', 'Data Product'],
+        id: 'finot',
+        name: 'FiNot',
+        kind: 'AI Personal Finance Assistant',
+        context: 'Twenti Studio',
+        role: 'Dibangun sendiri',
+        desc: 'Pencatat pemasukan dan pengeluaran yang dirancang supaya mencatat cukup dengan mengetik satu kalimat, bukan mengisi formulir panjang. Hambatan terbesar aplikasi keuangan bukan fiturnya, tapi rasa malas mencatat, jadi alurnya sengaja dipangkas sependek mungkin.',
+        contribution:
+            'Merancang alur pencatatan singkat, menetapkan prioritas fitur tiap versi, dan menguji akurasi pencatatan terhadap masukan bahasa bebas.',
+        tags: ['Product Requirement', 'UX Flow', 'Functional Testing'],
+        image: finot,
+        demo: 'https://twenti.studio/produk',
+        code: null,
+        status: null,
+    },
+    {
+        id: 'welltrack',
+        name: 'Well Track',
+        kind: 'AI Personal Health Assistant',
+        context: 'Twenti Studio',
+        role: 'Dibangun sendiri',
+        desc: 'Pendamping kesehatan harian yang menerima keluhan dalam bahasa sehari-hari, dengan premis bahwa mencatat kondisi tubuh harusnya semudah bercerita. Pengguna tidak perlu tahu istilah medis untuk mulai memakainya.',
+        contribution:
+            'Menyusun konsep produk dan skenario percakapan, lalu menguji respons sistem terhadap keluhan yang ditulis dengan berbagai gaya bahasa.',
+        tags: ['Product Concept', 'Scenario Design', 'QA'],
+        image: welltrack,
+        demo: 'https://twenti.studio/produk',
+        code: null,
+        status: null,
+    },
+    {
+        id: 'games-twenti',
+        name: 'Games Twenti',
+        kind: 'Digital Store',
+        context: 'Twenti Studio',
+        role: 'Dikelola',
+        desc: 'Digital store resmi Twenti untuk top-up game, voucher, e-book, dan layanan media sosial. Tantangan produknya adalah menjaga alur transaksi tetap pendek dan jelas justru ketika katalognya terus bertambah.',
+        contribution:
+            'Mengelola prioritas fitur, menjaga alur transaksi tetap sederhana seiring katalog bertambah, dan menerjemahkan kebutuhan produk ke tim pengembang.',
+        tags: ['Roadmap', 'Transaction Flow', 'Backlog'],
+        image: gamesTwenti,
+        demo: 'https://twenti.studio/produk',
+        code: null,
+        status: null,
+    },
+    {
+        id: 'mita',
+        name: 'MiTa',
+        kind: 'Micro Task Platform',
+        context: 'Twenti Studio',
+        role: 'Dikelola',
+        desc: 'Platform mikro tasking yang membagikan tugas-tugas ringkas ke pengguna dengan imbalan tertentu. Dua sisi harus dijaga sekaligus: pemberi tugas butuh hasil yang layak, pengerja butuh tugas yang sepadan dengan waktunya.',
+        contribution:
+            'Menyusun kebutuhan platform, merumuskan aturan main antara pemberi tugas dan pengerja, serta mengawal pengembangannya dari sisi produk.',
+        tags: ['Requirement', 'Product Ops'],
+        image: mita,
+        demo: 'https://twenti.studio/produk',
+        code: null,
+        status: 'Dalam pengembangan',
+    },
+    {
+        id: 'simaggot',
+        name: 'Simaggot Balkot',
+        kind: 'Waste Management System',
+        context: 'Kecamatan Balikpapan Kota',
+        role: 'Diuji',
+        desc: 'Sistem digitalisasi operasional budidaya maggot yang menyatukan pendataan lapangan, koordinasi petugas, pencatatan aset, dan tabungan sampah warga dalam satu alur. Setoran warga dihitung otomatis, jadi angka yang salah akan langsung terbawa ke saldo orang sungguhan.',
+        contribution:
+            'Menguji alur pendataan dan perhitungan setoran warga, memastikan angka yang dihitung sistem cocok dengan data lapangan, dan memverifikasi perbaikan sebelum serah terima.',
+        tags: ['Functional Testing', 'Data Validation'],
+        image: simaggot,
+        demo: 'https://twenti.studio/portofolio',
+        code: null,
+        status: null,
+    },
+    {
+        id: 'klirlogistik',
+        name: 'KlirLogistik',
+        kind: 'B2B Logistics',
+        context: 'Proyek klien',
+        role: 'Diuji',
+        desc: 'Layanan logistik dan ekspedisi B2B berbasis langganan, dirancang untuk bisnis yang mengirim rutin dan butuh alur pengiriman yang tertata, bukan sekali jalan. Karena modelnya langganan, kesalahan pada satu siklus akan berulang tiap bulan.',
+        contribution:
+            'Menguji alur langganan dan pemesanan pengiriman, menelusuri kasus tepi pada perpanjangan siklus, dan melaporkan temuan sebelum sistem dipakai klien.',
+        tags: ['Regression Testing', 'Bug Reporting'],
+        image: klirlogistik,
+        imageFit: 'contain',
+        demo: 'https://twenti.studio/portofolio',
+        code: null,
+        status: null,
+    },
+    {
+        id: 'bemfsti',
+        name: 'BEM FSTI ITK',
+        kind: 'Organization Platform',
+        context: 'BEM FSTI ITK',
+        role: 'Diuji',
+        desc: 'Platform resmi BEM FSTI ITK yang menyatukan agenda kegiatan, program kerja, dokumentasi, dan kanal aspirasi mahasiswa dalam satu situs, sehingga mahasiswa punya satu tempat untuk mengikuti gerakan BEM.',
+        contribution:
+            'Menguji kanal aspirasi dan modul manajemen program kerja, memastikan konten yang dipublikasikan pengurus tampil persis seperti yang dimasukkan.',
+        tags: ['UAT', 'Content QA'],
+        image: bemfsti,
+        imageFit: 'contain',
+        demo: 'https://bemfsti.org',
+        code: null,
+        status: null,
+    },
+    {
+        id: 'asah',
+        name: 'Predictive Copilot',
+        kind: 'Predictive Maintenance',
+        context: 'Capstone ASAH Dicoding × Accenture 2025',
+        role: 'Product & Validasi',
+        desc: 'Sistem prediksi kondisi sensor pada mesin manufaktur, dibangun sebagai capstone program ASAH Dicoding bersama Accenture. Nilai produknya ada pada peringatan dini: mendeteksi anomali sebelum mesin berhenti, bukan sesudahnya.',
+        contribution:
+            'Menangani perencanaan produk, penyusunan kebutuhan sistem, dan validasi hasil model terhadap data uji bersama tim.',
+        tags: ['Product Requirement', 'Data Validation', 'Python'],
+        image: null,
+        demo: null,
         code: 'https://github.com/Noelsip/Capstone-ASAH',
-        demo: 'https://github.com/Noelsip/Capstone-ASAH',
-        image: 'https://thumbs2.imgbox.com/e8/50/i9c36cO0_t.png'
+        status: null,
     },
     {
-        id: 3,
-        projectName: 'Penjaga Laut Pantai Indonesia (PJLI)',
-        projectDesc: 'Mendukung perancangan informasi, struktur konten, dan kebutuhan operasional website untuk memperkenalkan program penjagaan laut dan aktivitas organisasi.',
-        tags: ['Information Architecture', 'Content Planning', 'Web QA'],
-        demo: 'https://pjlifoundation.org',
-        image: '../assets/png/twenti.png'
+        id: 'apotek',
+        name: 'Aplikasi Apotek',
+        kind: 'Sistem Manajemen Apotek',
+        context: 'Proyek kuliah',
+        role: 'Dibangun & diuji',
+        desc: 'Sistem manajemen apotek yang menangani pencarian obat, pengecekan stok, dan informasi dokter dalam satu aplikasi desktop. Dibangun dengan Java sebagai penerapan konsep berorientasi objek pada kasus nyata.',
+        contribution:
+            'Menyusun use case, membangun sistemnya, dan menulis skenario pengujian fungsional untuk tiap alur utama.',
+        tags: ['Java', 'Use Case', 'Functional Testing'],
+        image: null,
+        demo: null,
+        code: 'https://github.com/Noelsip/Apotek-App',
+        status: null,
     },
     {
-        id: 4,
-        projectName: 'Webstore Meracikopi',
-        projectDesc: 'Menyusun kebutuhan toko online dan alur pembelian produk kopi, mulai dari katalog, informasi produk, hingga proses transaksi.',
-        tags: ['E-commerce Flow', 'Requirement Analysis', 'Figma'],
-        code: 'https://github.com/Noelsip/e-commerce-meracikopi',
-        demo: 'https://github.com/Noelsip/e-commerce-meracikopi',
-        image: 'https://thumbs2.imgbox.com/06/05/eg6dd6cK_t.png'
-    },
-    {
-        id: 5,
-        projectName: 'Aplikasi Apotek',
-        projectDesc: 'Menyusun alur penggunaan dan skenario pengujian untuk sistem manajemen apotek, mencakup pencarian obat, pengecekan stok, dan informasi dokter.',
-        tags: ['Use Case Design', 'Functional Testing', 'System Analysis'],
-        code: 'https://github.com/Noelsip/Apotek-App.git',
-        demo: 'https://github.com/Noelsip/Apotek-App.git',
-        image: 'https://thumbs2.imgbox.com/bf/7f/cIkONdrD_t.png'
-    },
-    {
-        id: 6,
-        projectName: 'Balikpapan Profile',
-        projectDesc: 'Merancang penyajian informasi website profil kota agar konten wisata, kuliner, dan budaya lebih mudah dipahami oleh pengunjung.',
-        tags: ['Content Strategy', 'User Experience', 'Web QA'],
-        code: 'https://github.com/Noelsip/Balikpapan-Profile.git',
-        demo: 'https://balikpapan-profile.vercel.app',
-        image: 'https://thumbs2.imgbox.com/13/45/ryjfnxQ9_t.png'
-    },
-    
-    {
-        id: 7,
-        projectName: 'Map Dijkstra',
-        projectDesc: 'Membuat dan memvalidasi alur visualisasi pencarian rute terpendek agar proses perhitungan dapat dipahami secara jelas oleh pengguna.',
-        tags: ['Logic Validation', 'User Flow', 'Product Demo'],
-        code: 'https://github.com/Noelsip/DjikstraMap.git',
-        demo: 'https://github.com/Noelsip/DjikstraMap.git',
-        image: two
-    },
-    {
-        id: 8,
-        projectName: 'Web Pengumpulan Tugas',
-        projectDesc: 'Menyusun alur pengumpulan tugas dan validasi integrasi penyimpanan file agar proses unggah, akses, dan pelacakan dokumen berjalan lebih rapi.',
-        tags: ['Workflow Design', 'Integration Testing', 'Google Drive'],
-        code: 'https://github.com/Noelsip/Upload-File-Web.git',
+        id: 'upload-file',
+        name: 'Web Pengumpulan Tugas',
+        kind: 'Sistem Pengumpulan Dokumen',
+        context: 'Proyek kuliah',
+        role: 'Dibangun & diuji',
+        desc: 'Alur unggah, akses, dan pelacakan dokumen tugas dengan penyimpanan yang ditangani lewat integrasi Google Drive, sehingga file tidak menumpuk di server aplikasi.',
+        contribution:
+            'Merancang alur pengumpulan dan menguji integrasi penyimpanan, termasuk kasus unggah gagal dan berkas berukuran besar.',
+        tags: ['Integration Testing', 'Google Drive API'],
+        image: null,
         demo: 'https://upload-file-azure.vercel.app',
-        image: 'https://thumbs2.imgbox.com/02/43/RarqZQaA_t.png'
+        code: 'https://github.com/Noelsip/Upload-File-Web',
+        status: null,
     },
-
+    {
+        id: 'meracikopi',
+        name: 'Webstore Meracikopi',
+        kind: 'E-commerce',
+        context: 'Proyek mandiri',
+        role: 'Dibangun sendiri',
+        desc: 'Toko online kopi yang mencakup katalog produk, halaman detail, dan alur transaksi dari keranjang sampai pembayaran. Dirancang lebih dulu di Figma sebelum dibangun.',
+        contribution:
+            'Menyusun kebutuhan toko, merancang alur pembelian, dan membangun antarmukanya.',
+        tags: ['E-commerce Flow', 'Figma', 'Web'],
+        image: null,
+        demo: null,
+        code: 'https://github.com/Noelsip/e-commerce-meracikopi',
+        status: null,
+    },
+    {
+        id: 'balikpapan',
+        name: 'Balikpapan Profile',
+        kind: 'Situs Profil Kota',
+        context: 'Proyek mandiri',
+        role: 'Dibangun sendiri',
+        desc: 'Situs profil kota yang menyajikan informasi wisata, kuliner, dan budaya Balikpapan dengan struktur konten yang bisa ditelusuri pengunjung tanpa harus tahu dulu apa yang dicari.',
+        contribution:
+            'Menyusun struktur informasi dan membangun keseluruhan situsnya.',
+        tags: ['Information Architecture', 'Web'],
+        image: null,
+        demo: 'https://balikpapan-profile.vercel.app',
+        code: 'https://github.com/Noelsip/Balikpapan-Profile',
+        status: null,
+    },
+    {
+        id: 'dijkstra',
+        name: 'Map Dijkstra',
+        kind: 'Visualisasi Algoritma',
+        context: 'Proyek kuliah',
+        role: 'Dibangun sendiri',
+        desc: 'Visualisasi pencarian rute terpendek dengan algoritma Dijkstra, dibuat supaya proses perhitungannya bisa diikuti langkah demi langkah, bukan hanya menampilkan hasil akhirnya.',
+        contribution:
+            'Membangun visualisasinya dan memvalidasi hasil perhitungan terhadap penelusuran manual.',
+        tags: ['Python', 'Algoritma', 'Logic Validation'],
+        image: null,
+        demo: null,
+        code: 'https://github.com/Noelsip/DjikstraMap',
+        status: null,
+    },
 ]

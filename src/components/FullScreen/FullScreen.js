@@ -1,26 +1,10 @@
-import React, { useContext, useEffect, useState } from "react";
-import { makeStyles } from "@material-ui/core/styles";
+import React, { useEffect, useState } from "react";
 import { MdFullscreen, MdFullscreenExit } from "react-icons/md";
-import { ThemeContext } from '../../contexts/ThemeContext';
 import './FullScreen.css';
 
 function FullScreen() {
     const [isFullScreen, setIsFullScreen] = useState(false);
     const [isSupported, setIsSupported] = useState(true);
-    const { theme } = useContext(ThemeContext);
-
-    const useStyles = makeStyles(() => ({
-        icon: {
-            fontSize: '2.5rem',
-            color: theme.tertiary,
-            transition: 'all 0.3s ease',
-            '&:hover': {
-                color: theme.primary,
-                transform: 'scale(1.1)',
-            },
-        },
-    }));
-    const classes = useStyles();
 
     // Check if fullscreen is supported
     const checkFullScreenSupport = () => {
@@ -163,11 +147,7 @@ function FullScreen() {
                 aria-label={isFullScreen ? "Keluar dari layar penuh" : "Masuk ke layar penuh"}
                 title={isFullScreen ? "Keluar dari layar penuh" : "Masuk ke layar penuh"}
             >
-                {isFullScreen ? (
-                    <MdFullscreenExit className={classes.icon} />
-                ) : (
-                    <MdFullscreen className={classes.icon} />
-                )}
+                {isFullScreen ? <MdFullscreenExit /> : <MdFullscreen />}
             </button>
         </div>
     );

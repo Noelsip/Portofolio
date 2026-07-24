@@ -1,33 +1,37 @@
-import { useContext } from 'react';
-import { ThemeContext } from '../../contexts/ThemeContext';
 import { aboutData } from '../../data/aboutData';
-import ScrollAnimation from '../ScrollAnimation/ScrollAnimation';
-
+import Reveal from '../Reveal/Reveal';
 import './About.css';
 
 function About() {
-    const { theme } = useContext(ThemeContext);
-
     return (
-        <div className="about" id="about" style={{ backgroundColor: theme.secondary }}>
-            <div className="line-styling">
-                <div className="style-circle" style={{ backgroundColor: theme.primary }}></div>
-                <div className="style-line" style={{ backgroundColor: theme.primary }}></div>
-                <div className="style-circle" style={{ backgroundColor: theme.primary }}></div>
+        <section className='section section--tint about' id='about'>
+            <div className='shell'>
+                <Reveal as='div' className='section-head'>
+                    <span className='section-head__index'>01</span>
+                    <h2 className='section-head__title'>{aboutData.title}</h2>
+                </Reveal>
+
+                <div className='about__grid'>
+                    <div className='about__prose'>
+                        {aboutData.paragraphs.map((text, i) => (
+                            <Reveal as='p' key={i} delay={i * 80}>
+                                {text}
+                            </Reveal>
+                        ))}
+                    </div>
+
+                    <Reveal as='dl' className='about__facts' delay={120}>
+                        {aboutData.facts.map((fact) => (
+                            <div className='about__fact' key={fact.label}>
+                                <dt>{fact.label}</dt>
+                                <dd>{fact.value}</dd>
+                            </div>
+                        ))}
+                    </Reveal>
+                </div>
             </div>
-            <div className="about-body about-body-no-image">
-                <ScrollAnimation
-                    initial={{ opacity: 0, y: 50 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8 }}
-                    className="about-description about-description-full"
-                >
-                    <h2 style={{ color: theme.primary }}>{aboutData.title}</h2>
-                    <p style={{ color: theme.tertiary80 }}>{aboutData.description1}<br /><br />{aboutData.description2}</p>
-                </ScrollAnimation>
-            </div>
-        </div>
-    )
+        </section>
+    );
 }
 
 export default About;

@@ -1,24 +1,36 @@
 import { Helmet } from 'react-helmet'
 
-import { About, Achievement, Contacts, Education, Experience, Footer, Landing, Navbar, Projects, Skills } from '../../components'
+import {
+    About,
+    Contacts,
+    Footer,
+    Landing,
+    Navbar,
+    Organizations,
+    Projects,
+    Skills,
+    Work,
+} from '../../components'
 import { headerData } from '../../data/headerData'
 
 function Main() {
     return (
         <div>
             <Helmet>
-                <title>{headerData.name} - Portfolio</title>
+                <title>{headerData.name} — {headerData.role}</title>
+                <meta name='description' content={headerData.description} />
             </Helmet>
 
             <Navbar />
-            <Landing />
-            <About />
-            <Education />
-            <Skills />
-            <Experience />
-            <Projects />
-            <Achievement />
-            <Contacts />
+            <main>
+                <Landing />
+                <About />
+                <Work />
+                <Organizations />
+                <Projects />
+                <Skills />
+                <Contacts />
+            </main>
             <Footer />
         </div>
     )

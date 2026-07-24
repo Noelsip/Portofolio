@@ -1,86 +1,222 @@
-.navbar {
-    height: 6.5rem;
-    position: absolute;
-    background-color: transparent;
-    z-index: 99;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.nav {
+    position: sticky;
+    top: 0;
+    z-index: 200;
     width: 100%;
+    background: var(--paper);
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.3s var(--ease), background-color 0.3s var(--ease);
 }
 
-.navbar--container {
+.nav--scrolled {
+    border-bottom-color: var(--rule);
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: saturate(180%) blur(12px);
+    -webkit-backdrop-filter: saturate(180%) blur(12px);
+}
+
+.nav__inner {
+    height: 72px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 100%;
-    padding: 0 3rem;
-    margin-top: 1rem;
+    gap: 2rem;
 }
 
-.navbar--container > h1 {
-    font-family: 'BestermindRegular';
-    color: var(--primary-2);
-    font-size: 2.5rem;
-    user-select: none;
+/* ---- Brand ------------------------------------------------------------ */
+
+.nav__brand {
+    display: flex;
+    align-items: baseline;
+    gap: 0.6rem;
+    white-space: nowrap;
 }
 
-.navLink--container {
-    margin-top: 5rem;
+.nav__brandName {
+    font-family: var(--display);
+    font-size: 1.3rem;
+    letter-spacing: -0.01em;
 }
 
-.drawer > .MuiBackdrop-root {
-    background: rgba(33, 33, 33, 0.15) !important;
-    backdrop-filter: blur(20px) !important;
+.nav__brandRole {
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-45);
 }
 
+/* ---- Desktop + tablet links ------------------------------------------ */
 
-@media (max-width:1100px) {
-    .navbar--container{
-        padding: 0 2rem;
+.nav__links {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.nav__link {
+    font-size: 0.9rem;
+    color: var(--ink-70);
+    transition: color 0.25s var(--ease);
+}
+
+.nav__link:hover {
+    color: var(--ink);
+}
+
+.nav__cv {
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.5rem 1.1rem;
+    border: 1px solid var(--ink);
+    transition: background-color 0.25s var(--ease), color 0.25s var(--ease);
+}
+
+.nav__cv:hover {
+    background: var(--ink);
+    color: var(--paper);
+}
+
+/* ---- Burger (mobile only) -------------------------------------------- */
+
+.nav__burger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 6px;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.nav__burger span {
+    display: block;
+    width: 24px;
+    height: 1.5px;
+    background: var(--ink);
+    transition: transform 0.35s var(--ease);
+}
+
+.nav__burger.is-open span:first-child {
+    transform: translateY(3.75px) rotate(45deg);
+}
+
+.nav__burger.is-open span:last-child {
+    transform: translateY(-3.75px) rotate(-45deg);
+}
+
+/* ---- Mobile panel ----------------------------------------------------- */
+
+.nav__scrim {
+    display: none;
+    position: fixed;
+    inset: 72px 0 0 0;
+    background: rgba(20, 17, 15, 0.28);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.35s var(--ease);
+}
+
+.nav__scrim.is-open {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.nav__panel {
+    display: none;
+    position: fixed;
+    top: 72px;
+    left: 0;
+    right: 0;
+    background: var(--paper);
+    border-bottom: 1px solid var(--rule);
+    padding: 1.5rem var(--gutter) 2.25rem;
+    transform: translateY(-105%);
+    transition: transform 0.45s var(--ease);
+    max-height: calc(100vh - 72px);
+    overflow-y: auto;
+}
+
+.nav__panel.is-open {
+    transform: translateY(0);
+}
+
+.nav__panelLinks {
+    display: flex;
+    flex-direction: column;
+}
+
+.nav__panelLink {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--rule);
+    font-family: var(--display);
+    font-size: 1.6rem;
+    letter-spacing: -0.01em;
+    opacity: 0;
+    transform: translateY(-8px);
+    transition: opacity 0.4s var(--ease), transform 0.4s var(--ease);
+}
+
+.nav__panel.is-open .nav__panelLink {
+    opacity: 1;
+    transform: none;
+}
+
+.nav__panelIndex {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    color: var(--accent);
+}
+
+.nav__panelCv {
+    display: inline-block;
+    margin-top: 1.75rem;
+    padding: 0.75rem 1.5rem;
+    border: 1px solid var(--ink);
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+/* The burger only appears on genuinely narrow screens. Tablets keep the
+   full bar, which the four short labels fit into comfortably. */
+@media (max-width: 860px) {
+    .nav__links {
+        display: none;
     }
-    .navbar--container > h1{
-        font-size: 2.2rem;
+    .nav__burger {
+        display: flex;
     }
-    .nav-menu{
-        font-size: 2.2rem;
-        margin-top: -1.5rem;
+    .nav__scrim,
+    .nav__panel {
+        display: block;
+    }
+    .nav__brandRole {
+        display: none;
     }
 }
 
-@media (max-width:800px) {
-    .navLink--container {
-        margin-top: 3rem;
+@media (max-width: 560px) {
+    .nav__inner {
+        height: 64px;
     }
-}
-
-
-@media (max-width:600px) {
-    .nav-menu{
-        color: var(--primary-2);
+    .nav__scrim {
+        inset: 64px 0 0 0;
     }
-    .navbar--container > h1{
-        font-size: 2rem;
+    .nav__panel {
+        top: 64px;
+        max-height: calc(100vh - 64px);
     }
-    .nav-menu:hover{
-        color: var(--primary-2);
-    }
-    .MuiDrawer-paper{
-      border-radius: 0 !important;
-    }
-}
-
-
-@media only screen and (min-device-width: 320px) and (max-device-width: 
-  480px) and (-webkit-device-pixel-ratio: 2) and (device-aspect-ratio: 2/3) {
-    .navbar {
-        height: 5rem;
-    }
-    .navbar--container {
-        padding: 0 1rem;
-        margin-top: 0rem;
-    }
-    .navbar--container > h1 {
-        font-size: 1.5rem;
+    .nav__panelLink {
+        font-size: 1.4rem;
     }
 }

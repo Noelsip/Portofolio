@@ -1,176 +1,140 @@
-import { Button } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
-import { useContext, useRef } from 'react';
+import { useEffect, useState } from 'react';
+import { FaGithub, FaInstagram, FaLinkedinIn, FaYoutube } from 'react-icons/fa';
 import { NavHashLink as NavLink } from 'react-router-hash-link';
 
-import {
-    FaGithub,
-    FaInstagram,
-    FaLinkedin,
-    FaYoutube,
-} from 'react-icons/fa';
-import { ThemeContext } from '../../contexts/ThemeContext';
 import { headerData } from '../../data/headerData';
 import { socialsData } from '../../data/socialsData';
+import { projectsData } from '../../data/projectsData';
 import './Landing.css';
 
+const socials = [
+    { key: 'linkedIn', href: socialsData.linkedIn, Icon: FaLinkedinIn, label: 'LinkedIn' },
+    { key: 'github', href: socialsData.github, Icon: FaGithub, label: 'GitHub' },
+    { key: 'instagram', href: socialsData.instagram, Icon: FaInstagram, label: 'Instagram' },
+    { key: 'youtube', href: socialsData.youtube, Icon: FaYoutube, label: 'YouTube' },
+];
+
+// Counted from the project list so the headline numbers can never drift out
+// of sync with what the page actually shows. Coursework carries the same
+// "Dibangun sendiri" label, so the product counts also filter on the studio.
+const count = (predicate) => projectsData.filter(predicate).length;
+
+const pad = (n) => String(n).padStart(2, '0');
+
+const scrollWithOffset = (el) => {
+    const y = el.getBoundingClientRect().top + window.pageYOffset - 84;
+    window.scrollTo({ top: y, behavior: 'smooth' });
+};
+
 function Landing() {
-    const { theme } = useContext(ThemeContext);
-    const landingRef = useRef(null);
+    const [roleIndex, setRoleIndex] = useState(0);
+    const roles = headerData.roles;
 
-    const useStyles = makeStyles((t) => ({
-        resumeBtn: {
-            color: theme.primary,
-            borderRadius: '30px',
-            textTransform: 'inherit',
-            textDecoration: 'none',
-            width: '150px',
-            fontSize: '1rem',
-            fontWeight: '500',
-            height: '50px',
-            fontFamily: 'var(--primaryFont)',
-            border: `3px solid ${theme.primary}`,
-            transition: '100ms ease-out',
-            '&:hover': {
-                backgroundColor: theme.tertiary,
-                color: theme.secondary,
-                border: `3px solid ${theme.tertiary}`,
-            },
-            [t.breakpoints.down('sm')]: {
-                width: '180px',
-            },
-        },
-        contactBtn: {
-            backgroundColor: theme.primary,
-            color: theme.secondary,
-            borderRadius: '30px',
-            textTransform: 'inherit',
-            textDecoration: 'none',
-            width: '150px',
-            height: '50px',
-            fontSize: '1rem',
-            fontWeight: '500',
-            fontFamily: 'var(--primaryFont)',
-            border: `3px solid ${theme.primary}`,
-            transition: '100ms ease-out',
-            '&:hover': {
-                backgroundColor: theme.secondary,
-                color: theme.tertiary,
-                border: `3px solid ${theme.tertiary}`,
-            },
-            [t.breakpoints.down('sm')]: {
-                display: 'none',
-            },
-        },
-    }));
+    useEffect(() => {
+        if (roles.length < 2) return undefined;
+        const id = setInterval(
+            () => setRoleIndex((i) => (i + 1) % roles.length),
+            2800
+        );
+        return () => clearInterval(id);
+    }, [roles.length]);
 
-    const classes = useStyles();
+    const stats = [
+        {
+            value: pad(
+                count(
+                    (p) =>
+                        p.role === 'Dibangun sendiri' &&
+                        p.context === 'Twenti Studio'
+                )
+            ),
+            label: 'Produk dibangun',
+        },
+        {
+            value: pad(count((p) => p.role === 'Dikelola')),
+            label: 'Produk dikelola',
+        },
+        {
+            value: pad(count((p) => p.role === 'Diuji')),
+            label: 'Sistem klien diuji',
+        },
+    ];
 
     return (
-        <div className='landing' ref={landingRef}>
-            <div className='landing--container'>
-                <div
-                    className='landing--container-left'
-                    style={{ backgroundColor: theme.primary }}
-                >
-                    <div className='lcl--content'>
-                        {socialsData.linkedIn && (
-                            <a
-                                href={socialsData.linkedIn}
-                                target='_blank'
-                                rel='noreferrer'
+        <section className='landing' id='top'>
+            <div className='shell landing__inner'>
+                <p className='eyebrow landing__eyebrow'>
+                    {headerData.location}
+                </p>
+
+                <h1 className='landing__name'>
+                    {headerData.name}
+                </h1>
+
+                <div className='landing__roles' aria-label={headerData.role}>
+                    <span className='landing__rolesRule' aria-hidden='true' />
+                    <span className='landing__rolesTrack'>
+                        {roles.map((role, i) => (
+                            <span
+                                key={role}
+                                className={`landing__role ${
+                                    i === roleIndex ? 'is-active' : ''
+                                }`}
+                                aria-hidden={i !== roleIndex}
                             >
-                                <FaLinkedin
-                                    className='landing--social'
-                                    style={{ color: theme.secondary }}
-                                    aria-label='LinkedIn'
-                                />
-                            </a>
-                        )}
-                        {socialsData.github && (
-                            <a
-                                href={socialsData.github}
-                                target='_blank'
-                                rel='noreferrer'
-                            >
-                                <FaGithub
-                                    className='landing--social'
-                                    style={{ color: theme.secondary }}
-                                    aria-label='GitHub'
-                                />
-                            </a>
-                        )}
-                        {socialsData.instagram && (
-                            <a
-                                href={socialsData.instagram}
-                                target='_blank'
-                                rel='noreferrer'
-                            >
-                                <FaInstagram
-                                    className='landing--social'
-                                    style={{ color: theme.secondary }}
-                                    aria-label='Instagram'
-                                />
-                            </a>
-                        )}
-                        {socialsData.youtube && (
-                            <a
-                                href={socialsData.youtube}
-                                target='_blank'
-                                rel='noreferrer'
-                            >
-                                <FaYoutube
-                                    className='landing--social'
-                                    style={{ color: theme.secondary }}
-                                    aria-label='YouTube'
-                                />
-                            </a>
-                        )}
-                    </div>
+                                {role}
+                            </span>
+                        ))}
+                    </span>
                 </div>
 
-                <div
-                    className='landing--container-right'
-                    style={{ backgroundColor: theme.secondary }}
-                >
-                    <div
-                        className='lcr--content'
-                        style={{ color: theme.tertiary }}
-                    >
-                        <h6 style={{ color: theme.tertiary70 }}>
-                            {headerData.title}
-                        </h6>
-                        <h1>{headerData.name}</h1>
-                        <p>{headerData.desciption}</p>
+                <p className='landing__desc'>{headerData.description}</p>
 
-                        <div className='lcr-buttonContainer'>
-                            {headerData.resumePdf && (
+                <div className='landing__actions'>
+                    <NavLink
+                        to='/#projects'
+                        scroll={scrollWithOffset}
+                        className='btn btn--solid'
+                    >
+                        Lihat proyek
+                    </NavLink>
+                    <a
+                        className='btn btn--ghost'
+                        href={headerData.resumePdf}
+                        target='_blank'
+                        rel='noreferrer'
+                    >
+                        Unduh CV
+                    </a>
+
+                    <div className='landing__socials'>
+                        {socials
+                            .filter((s) => s.href)
+                            .map(({ key, href, Icon, label }) => (
                                 <a
-                                    href={headerData.resumePdf}
-                                    download='resume_noel'
+                                    key={key}
+                                    href={href}
                                     target='_blank'
                                     rel='noreferrer'
+                                    aria-label={label}
+                                    className='landing__social'
                                 >
-                                    <Button className={classes.resumeBtn}>
-                                        Download CV
-                                    </Button>
+                                    <Icon />
                                 </a>
-                            )}
-                            <NavLink
-                                to='/#contacts'
-                                smooth={true}
-                                spy='true'
-                                duration={2000}
-                            >
-                                <Button className={classes.contactBtn}>
-                                    Contact
-                                </Button>
-                            </NavLink>
-                        </div>
+                            ))}
                     </div>
                 </div>
+
+                <dl className='landing__stats'>
+                    {stats.map((stat) => (
+                        <div className='landing__stat' key={stat.label}>
+                            <dt className='landing__statValue'>{stat.value}</dt>
+                            <dd className='landing__statLabel'>{stat.label}</dd>
+                        </div>
+                    ))}
+                </dl>
             </div>
-        </div>
+        </section>
     );
 }
 

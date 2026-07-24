@@ -1,110 +1,206 @@
-.projects {
+.projects__lede {
+    max-width: 62ch;
+    margin: -1.75rem 0 3rem;
+    font-size: 1.0625rem;
+    line-height: 1.75;
+    color: var(--ink-70);
+}
+
+.projects__grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 3.5rem 2.5rem;
+}
+
+/* The reveal wrapper sits between the grid and the card, so it has to pass
+   the row height through or cards in a row stop lining up. */
+.projects__cell {
+    display: flex;
+}
+
+/* ---- Card -------------------------------------------------------------- */
+
+.project {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    min-height: auto;
-    overflow-x: hidden;
-    padding: 2rem 1.5rem;
+    height: 100%;
 }
 
+.project__media {
+    position: relative;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    background: var(--paper-2);
+    border: 1px solid var(--rule);
+}
 
-.projects--header {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.project__media img {
     width: 100%;
-    margin: 0.5rem;
+    height: 100%;
+    object-fit: cover;
+    /* Screenshots are mostly tall app captures — anchoring to the top keeps
+       the header and first screenful visible instead of the middle. */
+    object-position: top center;
+    display: block;
+    transition: transform 0.7s var(--ease);
 }
 
-
-.projects--header h1 {
-    margin-bottom: 1.5rem;
-    font-size: 2.5rem;
-    font-family: var(--primaryFont);
+.project:hover .project__media img {
+    transform: scale(1.03);
 }
 
-.projects--body {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+/* Client marks come in as small logos; contain them instead of upscaling. */
+.project__media--contain img {
+    object-fit: contain;
+    object-position: center;
+    padding: 3rem;
+    transform: none;
 }
 
-.projects--bodyContainer {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 2rem;
-    width: 100%;
-    flex-wrap: wrap;
+.project:hover .project__media--contain img {
+    transform: none;
 }
 
-.projects--viewAll {
-    width: 100%;
+.project__media--empty {
+    display: grid;
+    place-items: center;
     padding: 1.5rem;
+}
+
+.project__mediaMark {
+    font-family: var(--display);
+    font-size: clamp(1.6rem, 3.2vw, 2.4rem);
+    line-height: 1.15;
+    text-align: center;
+    color: var(--ink-45);
+    letter-spacing: -0.02em;
+}
+
+.project__role,
+.project__status {
+    position: absolute;
+    top: 0;
+    font-family: var(--mono);
+    font-size: 0.66rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.4rem 0.7rem;
+}
+
+.project__role {
+    left: 0;
+    background: var(--ink);
+    color: var(--paper);
+}
+
+.project__status {
+    right: 0;
+    background: var(--accent);
+    color: var(--paper);
+}
+
+/* ---- Body -------------------------------------------------------------- */
+
+.project__body {
     display: flex;
-    align-items: center;
-    justify-content: flex-end;
+    flex-direction: column;
+    flex: 1;
+    padding-top: 1.4rem;
+}
+
+.project__context {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-45);
+}
+
+.project__name {
+    margin-top: 0.5rem;
+    font-family: var(--display);
+    font-weight: 400;
+    font-size: clamp(1.5rem, 2.6vw, 1.95rem);
+    line-height: 1.15;
+    letter-spacing: -0.015em;
+}
+
+.project__kind {
+    margin-top: 0.2rem;
+    font-size: 0.88rem;
+    color: var(--accent);
+}
+
+.project__desc {
     margin-top: 1rem;
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: var(--ink-70);
 }
 
-.projects--viewAll a button {
-    outline: none;
-    border: none;
-    width: 150px;
-    height: 48px;
+.project__contribution {
+    margin-top: 1rem;
+    padding-left: 1rem;
+    border-left: 1px solid var(--rule);
+    font-size: 0.9rem;
+    line-height: 1.65;
+    color: var(--ink-70);
+}
+
+.project__contribution span {
+    display: block;
+    font-family: var(--mono);
+    font-size: 0.66rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-45);
+    margin-bottom: 0.3rem;
+}
+
+.project__tags {
+    list-style: none;
+    padding: 0;
+    margin: 1.25rem 0 0;
     display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+}
+
+.project__tags li {
+    font-family: var(--mono);
+    font-size: 0.66rem;
+    letter-spacing: 0.06em;
+    padding: 0.3rem 0.55rem;
+    border: 1px solid var(--rule);
+    color: var(--ink-70);
+}
+
+.project__links {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: auto;
+    padding-top: 1.4rem;
+}
+
+.project__link {
+    display: inline-flex;
     align-items: center;
-    justify-content: space-between;
-    text-transform: inherit;
-    border-radius: 45px;
-    font-size: 1rem;
-    font-family: var(--primaryFont);
-    font-weight: 500;
-    padding-left: 1.5rem;
-    cursor: pointer;
+    gap: 0.35rem;
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
 }
 
-
-
-@media screen and (max-width: 992px) {
-    .projects--bodyContainer {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        width: 100%;
-        gap: 1.5rem;
+@media (max-width: 860px) {
+    .projects__grid {
+        grid-template-columns: 1fr;
+        gap: 3rem;
     }
-}
-
-@media screen and (max-width: 800px) {
-    .projects--header h1 {
-        font-size: 2rem;
-        margin-bottom: 1.25rem;
+    .projects__lede {
+        margin-bottom: 2.5rem;
     }
-}
-
-@media screen and (max-width: 600px) {
-    .projects {
-        padding: 1.5rem 1rem;
-    }
-
-    .projects--header h1 {
-        font-size: 1.75rem;
-        margin-bottom: 1rem;
-    }
-
-    .projects--viewAll {
-        position: relative;
-        margin-top: 2rem;
-    }
-
-    .projects--viewAll a {
-        position: absolute;
-        left: 50%;
-        transform: translateX(-50%);
+    .project__media--contain img {
+        padding: 2rem;
     }
 }

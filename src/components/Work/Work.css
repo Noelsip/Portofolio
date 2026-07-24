@@ -1,0 +1,151 @@
+.work__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    border-top: 1px solid var(--rule);
+}
+
+.work__item {
+    display: grid;
+    grid-template-columns: 168px minmax(0, 1fr);
+    gap: 2.5rem;
+    padding: 2.75rem 0;
+    border-bottom: 1px solid var(--rule);
+    position: relative;
+}
+
+/* A hairline that grows from the left edge on hover — the only movement in
+   the row, so it reads as a pointer rather than decoration. */
+.work__item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: -1px;
+    height: 1px;
+    width: 100%;
+    background: var(--accent);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.5s var(--ease);
+}
+
+.work__item:hover::before {
+    transform: scaleX(1);
+}
+
+.work__period {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    letter-spacing: 0.04em;
+    color: var(--ink-45);
+    padding-top: 0.35rem;
+}
+
+.work__periodDash {
+    flex: 1;
+    max-width: 22px;
+    height: 1px;
+    background: var(--rule);
+}
+
+.work__role {
+    font-family: var(--display);
+    font-weight: 400;
+    font-size: clamp(1.3rem, 2.2vw, 1.75rem);
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+}
+
+.work__company {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 0.5rem;
+    font-size: 0.95rem;
+    color: var(--ink);
+}
+
+.work__companyLink {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.work__companyLink svg {
+    font-size: 0.85em;
+}
+
+.work__location {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink-45);
+}
+
+.work__location::before {
+    content: '· ';
+}
+
+.work__summary {
+    margin-top: 1rem;
+    max-width: 62ch;
+    color: var(--ink-70);
+}
+
+.work__points {
+    list-style: none;
+    padding: 0;
+    margin: 1.25rem 0 0;
+    display: grid;
+    gap: 0.65rem;
+    max-width: 68ch;
+}
+
+.work__points li {
+    position: relative;
+    padding-left: 1.4rem;
+    font-size: 0.95rem;
+    line-height: 1.65;
+    color: var(--ink-70);
+}
+
+.work__points li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.72em;
+    width: 12px;
+    height: 1px;
+    background: var(--ink-45);
+}
+
+.work__cert {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    margin-top: 1.25rem;
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+}
+
+@media (max-width: 780px) {
+    .work__item {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        padding: 2.25rem 0;
+    }
+    .work__period {
+        padding-top: 0;
+    }
+    .work__periodDash {
+        max-width: 16px;
+    }
+}
