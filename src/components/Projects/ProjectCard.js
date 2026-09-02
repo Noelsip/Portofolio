@@ -1,10 +1,13 @@
-import { useRef } from 'react';
-import { motion, useMotionValue, useSpring, useTransform } from 'motion/react';
 import { FiArrowUpRight } from 'react-icons/fi';
 
-const SPRING = { stiffness: 260, damping: 22, mass: 0.6 };
-
-function ProjectCard({ project }) {
+/**
+ * Kartu proyek. Tilt 3D dan parallax gambar sengaja dilepas: gerakan yang
+ * mengikuti kursor membuat kartu terus bergoyang saat orang membaca isinya,
+ * dan itu yang bikin bagian ini terasa kurang profesional. Karakter kartu
+ * sekarang datang dari susunan blok judul yang menimpa tepi gambar, bukan
+ * dari gerak.
+ */
+function ProjectCard({ project, featured = false, flipped = false }) {
     const {
         name,
         kind,
@@ -15,54 +18,27 @@ function ProjectCard({ project }) {
         image,
         imageFit,
         demo,
+        code,
         status,
     } = project;
 
-    const ref = useRef(null);
-
-    // Pointer position within the card, normalised to -0.5..0.5.
-    const px = useMotionValue(0);
-    const py = useMotionValue(0);
-
-    const rotateX = useSpring(useTransform(py, [-0.5, 0.5], [7, -7]), SPRING);
-    const rotateY = useSpring(useTransform(px, [-0.5, 0.5], [-9, 9]), SPRING);
-
-    // The image drifts opposite the tilt, which reads as depth rather than
-    // the whole card being one flat plane that happens to rotate.
-    const imageX = useSpring(useTransform(px, [-0.5, 0.5], [14, -14]), SPRING);
-    const imageY = useSpring(useTransform(py, [-0.5, 0.5], [10, -10]), SPRING);
-
-    const handleMove = (e) => {
-        const rect = ref.current.getBoundingClientRect();
-        px.set((e.clientX - rect.left) / rect.width - 0.5);
-        py.set((e.clientY - rect.top) / rect.height - 0.5);
-    };
-
-    const handleLeave = () => {
-        px.set(0);
-        py.set(0);
-    };
+    const className = [
+        'project',
+        featured ? 'project--featured' : '',
+        featured && flipped ? 'is-flipped' : '',
+    ]
+        .filter(Boolean)
+        .join(' ');
 
     return (
-        <motion.article
-            ref={ref}
-            className='project'
-            onMouseMove={handleMove}
-            onMouseLeave={handleLeave}
-            style={{ rotateX, rotateY, transformPerspective: 1100 }}
-        >
+        <article className={className}>
             <div
                 className={`project__media ${
                     image ? '' : 'project__media--empty'
                 } ${imageFit === 'contain' ? 'project__media--contain' : ''}`}
             >
                 {image ? (
-                    <motion.img
-                        src={image}
-                        alt={`Tampilan ${name}`}
-                        loading='lazy'
-                        style={{ x: imageX, y: imageY }}
-                    />
+                    <img src={image} alt={`Tampilan ${name}`} loading='lazy' />
                 ) : (
                     <span className='project__mediaMark' aria-hidden='true'>
                         {name}
@@ -88,21 +64,34 @@ function ProjectCard({ project }) {
                     ))}
                 </ul>
 
-                {demo && (
+                {(demo || code) && (
                     <div className='project__links'>
-                        <a
-                            href={demo}
-                            target='_blank'
-                            rel='noreferrer'
-                            className='project__link link-wipe'
-                        >
-                            Lihat
-                            <FiArrowUpRight aria-hidden='true' />
-                        </a>
+                        {demo && (
+                            <a
+                                href={demo}
+                                target='_blank'
+                                rel='noreferrer'
+                                className='project__link link-wipe'
+                            >
+                                Lihat
+                                <FiArrowUpRight aria-hidden='true' />
+                            </a>
+                        )}
+                        {code && (
+                            <a
+                                href={code}
+                                target='_blank'
+                                rel='noreferrer'
+                                className='project__link link-wipe'
+                            >
+                                Kode
+                                <FiArrowUpRight aria-hidden='true' />
+                            </a>
+                        )}
                     </div>
                 )}
             </div>
-        </motion.article>
+        </article>
     );
 }
 

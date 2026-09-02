@@ -1,57 +1,5 @@
-/* ---- Tabs -------------------------------------------------------------- */
-
-.exp__tabs {
-    display: flex;
-    gap: 2.25rem;
-    border-bottom: 2px solid var(--ink);
-    margin-bottom: 1rem;
-}
-
-.exp__tab {
-    position: relative;
-    display: inline-flex;
-    align-items: baseline;
-    gap: 0.5rem;
-    padding: 0 0 1rem;
-    background: none;
-    border: none;
-    cursor: pointer;
-    font-family: var(--display);
-    font-weight: 700;
-    font-size: clamp(1.35rem, 3vw, 2rem);
-    line-height: 1;
-    letter-spacing: -0.035em;
-    text-transform: lowercase;
-    color: var(--ink-35);
-    transition: color 0.3s var(--ease);
-}
-
-.exp__tab:hover,
-.exp__tab.is-active {
-    color: var(--ink);
-}
-
-.exp__tabCount {
-    font-family: var(--sans);
-    font-size: 0.7rem;
-    font-weight: 600;
-    letter-spacing: 0.04em;
-    color: var(--accent);
-}
-
-/* Slides between tabs via a shared layoutId rather than fading in place. */
-.exp__tabBar {
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: -2px;
-    height: 4px;
-    background: var(--accent);
-}
-
-.exp__panel {
-    min-height: 240px;
-}
+/* Gaya tab dan grid organisasi dihapus dari sini. Tabnya sudah tidak ada, dan
+   organisasi pindah ke Organizations.css. */
 
 /* ---- Work list --------------------------------------------------------- */
 
@@ -59,6 +7,7 @@
     list-style: none;
     padding: 0;
     margin: 0;
+    border-top: 2px solid var(--ink);
 }
 
 .exp__workItem {
@@ -159,53 +108,6 @@
     color: var(--accent);
 }
 
-/* ---- Organisation grid -------------------------------------------------- */
-
-.exp__orgs {
-    list-style: none;
-    margin: 1.75rem 0 0;
-    padding: 0;
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 2px;
-    background: var(--ink);
-    border: 2px solid var(--ink);
-}
-
-.exp__orgItem {
-    background: var(--paper);
-    padding: 1.85rem;
-    transition: background-color 0.35s var(--ease), color 0.35s var(--ease);
-}
-
-.exp__orgItem:hover {
-    background: var(--paper-2);
-}
-
-.exp__orgRole {
-    margin-top: 0.55rem;
-    font-family: var(--display);
-    font-weight: 700;
-    font-size: 1.35rem;
-    line-height: 1.12;
-    letter-spacing: -0.035em;
-    text-transform: lowercase;
-}
-
-.exp__orgName {
-    margin-top: 0.35rem;
-    font-size: 0.85rem;
-    font-weight: 500;
-    color: var(--ink-60);
-}
-
-.exp__orgDesc {
-    margin-top: 0.95rem;
-    font-size: 0.89rem;
-    line-height: 1.65;
-    color: var(--ink-60);
-}
-
 /* ---- Education strip ---------------------------------------------------- */
 
 .exp__edu {
@@ -259,17 +161,5 @@
     .exp__period,
     .exp__eduPeriod {
         padding-top: 0;
-    }
-    .exp__orgs {
-        grid-template-columns: 1fr;
-    }
-}
-
-@media (max-width: 560px) {
-    .exp__tabs {
-        gap: 1.5rem;
-    }
-    .exp__orgItem {
-        padding: 1.5rem;
     }
 }

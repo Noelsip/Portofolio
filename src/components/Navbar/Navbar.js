@@ -4,10 +4,13 @@ import { Link } from 'react-router-dom';
 import { headerData } from '../../data/headerData';
 import './Navbar.css';
 
+// Urutannya mengikuti urutan section di halaman, jadi navbar bisa dibaca
+// sebagai ringkasan isi situs.
 const navItems = [
     { label: 'Tentang', to: '/tentang' },
-    { label: 'Pengalaman', to: '/pengalaman' },
+    { label: 'Keahlian', to: '/keahlian' },
     { label: 'Proyek', to: '/proyek' },
+    { label: 'Pengalaman', to: '/pengalaman' },
     { label: 'Kontak', to: '/kontak' },
 ];
 

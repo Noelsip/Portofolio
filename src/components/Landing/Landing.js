@@ -58,6 +58,17 @@ function Landing() {
                     ))}
                 </h1>
 
+                {/* Kalimat ini yang menjelaskan siapa Noel sebelum daftar
+                    peran menjelaskan apa jabatannya. */}
+                <motion.p
+                    className='landing__tagline'
+                    initial={{ opacity: 0, y: 16 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.7, delay: 0.38, ease: EASE }}
+                >
+                    {headerData.tagline}
+                </motion.p>
+
                 <div className='landing__meta'>
                     <motion.div
                         className='landing__metaLeft'

@@ -1,0 +1,56 @@
+/* Warna teks di dalam section gelap harus ditulis ulang: --ink-60 dan
+   --ink-35 dibuat untuk latar putih dan tidak terbaca di atas hitam. */
+.now {
+    --now-dim: #8f8a85;
+}
+
+.now .section-head__note {
+    color: var(--now-dim);
+}
+
+.now__list {
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0;
+}
+
+.now__item {
+    padding: 1.75rem 2rem 1.75rem 0;
+    border-top: 2px solid var(--paper);
+}
+
+/* Kolom kanan diberi jarak masuk supaya dua kolom tidak terbaca menyambung
+   jadi satu kalimat panjang. */
+.now__list > .now__item:nth-child(even) {
+    padding-left: 2rem;
+}
+
+.now__label {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+}
+
+.now__value {
+    margin: 0.85rem 0 0;
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: clamp(1.3rem, 2.6vw, 1.9rem);
+    line-height: 1.15;
+    letter-spacing: -0.035em;
+    text-transform: lowercase;
+    color: var(--paper);
+}
+
+@media (max-width: 820px) {
+    .now__list {
+        grid-template-columns: 1fr;
+    }
+    .now__item,
+    .now__list > .now__item:nth-child(even) {
+        padding: 1.4rem 0;
+    }
+}

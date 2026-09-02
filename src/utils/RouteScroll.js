@@ -5,8 +5,11 @@ import { useLocation } from 'react-router-dom';
 export const SECTION_BY_PATH = {
     '/': 'top',
     '/tentang': 'about',
-    '/pengalaman': 'experience',
+    '/keahlian': 'skills',
     '/proyek': 'projects',
+    '/pengalaman': 'experience',
+    '/organisasi': 'organizations',
+    '/saat-ini': 'currently',
     '/kontak': 'contacts',
 };
 

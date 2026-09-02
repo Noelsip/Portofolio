@@ -9,12 +9,27 @@ import bemfsti from '../assets/png/products/bemfsti.png'
 import twentiLogo from '../assets/png/products/twenti-logo.png'
 import pjli from '../assets/png/products/pjli.png'
 import meracikopi from '../assets/png/products/meracikopi.png'
+import unocoffee from '../assets/png/products/unocoffee.png'
+// Dua proyek berikut tidak punya situs live, jadi gambarnya kartu repo GitHub.
+import asah from '../assets/png/products/asah.png'
+import apotek from '../assets/png/products/apotek.png'
 
 // Deskripsi proyek lama tetap memakai tulisan asli dari versi sebelumnya.
 // Yang baru hanya produk Twenti Studio yang belum pernah dimasukkan.
 //
-// `role`  = jabatan yang dipegang di proyek itu, tampil di kartu.
-// `scope` = pengelompokan internal untuk statistik di hero, tidak ditampilkan.
+// `role`       = jabatan yang dipegang di proyek itu, tampil di kartu.
+// `scope`      = pengelompokan internal untuk statistik di hero, tidak ditampilkan.
+// `featured`   = tampil besar di baris atas section Proyek.
+// `categories` = dipakai filter. Satu proyek boleh masuk lebih dari satu.
+
+// Label filter. Urutannya menentukan urutan tombol.
+export const projectCategories = [
+    { key: 'semua', label: 'Semua' },
+    { key: 'produk', label: 'Produk' },
+    { key: 'engineering', label: 'Engineering' },
+    { key: 'qa', label: 'Quality Assurance' },
+    { key: 'organisasi', label: 'Organisasi' },
+]
 
 export const projectsData = [
     {
@@ -24,11 +39,32 @@ export const projectsData = [
         context: 'Twenti Studio',
         role: 'Product Development',
         scope: null,
+        featured: true,
+        categories: ['produk'],
         desc: 'Mengelola kebutuhan produk dan prioritas fitur untuk website layanan pembuatan aplikasi, dengan fokus pada pengalaman pengguna dan kejelasan alur layanan.',
         tags: ['Product Planning', 'Web Product', 'Stakeholder Needs'],
         image: twentiLogo,
         imageFit: 'contain',
         demo: 'https://twenti.studio',
+        code: null,
+        status: null,
+    },
+    {
+        // Nama, kind, dan konteks disesuaikan dengan situs yang sudah live:
+        // "Unocoffee Express, Kopi keliling Samarinda", fitur utamanya mencari
+        // rider terdekat plus menu. Sebelumnya masih tebakan saya.
+        id: 'unocoffee',
+        name: 'Unocoffee Express',
+        kind: 'Rider Locator & Digital Menu',
+        context: 'Unocoffee Express, Samarinda',
+        role: 'Product Discovery',
+        scope: null,
+        featured: true,
+        categories: ['produk'],
+        desc: 'Layanan kopi keliling yang pembelinya bisa melihat rider mana yang sedang berjualan paling dekat, lalu membuka rutenya. Saya membantu memetakan masalah operasional yang terjadi di lapangan dan menerjemahkannya menjadi use case, sebagai dasar perangkat lunak yang kemudian dibangun.',
+        tags: ['Use Case Mapping', 'Requirement Analysis', 'Problem Discovery'],
+        image: unocoffee,
+        demo: 'https://unocoffee.id',
         code: null,
         status: null,
     },
@@ -39,10 +75,12 @@ export const projectsData = [
         context: 'Twenti Studio',
         role: 'Product Validation',
         scope: 'built',
+        featured: true,
+        categories: ['produk'],
         desc: 'Asisten yang memverifikasi klaim kesehatan terhadap ribuan publikasi ilmiah, supaya pengguna bisa memisahkan informasi yang berdasar dari yang sekadar beredar. Saya menentukan cakupan produk, menyusun alur verifikasi klaim, dan menguji keluarannya sebelum rilis.',
         tags: ['Product Discovery', 'User Flow', 'QA'],
         image: healthify,
-        demo: 'https://twenti.studio/produk',
+        demo: 'https://healthify.twenti.studio/',
         code: null,
         status: null,
     },
@@ -53,10 +91,12 @@ export const projectsData = [
         context: 'Twenti Studio',
         role: 'Product Validation & Development',
         scope: 'built',
+        featured: true,
+        categories: ['produk'],
         desc: 'Pencatat pemasukan dan pengeluaran yang cukup dijalankan dengan mengetik satu kalimat, bukan mengisi formulir panjang. Saya merancang alur pencatatannya, menetapkan prioritas fitur tiap versi, dan menguji akurasi pencatatan terhadap masukan bahasa bebas.',
         tags: ['Product Requirement', 'UX Flow', 'Functional Testing'],
         image: finot,
-        demo: 'https://twenti.studio/produk',
+        demo: 'https://fi-note.app',
         code: null,
         status: null,
     },
@@ -67,10 +107,12 @@ export const projectsData = [
         context: 'Twenti Studio',
         role: 'Product Development & Validation',
         scope: 'built',
+        featured: false,
+        categories: ['produk'],
         desc: 'Pendamping kesehatan harian yang menerima keluhan dalam bahasa sehari-hari, dengan premis bahwa mencatat kondisi tubuh harusnya semudah bercerita. Saya menyusun konsep produk dan skenario percakapannya, lalu menguji respons sistem terhadap berbagai gaya bahasa pengguna.',
         tags: ['Product Concept', 'Scenario Design', 'QA'],
         image: welltrack,
-        demo: 'https://twenti.studio/produk',
+        demo: 'https://welltrack.twenti.studio',
         code: null,
         status: null,
     },
@@ -81,10 +123,12 @@ export const projectsData = [
         context: 'Twenti Studio',
         role: 'Product Management',
         scope: 'managed',
+        featured: false,
+        categories: ['produk'],
         desc: 'Digital store resmi Twenti untuk top-up game, voucher, e-book, dan layanan media sosial. Saya mengelola prioritas fiturnya dan menjaga alur transaksi tetap pendek justru ketika katalognya terus bertambah.',
         tags: ['Roadmap', 'Transaction Flow', 'Backlog'],
         image: gamesTwenti,
-        demo: 'https://twenti.studio/produk',
+        demo: 'https://games.twenti.studio',
         code: null,
         status: null,
     },
@@ -95,10 +139,12 @@ export const projectsData = [
         context: 'Twenti Studio',
         role: 'Product Validation & Development',
         scope: 'managed',
+        featured: false,
+        categories: ['produk'],
         desc: 'Platform mikro tasking yang membagikan tugas ringkas ke pengguna dengan imbalan tertentu. Saya menyusun kebutuhan platform dan aturan main antara pemberi tugas dan pengerja, serta mengawal pengembangannya dari sisi produk.',
         tags: ['Requirement', 'Product Ops'],
         image: mita,
-        demo: 'https://twenti.studio/produk',
+        demo: 'https://mita.twenti.studio',
         code: null,
         status: 'Dalam pengembangan',
     },
@@ -109,10 +155,12 @@ export const projectsData = [
         context: 'Kecamatan Balikpapan Kota',
         role: 'Quality Validation',
         scope: 'qa',
+        featured: false,
+        categories: ['qa'],
         desc: 'Sistem digitalisasi operasional budidaya maggot yang menyatukan pendataan lapangan, koordinasi petugas, pencatatan aset, dan tabungan sampah warga. Saya menguji alur pendataan dan perhitungan setoran warga, memastikan angka yang dihitung sistem cocok dengan data lapangan.',
         tags: ['Functional Testing', 'Data Validation'],
         image: simaggot,
-        demo: 'https://twenti.studio/portofolio',
+        demo: 'https://simaggotbalkot.com',
         code: null,
         status: null,
     },
@@ -123,11 +171,13 @@ export const projectsData = [
         context: 'Proyek klien',
         role: 'Quality Validation',
         scope: 'qa',
+        featured: false,
+        categories: ['qa'],
         desc: 'Layanan logistik dan ekspedisi B2B berbasis langganan untuk bisnis yang mengirim rutin. Karena modelnya langganan, kesalahan pada satu siklus akan berulang tiap bulan, jadi saya menelusuri kasus tepi pada perpanjangan siklus sebelum sistem dipakai klien.',
         tags: ['Regression Testing', 'Bug Reporting'],
         image: klirlogistik,
         imageFit: 'contain',
-        demo: 'https://twenti.studio/portofolio',
+        demo: null,
         code: null,
         status: null,
     },
@@ -138,6 +188,8 @@ export const projectsData = [
         context: 'BEM FSTI ITK',
         role: 'Quality Validation',
         scope: 'qa',
+        featured: false,
+        categories: ['qa', 'organisasi'],
         desc: 'Platform resmi BEM FSTI ITK yang menyatukan agenda kegiatan, program kerja, dokumentasi, dan kanal aspirasi mahasiswa dalam satu situs. Saya menguji kanal aspirasi dan modul manajemen program kerjanya sebelum diserahkan.',
         tags: ['UAT', 'Content QA'],
         image: bemfsti,
@@ -153,9 +205,12 @@ export const projectsData = [
         context: 'Dicoding x Accenture 2025',
         role: 'Testing Contributor & Developer',
         scope: null,
+        featured: false,
+        categories: ['engineering', 'qa'],
         desc: 'Sistem prediksi kondisi sensor manufaktur pada program ASAH Dicoding x Accenture 2025. Saya merancang skenario dan test case berdasarkan kebutuhan fungsional, menjalankan functional testing, serta melakukan pengujian API dengan Postman untuk memverifikasi konsistensi request dan response.',
         tags: ['Test Case Design', 'Functional Testing', 'API Testing'],
-        image: null,
+        image: asah,
+        imageFit: 'contain',
         demo: null,
         code: 'https://github.com/Noelsip/Capstone-ASAH',
         status: null,
@@ -167,6 +222,8 @@ export const projectsData = [
         context: 'PJLI Foundation',
         role: 'Quality Validation',
         scope: null,
+        featured: false,
+        categories: ['qa', 'organisasi'],
         desc: 'Mendukung perancangan informasi, struktur konten, dan kebutuhan operasional website untuk memperkenalkan program penjagaan laut dan aktivitas organisasi. Saya memverifikasi fungsi situs terhadap kebutuhan stakeholder, memvalidasi alur pengelolaan dan publikasi konten, serta menguji navigasi dan usability sebelum situs dirilis.',
         tags: ['Information Architecture', 'Content Planning', 'Web QA'],
         image: pjli,
@@ -182,6 +239,8 @@ export const projectsData = [
         context: 'Meracikopi',
         role: 'Developer',
         scope: null,
+        featured: false,
+        categories: ['engineering', 'produk'],
         desc: 'Menyusun kebutuhan toko online dan alur pembelian produk kopi, mulai dari katalog, informasi produk, hingga proses transaksi.',
         tags: ['E-commerce Flow', 'Requirement Analysis', 'Figma'],
         // Simpan screenshot ke src/assets/png/products/meracikopi.png, lalu
@@ -199,9 +258,12 @@ export const projectsData = [
         context: 'Proyek kuliah',
         role: 'Developer & Tester',
         scope: null,
+        featured: false,
+        categories: ['engineering', 'qa'],
         desc: 'Menyusun alur penggunaan dan skenario pengujian untuk sistem manajemen apotek, mencakup pencarian obat, pengecekan stok, dan informasi dokter.',
         tags: ['Use Case Design', 'Functional Testing', 'System Analysis'],
-        image: null,
+        image: apotek,
+        imageFit: 'contain',
         demo: null,
         code: 'https://github.com/Noelsip/Apotek-App',
         status: null,

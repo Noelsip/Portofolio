@@ -1,3 +1,55 @@
+.skills__lede {
+    max-width: 56ch;
+    margin: -0.75rem 0 2.5rem;
+    font-size: 1.0625rem;
+    line-height: 1.7;
+    color: var(--ink-60);
+}
+
+/* ---- Capabilities ------------------------------------------------------ */
+
+/* Empat baris lebar, bukan empat kartu. Nama kapabilitasnya dibaca duluan,
+   penjelasannya menyusul di kolom sebelah. */
+.skills__capability {
+    display: grid;
+    grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.35fr);
+    gap: 2.5rem;
+    align-items: start;
+    padding: 1.6rem 0;
+    border-top: 2px solid var(--ink);
+}
+
+.skills__capabilities > .skills__capability:last-child {
+    border-bottom: 2px solid var(--ink);
+}
+
+.skills__capabilityName {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: clamp(1.25rem, 2.4vw, 1.75rem);
+    line-height: 1.08;
+    letter-spacing: -0.038em;
+    text-transform: lowercase;
+}
+
+.skills__capabilityDesc {
+    max-width: 60ch;
+    font-size: 0.97rem;
+    line-height: 1.72;
+    color: var(--ink-60);
+}
+
+/* ---- Technologies ------------------------------------------------------ */
+
+.skills__tech {
+    margin-top: 3.5rem;
+}
+
+.skills__techHead {
+    display: block;
+    margin-bottom: 1.75rem;
+}
+
 .skills__grid {
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -5,14 +57,14 @@
 }
 
 .skills__group {
-    border-top: 2px solid var(--ink);
+    border-top: 1px solid var(--rule);
     padding-top: 1.25rem;
 }
 
 .skills__groupName {
     font-family: var(--display);
     font-weight: 700;
-    font-size: 1.35rem;
+    font-size: 1.15rem;
     line-height: 1.1;
     letter-spacing: -0.035em;
     text-transform: lowercase;
@@ -21,14 +73,13 @@
 .skills__items {
     list-style: none;
     padding: 0;
-    margin: 1.2rem 0 0;
+    margin: 1rem 0 0;
 }
 
 .skills__items li {
     position: relative;
-    padding: 0.6rem 0;
-    border-bottom: 1px solid var(--rule);
-    font-size: 0.92rem;
+    padding: 0.55rem 0;
+    font-size: 0.9rem;
     color: var(--ink-60);
     transition: color 0.25s var(--ease), padding-left 0.3s var(--ease);
 }
@@ -54,15 +105,31 @@
     width: 12px;
 }
 
+/* ---- Responsive -------------------------------------------------------- */
+
 @media (max-width: 1000px) {
     .skills__grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 2.5rem 2rem;
+        gap: 2rem;
+    }
+}
+
+@media (max-width: 820px) {
+    .skills__capability {
+        grid-template-columns: 1fr;
+        gap: 0.7rem;
+    }
+    .skills__lede {
+        margin-bottom: 2rem;
+    }
+    .skills__tech {
+        margin-top: 2.75rem;
     }
 }
 
 @media (max-width: 560px) {
     .skills__grid {
         grid-template-columns: 1fr;
+        gap: 1.75rem;
     }
 }

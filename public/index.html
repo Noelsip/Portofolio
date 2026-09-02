@@ -5,17 +5,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#ffffff" />
 
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/favicon512.png" />
+    <!-- Potret bulat, sudutnya transparan. %PUBLIC_URL% wajib: path relatif
+         akan dicari di dalam /proyek, /tentang, dan route lain, lalu gagal. -->
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="%PUBLIC_URL%/icon-porto-round-32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="192x192"
+      href="%PUBLIC_URL%/icon-porto-round-192.png"
+    />
+    <!-- iOS mengisi transparansi dengan hitam, jadi versi ini beralas putih. -->
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="%PUBLIC_URL%/icon-porto-round-180.png"
+    />
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-    <title>Noel Sipayung — Product Manager, QA &amp; Software Engineer</title>
+    <title>Noel Sipayung | Product Manager, QA &amp; Software Engineer</title>
     <meta
       name="description"
-      content="Portofolio Noel Ericson Rapael Sipayung. Product Manager dan Quality Assurance di Twenti Studio, membangun Healthify, FiNot, dan Well Track serta menguji sistem klien sebelum rilis."
+      content="Portofolio Noel Sipayung. Product Manager dan Quality Assurance di Twenti Studio, membangun Healthify, FiNot, dan Well Track serta menguji sistem klien sebelum rilis."
     />
     <!-- TODO: ganti dengan domain final setelah deploy, lalu isi og:url di bawah. -->
     <link rel="canonical" href="/" />
@@ -24,7 +42,7 @@
     <meta property="og:site_name" content="Noel Sipayung" />
     <meta
       property="og:title"
-      content="Noel Sipayung — Product Manager, QA &amp; Software Engineer"
+      content="Noel Sipayung | Product Manager, QA &amp; Software Engineer"
     />
     <meta
       property="og:description"
@@ -35,7 +53,7 @@
     <meta name="twitter:card" content="summary_large_image" />
     <meta
       name="twitter:title"
-      content="Noel Sipayung — Product Manager, QA &amp; Software Engineer"
+      content="Noel Sipayung | Product Manager, QA &amp; Software Engineer"
     />
     <meta
       name="twitter:description"
