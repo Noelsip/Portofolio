@@ -8,23 +8,30 @@ import {
     Footer,
     Landing,
     Navbar,
-    Organizations,
     Projects,
     Skills,
 } from '../../components'
 import { headerData } from '../../data/headerData'
+import { useLang } from '../../i18n/LanguageContext'
 
 /**
- * Urutannya: kenali orangnya, pahami cara kerjanya, lihat buktinya, baru
- * rekam jejaknya. Keahlian naik ke atas Proyek supaya orang sudah punya
- * kerangka sebelum melihat tiga belas kartu proyek.
+ * Urutannya dibangun untuk menahan orang tetap menggulir: kenali orangnya,
+ * pahami cara kerjanya, lalu langsung lihat buktinya. Proyek unggulan naik ke
+ * atas Pengalaman karena itu bagian yang paling membuat orang penasaran, dan
+ * daftar lengkapnya sudah pindah ke halaman sendiri supaya beranda tidak
+ * kehabisan napas di tengah.
  */
 function Main() {
+    const { pick } = useLang()
+
     return (
         <div>
             <Helmet>
                 <title>{headerData.shortName} | {headerData.title}</title>
-                <meta name='description' content={headerData.metaDescription} />
+                <meta
+                    name='description'
+                    content={pick(headerData.metaDescription)}
+                />
             </Helmet>
 
             <Navbar />
@@ -34,7 +41,6 @@ function Main() {
                 <Skills />
                 <Projects />
                 <Experience />
-                <Organizations />
                 <Currently />
                 <Contacts />
             </main>

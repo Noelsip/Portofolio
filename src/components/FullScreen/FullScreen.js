@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { MdFullscreen, MdFullscreenExit } from "react-icons/md";
+import { useLang } from '../../i18n/LanguageContext';
 import './FullScreen.css';
 
 function FullScreen() {
+    const { t } = useLang();
     const [isFullScreen, setIsFullScreen] = useState(false);
     const [isSupported, setIsSupported] = useState(true);
 
@@ -144,8 +146,8 @@ function FullScreen() {
         <div className='fullScreenButton'>
             <button
                 onClick={toggleFullScreen}
-                aria-label={isFullScreen ? "Keluar dari layar penuh" : "Masuk ke layar penuh"}
-                title={isFullScreen ? "Keluar dari layar penuh" : "Masuk ke layar penuh"}
+                aria-label={isFullScreen ? t('fullscreen.exit') : t('fullscreen.enter')}
+                title={isFullScreen ? t('fullscreen.exit') : t('fullscreen.enter')}
             >
                 {isFullScreen ? <MdFullscreenExit /> : <MdFullscreen />}
             </button>

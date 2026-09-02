@@ -1,27 +1,39 @@
 // Bagian paling cepat basi di seluruh situs. Kalau sudah tidak benar lagi,
 // cukup ubah di sini.
 export const currentlyData = {
-    updated: 'September 2026',
+    updated: { en: 'September 2026', id: 'September 2026' },
     items: [
         {
             id: 'building',
-            label: 'Sedang membangun',
-            value: 'Produk Twenti Studio',
+            label: { en: 'Building', id: 'Sedang membangun' },
+            value: {
+                en: 'Twenti Studio products',
+                id: 'Produk Twenti Studio',
+            },
         },
         {
             id: 'learning',
-            label: 'Sedang belajar',
-            value: 'Flutter dan mobile development',
+            label: { en: 'Learning', id: 'Sedang belajar' },
+            value: {
+                en: 'Flutter and mobile development',
+                id: 'Flutter dan mobile development',
+            },
         },
         {
             id: 'exploring',
-            label: 'Sedang mengeksplorasi',
-            value: 'AI, IoT, dan produk digital',
+            label: { en: 'Exploring', id: 'Sedang mengeksplorasi' },
+            value: {
+                en: 'AI, IoT, and digital products',
+                id: 'AI, IoT, dan produk digital',
+            },
         },
         {
             id: 'looking',
-            label: 'Sedang mencari',
-            value: 'Kesempatan membangun dan belajar bersama orang dari latar belakang berbeda',
+            label: { en: 'Looking for', id: 'Sedang mencari' },
+            value: {
+                en: 'Chances to build and learn with people from different backgrounds',
+                id: 'Kesempatan membangun dan belajar bersama orang dari latar belakang berbeda',
+            },
         },
     ],
 }

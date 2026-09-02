@@ -97,6 +97,42 @@
     gap: 3.5rem;
 }
 
+/* ---- See all ----------------------------------------------------------- */
+
+/* Jalan keluar dari beranda menuju daftar lengkap. Dibuat setebal rule
+   section supaya terbaca sebagai penutup bagian, bukan tautan yang terselip. */
+.projects__all {
+    margin-top: 3.5rem;
+    border-top: 2px solid var(--ink);
+}
+
+.projects__allLink {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.7rem;
+    padding: 1.5rem 0 0;
+    font-family: var(--display);
+    font-size: clamp(1.15rem, 2.2vw, 1.5rem);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    text-transform: lowercase;
+    transition: gap 0.3s var(--ease), color 0.25s var(--ease);
+}
+
+.projects__allLink:hover {
+    color: var(--accent);
+    gap: 1.15rem;
+}
+
+.projects__allCount {
+    font-family: var(--sans);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: none;
+    color: var(--ink-35);
+}
+
 /* ---- Grid -------------------------------------------------------------- */
 
 .projects__grid {
@@ -163,10 +199,19 @@
     color: var(--ink-35);
 }
 
-.project__role,
-.project__status {
+.project__badges {
     position: absolute;
     top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    gap: 2px;
+    pointer-events: none;
+}
+
+.project__role,
+.project__status {
     font-size: 0.68rem;
     font-weight: 600;
     letter-spacing: 0.06em;
@@ -174,13 +219,11 @@
 }
 
 .project__role {
-    left: 0;
     background: var(--ink);
     color: var(--paper);
 }
 
 .project__status {
-    right: 0;
     background: var(--accent);
     color: var(--paper);
 }
@@ -306,6 +349,17 @@
     padding-top: 2rem;
 }
 
+/* Pada kartu featured, blok judul menimpa salah satu tepi media: tepi kanan
+   untuk baris biasa, tepi kiri untuk baris yang dibalik. Kedua label karena
+   itu dikumpulkan ke sisi yang masih terlihat, bukan dibiarkan berjauhan. */
+.project--featured .project__badges {
+    justify-content: flex-start;
+}
+
+.project--featured.is-flipped .project__badges {
+    justify-content: flex-end;
+}
+
 /* Baris genap dibalik supaya kolom gambar tidak jadi satu garis lurus di
    sisi kiri sepanjang section. */
 .project--featured.is-flipped .project__media {
@@ -337,6 +391,11 @@
     }
     .projects__featured {
         gap: 2.75rem;
+    }
+    /* Bertumpuk lagi, jadi tepi atas media utuh dan labelnya boleh melebar. */
+    .project--featured .project__badges,
+    .project--featured.is-flipped .project__badges {
+        justify-content: space-between;
     }
 }
 

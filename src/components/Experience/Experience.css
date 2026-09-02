@@ -1,5 +1,106 @@
-/* Gaya tab dan grid organisasi dihapus dari sini. Tabnya sudah tidak ada, dan
-   organisasi pindah ke Organizations.css. */
+/* ---- Tabs -------------------------------------------------------------- */
+
+.exp__tabs {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid var(--rule);
+}
+
+.exp__tab {
+    position: relative;
+    display: inline-flex;
+    align-items: baseline;
+    gap: 0.45rem;
+    padding: 0 0 0.9rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: var(--display);
+    font-size: 1.05rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    color: var(--ink-35);
+    transition: color 0.25s var(--ease);
+}
+
+.exp__tab:hover,
+.exp__tab.is-active {
+    color: var(--ink);
+}
+
+.exp__tabCount {
+    font-family: var(--sans);
+    font-size: 0.7rem;
+    font-weight: 500;
+    color: var(--ink-35);
+}
+
+.exp__tab.is-active .exp__tabCount {
+    color: var(--accent);
+}
+
+/* Bar aktif digeser dengan layoutId, jadi perpindahannya menyambung dari tab
+   satu ke tab berikutnya, bukan mati lalu hidup lagi. */
+.exp__tabBar {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -1px;
+    height: 2px;
+    background: var(--ink);
+}
+
+.exp__panel {
+    min-height: 1px;
+}
+
+/* ---- Organisations ----------------------------------------------------- */
+
+.exp__orgs {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 2px;
+    background: var(--ink);
+    border: 2px solid var(--ink);
+}
+
+.exp__orgItem {
+    background: var(--paper);
+    padding: 1.85rem;
+    transition: background-color 0.35s var(--ease);
+}
+
+.exp__orgItem:hover {
+    background: var(--paper-2);
+}
+
+.exp__orgRole {
+    margin-top: 0.55rem;
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 1.35rem;
+    line-height: 1.12;
+    letter-spacing: -0.035em;
+    text-transform: lowercase;
+}
+
+.exp__orgName {
+    margin-top: 0.35rem;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--ink-60);
+}
+
+.exp__orgDesc {
+    margin-top: 0.95rem;
+    font-size: 0.89rem;
+    line-height: 1.65;
+    color: var(--ink-60);
+}
 
 /* ---- Work list --------------------------------------------------------- */
 
@@ -161,5 +262,17 @@
     .exp__period,
     .exp__eduPeriod {
         padding-top: 0;
+    }
+    .exp__orgs {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 560px) {
+    .exp__tabs {
+        gap: 1.5rem;
+    }
+    .exp__orgItem {
+        padding: 1.5rem;
     }
 }

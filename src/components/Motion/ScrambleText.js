@@ -14,6 +14,14 @@ function ScrambleText({ text, as: Tag = 'span', speed = 28, className = '' }) {
     const [output, setOutput] = useState(text);
     const [done, setDone] = useState(false);
 
+    // Judul section berubah waktu bahasanya diganti. Tanpa reset ini, teks
+    // lama akan tertinggal di layar karena efek di bawah berhenti bekerja
+    // begitu `done` bernilai true.
+    useEffect(() => {
+        setOutput(text);
+        setDone(false);
+    }, [text]);
+
     useEffect(() => {
         if (!inView || done) return undefined;
 

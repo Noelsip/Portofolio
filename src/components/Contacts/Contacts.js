@@ -6,6 +6,7 @@ import { FiArrowUpRight } from 'react-icons/fi';
 
 import { contactsData } from '../../data/contactsData';
 import { socialsData } from '../../data/socialsData';
+import { useLang } from '../../i18n/LanguageContext';
 import ScrambleText from '../Motion/ScrambleText';
 import Wipe from '../Motion/Wipe';
 import './Contacts.css';
@@ -18,9 +19,13 @@ const socials = [
 ];
 
 function Contacts() {
+    const { t, pick } = useLang();
+
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [message, setMessage] = useState('');
+    // Statusnya disimpan sebagai kunci, bukan kalimat jadi, supaya pesannya
+    // ikut berganti kalau bahasanya diubah setelah formulir dikirim.
     const [status, setStatus] = useState(null);
 
     const [state, submitToFormspree] = useForm('xldnvoww');
@@ -29,12 +34,12 @@ function Contacts() {
         e.preventDefault();
 
         if (!name.trim() || !email.trim() || !message.trim()) {
-            setStatus({ type: 'error', text: 'Semua kolom perlu diisi.' });
+            setStatus({ type: 'error', key: 'contacts.errEmpty' });
             return;
         }
 
         if (!isEmail(email)) {
-            setStatus({ type: 'error', text: 'Format email belum benar.' });
+            setStatus({ type: 'error', key: 'contacts.errEmail' });
             return;
         }
 
@@ -44,18 +49,12 @@ function Contacts() {
 
     useEffect(() => {
         if (state.succeeded) {
-            setStatus({
-                type: 'ok',
-                text: 'Pesan terkirim. Saya balas lewat email secepatnya.',
-            });
+            setStatus({ type: 'ok', key: 'contacts.ok' });
             setName('');
             setEmail('');
             setMessage('');
         } else if (state.errors && state.errors.length) {
-            setStatus({
-                type: 'error',
-                text: 'Pesan gagal terkirim. Coba lagi, atau kirim langsung ke email di samping.',
-            });
+            setStatus({ type: 'error', key: 'contacts.errSend' });
         }
     }, [state.succeeded, state.errors]);
 
@@ -65,22 +64,18 @@ function Contacts() {
                 <div className='section-head'>
                     <ScrambleText
                         as='h2'
-                        text='kontak'
+                        text={t('contacts.title')}
                         className='section-head__title'
                     />
                 </div>
 
                 <div className='contacts__grid'>
                     <Wipe className='contacts__intro'>
-                        <p className='contacts__lede'>
-                            Terbuka untuk peran product management, quality
-                            assurance, dan software engineering, baik magang,
-                            paruh waktu, maupun proyek.
-                        </p>
+                        <p className='contacts__lede'>{t('contacts.lede')}</p>
 
                         <dl className='contacts__details'>
                             <div className='contacts__detail'>
-                                <dt>Email</dt>
+                                <dt>{t('contacts.email')}</dt>
                                 <dd>
                                     <a
                                         className='link-wipe'
@@ -91,7 +86,7 @@ function Contacts() {
                                 </dd>
                             </div>
                             <div className='contacts__detail'>
-                                <dt>Telepon</dt>
+                                <dt>{t('contacts.phone')}</dt>
                                 <dd>
                                     <a
                                         className='link-wipe'
@@ -102,8 +97,8 @@ function Contacts() {
                                 </dd>
                             </div>
                             <div className='contacts__detail'>
-                                <dt>Lokasi</dt>
-                                <dd>{contactsData.address}</dd>
+                                <dt>{t('contacts.location')}</dt>
+                                <dd>{pick(contactsData.address)}</dd>
                             </div>
                         </dl>
 
@@ -133,38 +128,44 @@ function Contacts() {
                         delay={0.12}
                     >
                         <div className='field'>
-                            <label htmlFor='contact-name'>Nama</label>
+                            <label htmlFor='contact-name'>
+                                {t('contacts.name')}
+                            </label>
                             <input
                                 id='contact-name'
                                 name='name'
                                 type='text'
                                 value={name}
                                 onChange={(e) => setName(e.target.value)}
-                                placeholder='Nama kamu'
+                                placeholder={t('contacts.namePlaceholder')}
                             />
                         </div>
 
                         <div className='field'>
-                            <label htmlFor='contact-email'>Email</label>
+                            <label htmlFor='contact-email'>
+                                {t('contacts.email')}
+                            </label>
                             <input
                                 id='contact-email'
                                 name='email'
                                 type='email'
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
-                                placeholder='nama@email.com'
+                                placeholder={t('contacts.emailPlaceholder')}
                             />
                         </div>
 
                         <div className='field'>
-                            <label htmlFor='contact-message'>Pesan</label>
+                            <label htmlFor='contact-message'>
+                                {t('contacts.message')}
+                            </label>
                             <textarea
                                 id='contact-message'
                                 name='message'
                                 rows='5'
                                 value={message}
                                 onChange={(e) => setMessage(e.target.value)}
-                                placeholder='Tulis pesan kamu di sini'
+                                placeholder={t('contacts.messagePlaceholder')}
                             />
                         </div>
 
@@ -173,7 +174,9 @@ function Contacts() {
                             className='btn btn--solid contacts__submit'
                             disabled={state.submitting}
                         >
-                            {state.submitting ? 'Mengirim…' : 'Kirim pesan'}
+                            {state.submitting
+                                ? t('contacts.sending')
+                                : t('contacts.send')}
                         </button>
 
                         {status && (
@@ -181,7 +184,7 @@ function Contacts() {
                                 className={`contacts__status contacts__status--${status.type}`}
                                 role='status'
                             >
-                                {status.text}
+                                {t(status.key)}
                             </p>
                         )}
                     </Wipe>

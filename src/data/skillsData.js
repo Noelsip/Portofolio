@@ -1,9 +1,12 @@
 // Disamakan dengan Skills dan Tools yang tertulis di CV, supaya situs dan CV
 // tidak saling bertentangan waktu dibaca berdampingan oleh perekrut.
+//
+// Isi tiap grup tidak diterjemahkan: nama teknologi dan istilah pengujian
+// dipakai apa adanya di kedua bahasa.
 export const skillsData = [
     {
         id: 1,
-        group: 'Product',
+        group: { en: 'Product', id: 'Product' },
         items: [
             'Product Management',
             'User flow design',
@@ -12,7 +15,7 @@ export const skillsData = [
     },
     {
         id: 2,
-        group: 'Quality Assurance',
+        group: { en: 'Quality Assurance', id: 'Quality Assurance' },
         items: [
             'Software Testing',
             'Functional Testing',
@@ -21,7 +24,7 @@ export const skillsData = [
     },
     {
         id: 3,
-        group: 'Teknis',
+        group: { en: 'Technical', id: 'Teknis' },
         items: [
             'REST API',
             'Python',
@@ -30,7 +33,7 @@ export const skillsData = [
     },
     {
         id: 4,
-        group: 'Tools',
+        group: { en: 'Tools', id: 'Tools' },
         items: [
             'Postman',
             'GitHub',

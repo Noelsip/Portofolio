@@ -2,19 +2,23 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import { headerData } from '../../data/headerData';
+import { useLang } from '../../i18n/LanguageContext';
+import LanguageToggle from './LanguageToggle';
 import './Navbar.css';
 
-// Urutannya mengikuti urutan section di halaman, jadi navbar bisa dibaca
-// sebagai ringkasan isi situs.
+// Urutannya mengikuti urutan section di beranda, jadi navbar bisa dibaca
+// sebagai ringkasan isi situs. Path ditulis dalam bahasa Inggris karena itu
+// bahasa default; alamat Indonesia yang lama tetap diterima oleh RouteScroll.
 const navItems = [
-    { label: 'Tentang', to: '/tentang' },
-    { label: 'Keahlian', to: '/keahlian' },
-    { label: 'Proyek', to: '/proyek' },
-    { label: 'Pengalaman', to: '/pengalaman' },
-    { label: 'Kontak', to: '/kontak' },
+    { key: 'nav.about', to: '/about' },
+    { key: 'nav.skills', to: '/skills' },
+    { key: 'nav.work', to: '/projects' },
+    { key: 'nav.experience', to: '/experience' },
+    { key: 'nav.contact', to: '/contact' },
 ];
 
 function Navbar() {
+    const { t } = useLang();
     const [scrolled, setScrolled] = useState(false);
     const [menuOpen, setMenuOpen] = useState(false);
 
@@ -46,23 +50,24 @@ function Navbar() {
     return (
         <header className={`nav ${scrolled ? 'nav--scrolled' : ''}`}>
             <div className='nav__inner shell'>
-                <nav className='nav__links' aria-label='Navigasi utama'>
+                <nav className='nav__links' aria-label={t('nav.main')}>
                     {navItems.map((item) => (
                         <Link
                             key={item.to}
                             to={item.to}
                             className='nav__link link-wipe'
                         >
-                            {item.label}
+                            {t(item.key)}
                         </Link>
                     ))}
+                    <LanguageToggle />
                     <a
                         className='nav__cv'
                         href={headerData.resumePdf}
                         target='_blank'
                         rel='noreferrer'
                     >
-                        CV
+                        {t('nav.cv')}
                     </a>
                 </nav>
 
@@ -70,7 +75,7 @@ function Navbar() {
                     type='button'
                     className={`nav__burger ${menuOpen ? 'is-open' : ''}`}
                     onClick={() => setMenuOpen((open) => !open)}
-                    aria-label={menuOpen ? 'Tutup menu' : 'Buka menu'}
+                    aria-label={menuOpen ? t('nav.closeMenu') : t('nav.openMenu')}
                     aria-expanded={menuOpen}
                     aria-controls='nav-panel'
                 >
@@ -90,7 +95,7 @@ function Navbar() {
                 className={`nav__panel ${menuOpen ? 'is-open' : ''}`}
                 aria-hidden={!menuOpen}
             >
-                <nav className='nav__panelLinks' aria-label='Navigasi mobile'>
+                <nav className='nav__panelLinks' aria-label={t('nav.mobile')}>
                     {navItems.map((item, i) => (
                         <Link
                             key={item.to}
@@ -102,21 +107,24 @@ function Navbar() {
                             onClick={() => setMenuOpen(false)}
                             tabIndex={menuOpen ? 0 : -1}
                         >
-                            {item.label}
+                            {t(item.key)}
                         </Link>
                     ))}
                 </nav>
 
-                <a
-                    className='nav__panelCv'
-                    href={headerData.resumePdf}
-                    target='_blank'
-                    rel='noreferrer'
-                    tabIndex={menuOpen ? 0 : -1}
-                    onClick={() => setMenuOpen(false)}
-                >
-                    Unduh CV
-                </a>
+                <div className='nav__panelFoot'>
+                    <a
+                        className='nav__panelCv'
+                        href={headerData.resumePdf}
+                        target='_blank'
+                        rel='noreferrer'
+                        tabIndex={menuOpen ? 0 : -1}
+                        onClick={() => setMenuOpen(false)}
+                    >
+                        {t('nav.downloadCv')}
+                    </a>
+                    <LanguageToggle tabIndex={menuOpen ? 0 : -1} />
+                </div>
             </div>
         </header>
     );

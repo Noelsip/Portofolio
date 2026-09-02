@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react';
 import { motion } from 'motion/react';
 import { FaGithub, FaInstagram, FaLinkedinIn, FaYoutube } from 'react-icons/fa';
-import { NavHashLink as NavLink } from 'react-router-hash-link';
+import { Link } from 'react-router-dom';
 
 import { headerData } from '../../data/headerData';
 import { socialsData } from '../../data/socialsData';
+import { useLang } from '../../i18n/LanguageContext';
 import './Landing.css';
 
 const socials = [
@@ -14,14 +15,10 @@ const socials = [
     { key: 'youtube', href: socialsData.youtube, Icon: FaYoutube, label: 'YouTube' },
 ];
 
-const scrollWithOffset = (el) => {
-    const y = el.getBoundingClientRect().top + window.pageYOffset - 84;
-    window.scrollTo({ top: y, behavior: 'smooth' });
-};
-
 const EASE = [0.22, 0.61, 0.36, 1];
 
 function Landing() {
+    const { t, pick } = useLang();
     const [roleIndex, setRoleIndex] = useState(0);
     const roles = headerData.roles;
 
@@ -66,7 +63,7 @@ function Landing() {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.7, delay: 0.38, ease: EASE }}
                 >
-                    {headerData.tagline}
+                    {pick(headerData.tagline)}
                 </motion.p>
 
                 <div className='landing__meta'>
@@ -76,23 +73,21 @@ function Landing() {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.7, delay: 0.5, ease: EASE }}
                     >
-                        <p className='landing__desc'>{headerData.description}</p>
+                        <p className='landing__desc'>
+                            {pick(headerData.description)}
+                        </p>
 
                         <div className='landing__actions'>
-                            <NavLink
-                                to='/#projects'
-                                scroll={scrollWithOffset}
-                                className='btn btn--solid'
-                            >
-                                Lihat proyek
-                            </NavLink>
+                            <Link to='/projects' className='btn btn--solid'>
+                                {t('hero.viewWork')}
+                            </Link>
                             <a
                                 className='btn btn--ghost'
                                 href={headerData.resumePdf}
                                 target='_blank'
                                 rel='noreferrer'
                             >
-                                Unduh CV
+                                {t('nav.downloadCv')}
                             </a>
 
                             <div className='landing__socials'>
@@ -140,7 +135,7 @@ function Landing() {
                         </ul>
 
                         <p className='landing__location'>
-                            {headerData.location}
+                            {pick(headerData.location)}
                         </p>
                     </motion.div>
                 </div>

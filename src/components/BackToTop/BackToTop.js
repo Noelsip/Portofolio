@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react';
 import { FiArrowUp } from 'react-icons/fi';
 
+import { useLang } from '../../i18n/LanguageContext';
 import './BackToTop.css';
 
 function BackToTop() {
+    const { t } = useLang();
     const [visible, setVisible] = useState(false);
 
     useEffect(() => {
@@ -18,7 +20,7 @@ function BackToTop() {
             type='button'
             className={`backToTop ${visible ? 'is-visible' : ''}`}
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            aria-label='Kembali ke atas'
+            aria-label={t('backToTop')}
             tabIndex={visible ? 0 : -1}
         >
             <FiArrowUp aria-hidden='true' />
